@@ -1,0 +1,30 @@
+<div
+  class="w-full h-24 border-b border-gray-200 px-16 items-center justify-between hidden lg:flex"
+>
+  <div class="flex items-center gap-4">
+    <a [routerLink]="['/']">Udemy</a>
+    <a [routerLink]="['/student']">student</a>
+    <div class="relative w-full min-w-2xl">
+      <input
+        type="search"
+        placeholder="Search courses"
+        class="w-full px-4 py-2 border border-black/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <i
+        class="pi pi-search absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-black/70"
+      ></i>
+    </div>
+    <span class="text-nowrap">Teach on Udemy</span>
+  </div>
+  <div class="flex items-center gap-6">
+    <button>
+      <i class="pi pi-shopping-cart text-2xl text-black/70"></i>
+    </button>
+    <a [routerLink]="['log-in']" class="border border-black p-2">Log In</a>
+    <a
+      [routerLink]="['sign-up']"
+      class="border border-black p-2 text-white bg-[#334155]"
+      >Sign Up</a
+    >
+  </div>
+</div>

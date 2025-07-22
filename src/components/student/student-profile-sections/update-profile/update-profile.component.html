@@ -1,0 +1,123 @@
+<div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div class="grid-cols-1 flex flex-col gap-2">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        class="border border-gray-300 rounded-md p-3 w-full"
+        [value]="firstName"
+        (input)="onInputChange($event, 'firstName')"
+        required
+      />
+    </div>
+    <div class="grid-cols-1 flex flex-col gap-2">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        class="border border-gray-300 rounded-md p-3 w-full"
+        [value]="lastName"
+        (input)="onInputChange($event, 'lastName')"
+        required
+      />
+    </div>
+  </div>
+  <div class="grid grid-cols-2 gap-12">
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="headline">Headline</label>
+      <input
+        type="text"
+        id="headline"
+        class="border border-gray-300 rounded-md p-3 w-full"
+        [value]="headline"
+        (input)="onInputChange($event, 'headline')"
+        required
+      />
+    </div>
+  </div>
+  <div class="flex flex-col gap-2">
+    <label for="description">Description</label>
+    <textarea
+      id="description"
+      class="border border-gray-300 rounded-md p-3 w-full h-32"
+      [value]="description"
+      (input)="onInputChange($event, 'description')"
+    ></textarea>
+  </div>
+  <div class="grid grid-cols-2 gap-12">
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="language">Language</label>
+      <select
+        name="language"
+        id="language"
+        class="border border-gray-300 rounded-md p-3 w-full"
+        [value]="language"
+        (change)="onInputChange($event, 'language')"
+        required
+      >
+        <option value="">Select language</option>
+        <option value="English">English</option>
+        <option value="Arabic">Arabic</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4 my-4">
+  <label for="profileImage" class="font-medium">Image Preview</label>
+  <img
+    id="imagePreview"
+    [src]="imageUrl"
+    class="ms-8 w-56 h-56 rounded-md object-cover mb-4"
+    alt="Profile Preview"
+  />
+  <div class="mt-2">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="col-span-1 flex flex-col gap-2">
+        <label for="" class="font-medium">Add/Change Image</label>
+        <input
+          type="text"
+          class="border border-gray-300 rounded-md p-3 w-full"
+        />
+      </div>
+      <input
+        type="file"
+        id="profileImageUpload"
+        class="hidden"
+        (change)="onImageSelected($event)"
+        accept="image/*"
+      />
+      <label
+        for="profileImageUpload"
+        class="p-3 w-fit h-fit rounded-md border flex self-end cursor-pointer"
+      >
+        Upload Image
+      </label>
+      <button
+        class="mt-4 py-3 px-6 w-fit rounded-md bg-black text-white"
+        (click)="saveImage()"
+      >
+        Save Image
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4 mb-8">
+  <h1 class="font-medium">Links</h1>
+  @for (link of socialLinks; track $index) {
+  <div class="flex flex-col gap-2">
+    <label for="{{ link }}">{{ link }}</label>
+    <input
+      type="text"
+      id="{{ link }}"
+      name="{{ link }}"
+      class="border border-gray-300 rounded-md p-3 w-full"
+      [value]="socialLinksValues[link] || ''"
+      (input)="onSocialLinkChange($event, link)"
+      required
+    />
+  </div>
+  }
+</div>

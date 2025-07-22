@@ -1,0 +1,31 @@
+<div class="flex flex-col gap-2 p-4 rounded-lg border border-gray-300">
+  <div class="w-full flex justify-between items-center">
+    <div class="flex items-center gap-2">
+      <span>Course Name:</span>
+      <span class="text-xl font-semibold">{{ studentReview?.courseName }}</span>
+    </div>
+    <button class="text-xl cursor-pointer font-bold">...</button>
+  </div>
+  <div class="flex items-center gap-2">
+    <span
+      >Rating:
+      <span>
+        <ng-container *ngFor="let star of getStars(+studentReview.rating)">
+          <ng-container [ngSwitch]="star">
+            <span *ngSwitchCase="'full'" class="text-yellow-500 text-xl"
+              >★</span
+            >
+            <span *ngSwitchCase="'half'" class="text-yellow-500 text-xl"
+              >☆</span
+            >
+            <span *ngSwitchCase="'empty'" class="text-gray-300">★</span>
+          </ng-container>
+        </ng-container>
+      </span></span
+    >
+  </div>
+  <div class="flex items-start gap-2 mt-1">
+    <span>Review:</span>
+    <span>{{ studentReview?.review }}</span>
+  </div>
+</div>

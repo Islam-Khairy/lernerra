@@ -1,0 +1,37 @@
+<div class="grid grid-cols-4 pt-24">
+  <div class="col-span-1 flex flex-col items-center">
+    <img src="/images/student/student.png" class="w-32 h-32 rounded-full" />
+    <h1 class="my-4 font-medium text-xl">John Doe</h1>
+    <button
+      class="py-2 px-3 rounded-lg bg-white text-black border border-gray-300 flex items-center gap-2"
+    >
+      <span>Share Profile</span>
+      <i class="pi pi-share-alt text-lg"></i>
+    </button>
+    <div class="mt-12 flex flex-col items-center text-center gap-4">
+      @for (item of profileSections; let i = $index; track $index) {
+      <button
+        class="w-full text-left py-2 ps-2 pe-20 cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-black text-white': selectedSection === i,
+          'bg-white text-black': selectedSection !== i
+        }"
+        (click)="selectSection(i)"
+      >
+        {{ item }}
+      </button>
+      }
+    </div>
+  </div>
+  <div class="col-span-3 me-12">
+    @switch (selectedSection) { @case (0) {
+    <app-update-profile></app-update-profile> } @case (1) {
+    <app-student-courses></app-student-courses> } @case (2) {
+    <app-student-teachers-section></app-student-teachers-section> } @case (3) {
+    <app-student-reviews-section></app-student-reviews-section> }
+    <!-- Add more cases for other sections as needed -->
+    @default {
+    <div>Select a section</div>
+    } }
+  </div>
+</div>
