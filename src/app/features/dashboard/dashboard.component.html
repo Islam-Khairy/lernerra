@@ -1,0 +1,212 @@
+
+
+<div class="p-3 bg-gray-100">
+    <!-- section 1 -->
+    <div class="flex mb-3 items-center justify-between w-full">
+        <h1 class="text-2xl font-bold">Dashboard</h1>
+        <button class="px-3 py-2 rounded text-white cursor-pointer bg-blue-600 hover:bg-blue-400 duration-200 transition">Add Course</button>
+    </div>
+
+    <!-- section 2 -->
+    <section class="grid gap-6 grid-cols-1 lg:grid-cols-3">
+        <!-- comission cards container -->
+        <div class="flex flex-col col-span-1 gap-2">
+            <!-- commission cards -->
+            <div class="flex gap-3 items-center justify-center bg-white py-6 rounded-lg border border-gray-300 shadow-xl">
+                <i class="pi pi-arrow-up-right text-green-600 !text-4xl"></i>
+                <div>
+                    <p class="text-3xl font-bold">$1k</p>
+                    <p class="text-lg text-gray-500">Life Time Courses Commission</p>
+                </div>
+            </div>
+            <!-- card2 -->
+            <div class="flex gap-3 items-center justify-center bg-white  py-6 rounded-lg border border-gray-300 shadow-xl">
+                <i class="pi pi-arrow-up-right text-green-600 !text-4xl"></i>
+                <div>
+                    <p class="text-3xl font-bold">$1k</p>
+                    <p class="text-lg text-gray-500">Life Time Courses Commission</p>
+                </div>
+            </div>
+            <!-- card 3 -->
+            <div class="flex gap-3 items-center justify-center bg-white  py-6 rounded-lg border border-gray-300 shadow-xl">
+                <i class="pi pi-arrow-up-right text-green-600 !text-4xl"></i>
+                <div>
+                    <p class="text-3xl font-bold">$1k</p>
+                    <p class="text-lg text-gray-500">Life Time Courses Commission</p>
+                </div>
+            </div>
+        </div>
+        <!-- chart -->
+        <div class="col-span-2 bg-white p-4 ">
+            <p-chart type="line" [responsive]="true" [data]="data" [options]="options" class="h-full"  />
+        </div>
+    </section>
+
+
+    <section class="mt-9">
+        <h3 class="text-xl mb-2 text-center font-semibold">Reviews</h3>
+        <!-- Reviews cards -->
+        <div class="flex gap-3 flex-wrap justify-center">
+            <!-- card -->
+            <div class="flex flex-col bg-white  shadow-lg py-5 px-12 gap-1 border border-gray-300 rounded-lg ">
+                <p class="text-gray-500 text-sm font-semibold">Total Reviews</p>
+                <div class="flex gap-1 items-center">
+                    <p class="text-2xl font-bold" >1000</p>
+                    <p></p>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="flex flex-col bg-white  shadow-lg py-5 px-12 gap-1 border border-gray-300 rounded-lg ">
+                <p class="text-gray-500 text-sm font-semibold">1 star reviews</p>
+                <div class="flex gap-1 items-center">
+                    <p class="text-2xl font-bold" >100</p>
+                    <p-tag value="1.0" class="!bg-red-500 !text-white"></p-tag>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="flex flex-col bg-white  shadow-lg py-5 px-12 gap-1 border border-gray-300 rounded-lg ">
+                <p class="text-gray-500 text-sm font-semibold">2 star reviews</p>
+                <div class="flex gap-1 items-center">
+                    <p class="text-2xl font-bold" >100</p>
+                    <p-tag value="2.0" class="!bg-yellow-700 !text-white"></p-tag>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="flex flex-col bg-white  shadow-lg py-5 px-12 gap-1 border border-gray-300 rounded-lg ">
+                <p class="text-gray-500 text-sm font-semibold">3 star reviews</p>
+                <div class="flex gap-1 items-center">
+                    <p class="text-2xl font-bold" >100</p>
+                    <p-tag value="3.0" class="!bg-yellow-400 !text-white"></p-tag>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="flex flex-col bg-white  shadow-lg py-5 px-12 gap-1 border border-gray-300 rounded-lg ">
+                <p class="text-gray-500 text-sm font-semibold">4 star reviews</p>
+                <div class="flex gap-1 items-center">
+                    <p class="text-2xl font-bold" >100</p>
+                    <p-tag value="4.0" class="!bg-green-300 !text-white"></p-tag>
+                </div>
+            </div>
+            <!-- card -->
+            <div class="flex flex-col bg-white  shadow-lg py-5 px-12 gap-1 border border-gray-300 rounded-lg ">
+                <p class="text-gray-500 text-sm font-semibold">5 star reviews</p>
+                <div class="flex gap-1 items-center">
+                    <p class="text-2xl font-bold" >100</p>
+                    <p-tag value="5.0" class="!bg-green-700 !text-white"></p-tag>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="my-9">
+        <h3 class="text-xl text-center mb-3 font-semibold">Courses</h3>
+        <!-- course container -->
+        <div class="flex justify-center gap-2 flex-wrap">
+            <!-- course card -->
+             <div class="border bg-white  border-gray-300 shadow-lg rounded-lg py-4 px-6">
+                <span class="px-10 py-2 bg-gray-100 font-semibold rounded-lg mb-3 inline-block">Free</span>
+                <h2 class="font-semibold text-lg">Begginer's Guide To Design</h2>
+                <p-divider></p-divider>
+                <!-- details -->
+                <div class="grid grid-cols-3 gap-y-3 ">
+                    <div>
+                        <p class="font-semibold">$50.00</p>
+                        <p class="text-gray-500">Price</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">13</p>
+                        <p class="text-gray-500">Chapters</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">254</p>
+                        <p class="text-gray-500">Orders</p>
+                    </div>
+                    <!-- row 2 -->
+                     <div>
+                        <p class="font-semibold">25</p>
+                        <p class="text-gray-500">Certificates</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">25</p>
+                        <p class="text-gray-500">Reviews</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">500</p>
+                        <p class="text-gray-500">Added to Sheif</p>
+                    </div>
+                </div>
+             </div>
+
+              <!-- course card -->
+             <div class="border bg-white  border-gray-300 shadow-lg rounded-lg py-4 px-6">
+                <span class="px-10 py-2 bg-gray-100 font-semibold rounded-lg mb-3 inline-block">Free</span>
+                <h2 class="font-semibold text-lg">Begginer's Guide To Design</h2>
+                <p-divider></p-divider>
+                <!-- details -->
+                <div class="grid grid-cols-3 gap-y-3 ">
+                    <div>
+                        <p class="font-semibold">$50.00</p>
+                        <p class="text-gray-500">Price</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">13</p>
+                        <p class="text-gray-500">Chapters</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">254</p>
+                        <p class="text-gray-500">Orders</p>
+                    </div>
+                    <!-- row 2 -->
+                     <div>
+                        <p class="font-semibold">25</p>
+                        <p class="text-gray-500">Certificates</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">25</p>
+                        <p class="text-gray-500">Reviews</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">500</p>
+                        <p class="text-gray-500">Added to Sheif</p>
+                    </div>
+                </div>
+             </div>
+
+              <!-- course card -->
+             <div class="border bg-white  border-gray-300 shadow-lg rounded-lg py-4 px-6">
+                <span class="px-10 py-2 bg-gray-100 font-semibold rounded-lg mb-3 inline-block">Free</span>
+                <h2 class="font-semibold text-lg">Begginer's Guide To Design</h2>
+                <p-divider></p-divider>
+                <!-- details -->
+                <div class="grid grid-cols-3 gap-y-3 ">
+                    <div>
+                        <p class="font-semibold">$50.00</p>
+                        <p class="text-gray-500">Price</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">13</p>
+                        <p class="text-gray-500">Chapters</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">254</p>
+                        <p class="text-gray-500">Orders</p>
+                    </div>
+                    <!-- row 2 -->
+                     <div>
+                        <p class="font-semibold">25</p>
+                        <p class="text-gray-500">Certificates</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">25</p>
+                        <p class="text-gray-500">Reviews</p>
+                    </div>
+                    <div>
+                        <p class="font-semibold">500</p>
+                        <p class="text-gray-500">Added to Sheif</p>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
+</div>

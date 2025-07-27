@@ -1,8 +1,9 @@
-<div class="grid grid-cols-1 lg:grid-cols-5">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1 lg:grid-cols-5">
   <div class="col-span-3 boreder flex flex-col justify-center pt-6 px-8">
     <h1 class="text-3xl font-bold text-[#0F172A] text-center">
       Sign in to your account
     </h1>
+    <!-- email -->
     <div class="flex flex-col gap-6">
       <div class="flex flex-col gap-2">
         <label for="" class="text-lg text-[#0F172A] font-semibold">Email</label>
@@ -10,9 +11,18 @@
           type="text"
           class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
           placeholder="Username or Email ID"
+          formControlName="email"
         />
+        @if(loginForm.get('email')?.hasError('required')&&loginForm.get('email')?.touched){
+        <span class="text-red-500 block">Email is required</span>
+          }
+
+          @if(loginForm.get('email')?.hasError('email')&&loginForm.get('email')?.touched){
+          <span class="text-red-500 block">Invalid email format</span>
+          }
       </div>
 
+      <!-- password -->
       <div class="flex flex-col gap-6">
         <div class="flex flex-col gap-2">
           <label for="" class="text-lg text-[#0F172A] font-semibold"
@@ -22,15 +32,20 @@
             type="text"
             class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
             placeholder="Enter Password"
+            formControlName="password"
           />
+          @if(loginForm.get('password')?.hasError('required')&&loginForm.get('password')?.touched){
+          <span class="text-red-500 block">Password is required</span>
+           }
         </div>
 
         <button
-          class="text-[#FFFFFF] px-4 py-3 rounded-md bg-[#020617] w-fit flex items-center gap-3"
-        >
+          class="text-[#FFFFFF] px-4 py-3  rounded-md bg-[#020617] w-fit flex items-center gap-3 cursor-pointer hover:bg-neutral-600  transition duration-200 "
+         type="submit">
           <span>Sign In</span>
           <i class="pi pi-arrow-right"></i>
         </button>
+        <a class="no-underline text-green-600 hover:text-green-500" routerLink="/forget-password">Forget password ?</a>
 
         <div class="flex items-center">
           <div class="flex-grow border-t border-[#94A3B8]"></div>
@@ -58,4 +73,4 @@
   <div class="col-span-2 mt-6 lg:mt-0 w-full">
     <img src="/images/log-in.svg" alt="" class="w-full object-contain" />
   </div>
-</div>
+</form>
