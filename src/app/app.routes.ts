@@ -6,6 +6,12 @@ import { LogInComponent } from '../components/log-in/log-in.component';
 import { ShoppingCartComponent } from '../components/shopping-cart/shopping-cart.component';
 import { CheckOutPageComponent } from '../components/check-out-page/check-out-page.component';
 import { OrderCompletedComponent } from '../components/order-completed/order-completed.component';
+import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { ForgetPasswordComponent } from '../components/log-in/forget-password/forget-password.component';
+import { ResetPasswordComponent } from '../components/log-in/reset-password/reset-password.component';
+import { CourseDetailsComponent } from './features/course-details/course-details.component';
+import { InstructorDetailsComponent } from './features/instructor-details/instructor-details.component';
+import { CategoryComponent } from './features/category/category.component';
 
 export const routes: Routes = [
   {
@@ -35,5 +41,28 @@ export const routes: Routes = [
   {
     path: 'order-completed',
     component: OrderCompletedComponent,
+  },
+{
+    path:'forget-password',
+    component:ForgetPasswordComponent
+  },
+  { path:'reset-password',
+    component:ResetPasswordComponent
+  },
+  {
+    path:'dashboard',
+    component:DashboardComponent
+  },
+  {
+    path:'course',
+    component:CourseDetailsComponent
+  },
+  {
+    path:'instructor',
+    component:InstructorDetailsComponent
+  },
+  {
+    path:'category',
+    component:CategoryComponent
   }
-];
+]

@@ -16,15 +16,21 @@
     </div>
     <span class="text-nowrap">Teach on Udemy</span>
   </div>
+
   <div class="flex items-center gap-6">
-    <a [routerLink]="['shopping-cart']">
-      <i class="pi pi-shopping-cart !text-3xl text-black/70"></i>
-    </a>
-    <a [routerLink]="['log-in']" class="border border-black p-2">Log In</a>
-    <a
-      [routerLink]="['sign-up']"
-      class="border border-black p-2 text-white bg-[#334155]"
-      >Sign Up</a
-    >
+
+    <button>
+      <i class="pi pi-shopping-cart hover:text-green-600 transition duration-200 cursor-pointer !text-2xl text-black/70 "></i>
+    </button>
+    @if(accountService.user()==null){
+      <a [routerLink]="['log-in']" class="border border-black p-2 hover:bg-gray-100 hover:text-black transition duration-200  ">Log In</a>
+      <a
+        [routerLink]="['sign-up']"
+        class="border border-black p-2 text-white bg-[#334155] hover:bg-[#1e293b] duration-200 transition "
+        >Sign Up</a
+      >
+    }@else {
+       <button (click)="logout()" class="border cursor-pointer border-red-600 text-red-600 px-4 py-2 rounded hover:bg-red-100 transition-colors duration-200 ">Logout</button>
+    }
   </div>
 </div>
