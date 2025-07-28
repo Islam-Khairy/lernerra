@@ -16,7 +16,7 @@ export class StudentCoursesComponent {
       instructor: 'Ronald Richards',
       image: '/images/student/courseImage.png',
       rate: '4.5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ export class StudentCoursesComponent {
       instructor: 'Ronald Richards',
       image: '/images/student/courseImage.png',
       rate: '5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
     },
     {
       id: 3,
@@ -32,7 +32,7 @@ export class StudentCoursesComponent {
       instructor: 'Ronald Richards',
       image: '/images/student/courseImage.png',
       rate: '4.5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
     },
     {
       id: 4,
@@ -40,7 +40,7 @@ export class StudentCoursesComponent {
       instructor: 'Ronald Richards',
       image: '/images/student/courseImage.png',
       rate: '5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
     },
     {
       id: 5,
@@ -48,7 +48,7 @@ export class StudentCoursesComponent {
       instructor: 'Ronald Richards',
       image: '/images/student/courseImage.png',
       rate: '4.5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
     },
   ];
 }

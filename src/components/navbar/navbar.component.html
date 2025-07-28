@@ -17,9 +17,9 @@
     <span class="text-nowrap">Teach on Udemy</span>
   </div>
   <div class="flex items-center gap-6">
-    <button>
-      <i class="pi pi-shopping-cart text-2xl text-black/70"></i>
-    </button>
+    <a [routerLink]="['shopping-cart']">
+      <i class="pi pi-shopping-cart !text-3xl text-black/70"></i>
+    </a>
     <a [routerLink]="['log-in']" class="border border-black p-2">Log In</a>
     <a
       [routerLink]="['sign-up']"

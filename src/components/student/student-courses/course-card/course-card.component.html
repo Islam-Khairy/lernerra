@@ -22,7 +22,7 @@
           </ng-container>
         </ng-container>
       </span>
-      <span class="text-sm"> ({{ course.NumberOfRatings }} Ratings)</span>
+      <span class="text-sm"> ({{ course.numberOfRatings }} Ratings)</span>
     </div>
     @if (course.duration || course.lecture || course.level) {
     <div class="flex items-center gap-3 text-sm text-[#334155]">
@@ -31,7 +31,9 @@
       <span>{{ course.level }}</span>
     </div>
     } @if (course.price) {
-    <span class="text-[#0F172A] font-semibold text-lg">${{ course.price }}</span>
+    <span class="text-[#0F172A] font-semibold text-lg"
+      >${{ course.price }}</span
+    >
     }
   </div>
 </mat-card>
