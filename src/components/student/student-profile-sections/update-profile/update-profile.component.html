@@ -1,92 +1,97 @@
-<div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-    <div class="grid-cols-1 flex flex-col gap-2">
-      <label for="firstName">First Name</label>
-      <input
-        type="text"
-        id="firstName"
-        class="border border-gray-300 rounded-md p-3 w-full"
-        [value]="firstName"
-        (input)="onInputChange($event, 'firstName')"
-        required
-      />
-    </div>
-    <div class="grid-cols-1 flex flex-col gap-2">
-      <label for="lastName">Last Name</label>
-      <input
-        type="text"
-        id="lastName"
-        class="border border-gray-300 rounded-md p-3 w-full"
-        [value]="lastName"
-        (input)="onInputChange($event, 'lastName')"
-        required
-      />
-    </div>
-  </div>
-  <div class="grid grid-cols-2 gap-12">
-    <div class="col-span-1 flex flex-col gap-2">
-      <label for="headline">Headline</label>
-      <input
-        type="text"
-        id="headline"
-        class="border border-gray-300 rounded-md p-3 w-full"
-        [value]="headline"
-        (input)="onInputChange($event, 'headline')"
-        required
-      />
-    </div>
-  </div>
-  <div class="flex flex-col gap-2">
-    <label for="description">Description</label>
-    <textarea
-      id="description"
-      class="border border-gray-300 rounded-md p-3 w-full h-32"
-      [value]="description"
-      (input)="onInputChange($event, 'description')"
-    ></textarea>
-  </div>
-  <div class="grid grid-cols-2 gap-12">
-    <div class="col-span-1 flex flex-col gap-2">
-      <label for="language">Language</label>
-      <select
-        name="language"
-        id="language"
-        class="border border-gray-300 rounded-md p-3 w-full"
-        [value]="language"
-        (change)="onInputChange($event, 'language')"
-        required
-      >
-        <option value="">Select language</option>
-        <option value="English">English</option>
-        <option value="Arabic">Arabic</option>
-      </select>
-    </div>
-  </div>
-</div>
+<form [formGroup]="updateProfileForm" (ngSubmit)="updateStudent()">
+  <div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div class="grid-cols-1 flex flex-col gap-2">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" class="border border-gray-300 rounded-md p-3 w-full"
+          formControlName="firstName" (input)="onInputChange($event, 'firstName')" required />
+        @if (updateProfileForm.get('firstName')?.errors && updateProfileForm.get('firstName')?.touched ) {
+        <p class="text-red-700" *ngIf="updateProfileForm.get('firstName')?.getError('required')">First name is required
+        </p>
+        <p class="text-red-700" *ngIf="updateProfileForm.get('firstName')?.getError('maxLength')">First name must not
+          exceed 50 characters.</p>
+        }
 
-<div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4 my-4">
+      </div>
+      <div class="grid-cols-1 flex flex-col gap-2">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" class="border border-gray-300 rounded-md p-3 w-full" formControlName="lastName"
+          (input)="onInputChange($event, 'lastName')" required />
+        @if (updateProfileForm.get('lastName')?.errors && updateProfileForm.get('lastName')?.touched ) {
+        <p class="text-red-700" *ngIf="updateProfileForm.get('lastName')?.getError('required')">Last name is required
+        </p>
+        <p class="text-red-700" *ngIf="updateProfileForm.get('lastName')?.getError('maxLength')">Last name must not
+          exceed 50 characters.</p>
+        }
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-12">
+      <div class="col-span-1 flex flex-col gap-2">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" class="border border-gray-300 rounded-md p-3 w-full"
+          formControlName="phoneNumber" (input)="onInputChange($event, 'phoneNumber')" required />
+        @if (updateProfileForm.get('phoneNumber')?.errors && updateProfileForm.get('phoneNumber')?.touched ) {
+        <p class="text-red-700" *ngIf="updateProfileForm.get('phoneNumber')?.getError('required')">Phone Number is
+          required</p>
+        <p class="text-red-700" *ngIf="updateProfileForm.get('phoneNumber')?.getError('pattern')">Phone Number is
+          invalid</p>
+        }
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-12">
+      <div class="col-span-1 flex flex-col gap-2">
+        <label for="email">Email</label>
+        <input type="text" id="email" class="border border-gray-300 rounded-md p-3 w-full" formControlName="email"
+          (input)="onInputChange($event, 'email')" required />
+      </div>
+      @if (updateProfileForm.get('email')?.errors && updateProfileForm.get('email')?.touched ) {
+      <p class="text-red-700" *ngIf="updateProfileForm.get('email')?.getError('required')">Email is required</p>
+      <p class="text-red-700" *ngIf="updateProfileForm.get('email')?.getError('email')">Email is invalid</p>
+      }
+    </div>
+    <div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4 my-4">
   <label for="profileImage" class="font-medium">Image Preview</label>
   <img
     id="imagePreview"
-    [src]="imageUrl"
+    [src]="uploadedImageUrl || updateProfileForm.get('imageUrl')?.value"
     class="ms-8 w-56 h-56 rounded-md object-cover mb-4"
     alt="Profile Preview"
   />
+
   <div class="mt-2">
     <div class="grid grid-cols-2 gap-4">
       <div class="col-span-1 flex flex-col gap-2">
-        <label for="" class="font-medium">Add/Change Image</label>
+        <label class="font-medium">Image URL</label>
         <input
           type="text"
+          formControlName="imageUrl"
           class="border border-gray-300 rounded-md p-3 w-full"
         />
+        @if (
+          updateProfileForm.get('imageUrl')?.errors &&
+          updateProfileForm.get('imageUrl')?.touched
+        ) {
+          <p
+            class="text-red-700"
+            *ngIf="updateProfileForm.get('imageUrl')?.getError('required')"
+          >
+            Image URL is required
+          </p>
+          <p
+            class="text-red-700"
+            *ngIf="updateProfileForm.get('imageUrl')?.getError('pattern')"
+          >
+            Image URL is invalid
+          </p>
+        }
       </div>
+
       <input
         type="file"
         id="profileImageUpload"
         class="hidden"
-        (change)="onImageSelected($event)"
         accept="image/*"
+        (change)="onFileSelected($event)"
       />
       <label
         for="profileImageUpload"
@@ -94,30 +99,16 @@
       >
         Upload Image
       </label>
-      <button
-        class="mt-4 py-3 px-6 w-fit rounded-md bg-black text-white"
-        (click)="saveImage()"
-      >
-        Save Image
-      </button>
     </div>
   </div>
 </div>
+      
+      <div class="mt-2">
+        <div class="grid grid-cols-2 gap-4">
 
-<div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4 mb-8">
-  <h1 class="font-medium">Links</h1>
-  @for (link of socialLinks; track $index) {
-  <div class="flex flex-col gap-2">
-    <label for="{{ link }}">{{ link }}</label>
-    <input
-      type="text"
-      id="{{ link }}"
-      name="{{ link }}"
-      class="border border-gray-300 rounded-md p-3 w-full"
-      [value]="socialLinksValues[link] || ''"
-      (input)="onSocialLinkChange($event, link)"
-      required
-    />
-  </div>
-  }
-</div>
+          <input type="submit" value="Save" class="mt-4 py-3 px-6 w-fit rounded-md bg-black text-white cursor-pointer">
+        </div>
+      </div>
+    </div>
+
+</form>

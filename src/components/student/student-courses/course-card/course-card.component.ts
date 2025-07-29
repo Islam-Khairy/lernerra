@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { ICourse } from '../../../../app/interfaces/course/icourse';
 
 @Component({
   selector: 'app-course-card',
@@ -10,7 +11,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './course-card.component.css',
 })
 export class CourseCardComponent {
-  @Input() course: any;
+  @Input() course!: ICourse;
 
   getStars(rating: number): string[] {
     const fullStars = Math.floor(rating);
