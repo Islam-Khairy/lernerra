@@ -1,0 +1,7 @@
+::ng-deep .custom-carousel .p-carousel-items {
+  justify-content: center;
+}
+
+.single-course, .two-courses {
+  width: 300px;
+}

@@ -3,6 +3,7 @@ import { StudentService } from '../../../../app/services/student/student-service
 import { CloudinaryUploadService } from '../../../../app/services/images/cloudinary-upload-service.service';
 import { IStudent } from '../../../../app/interfaces/student/istudent';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
  @Component({
   selector: 'app-update-profile',
   imports: [FormsModule, ReactiveFormsModule,NgIf],
@@ -10,7 +11,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   styleUrl: './update-profile.component.css',
 })
 export class UpdateProfileComponent {
-  constructor(private studentService: StudentService,private cloudinaryService:CloudinaryUploadService) { }
+  constructor(private studentService: StudentService,private cloudinaryService:CloudinaryUploadService,private toastr:ToastrService) { }
 
   socialLinks = [
     'Website',
@@ -79,10 +80,22 @@ export class UpdateProfileComponent {
     console.log(student);
     this.studentService.updateStudent(student).subscribe({
       next: (res) => {
+        this.toastr.success("student updated successfully","Success",{
+          progressBar:true,
+          progressAnimation:"increasing",
+          closeButton:true
+        }
+          
+        )
         console.log(res);
         this.getStudentData()
       },
       error: (err) => {
+        this.toastr.error("something went wrong","Failed",{
+          progressBar:true,
+          progressAnimation:"decreasing",
+          closeButton:true
+        });
         console.log(err);
       }
     })
