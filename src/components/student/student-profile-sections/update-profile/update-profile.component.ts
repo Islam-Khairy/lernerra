@@ -4,6 +4,7 @@ import { CloudinaryUploadService } from '../../../../app/services/images/cloudin
 import { IStudent } from '../../../../app/interfaces/student/istudent';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';import { NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { AccountService } from '../../../../app/core/services/account.service';
  @Component({
   selector: 'app-update-profile',
   imports: [FormsModule, ReactiveFormsModule,NgIf],
@@ -11,8 +12,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './update-profile.component.css',
 })
 export class UpdateProfileComponent {
-  constructor(private studentService: StudentService,private cloudinaryService:CloudinaryUploadService,private toastr:ToastrService) { }
-
+  constructor(private studentService: StudentService,private cloudinaryService:CloudinaryUploadService,private toastr:ToastrService,private accountService:AccountService) {
+    this.studentId=this.accountService.user()?.userId || "";
+   }
+studentId!:string
   socialLinks = [
     'Website',
     'X(Formerly twitter)',
@@ -48,7 +51,7 @@ export class UpdateProfileComponent {
   }
 
   getStudentData() {
-    this.studentService.getStudentbById().subscribe({
+    this.studentService.getStudentbById(this.studentId).subscribe({
       next: (res) => {
         const [firstName, lastName] = res.fullName?.split(' ') || [];
         this.updateProfileForm.patchValue({
@@ -71,7 +74,7 @@ export class UpdateProfileComponent {
       return;
     }
     let student: IStudent = {
-      Id: this.studentService.studentId,
+      Id: this.studentId,
       fullName: this.updateProfileForm.get('firstName')?.value + " " + this.updateProfileForm.get('lastName')?.value,
       email: this.updateProfileForm.get('email')?.value,
       phoneNumber: this.updateProfileForm.get('phoneNumber')?.value,

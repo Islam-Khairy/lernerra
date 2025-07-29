@@ -9,9 +9,9 @@ export class CourseService {
   constructor(private _http:HttpClient) {    
   }
 
-  getStudentCourses():Observable<any>{
+  getStudentCourses(studentId:string):Observable<any>{
     let token:any=localStorage.getItem("userToken")
-    return this._http.get(`http://localhost:5138/api/Course/student/1`/*${id}*/ ,/*{
+    return this._http.get(`http://localhost:5138/api/Course/student/${studentId}` ,/*{
       headers:token
     }*/)
   }
