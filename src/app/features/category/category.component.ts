@@ -6,15 +6,23 @@ import { CourseCardComponent } from "../../Shared/course-card/course-card.compon
 import { Course } from '../../Shared/Models/Course';
 import { instructor } from '../../Shared/Models/instructor';
 import { MentorCardComponent } from '../../Shared/mentor-card/mentor-card.component';
+import { ICourse } from '../../interfaces/course/icourse';
+import { CourseService } from '../../services/course/course-service.service';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-category',
-  imports: [Button, Menu, CourseCardComponent,MentorCardComponent],
+  imports: [Button, Menu, CourseCardComponent,MentorCardComponent,RouterLink],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css'
 })
 export class CategoryComponent {
   sortOptions:MenuItem[]
-   constructor() {
+  categoryId:number=2
+  categoryName!:string
+  courses!:ICourse[];
+  topCourses!:ICourse[];
+
+   constructor(private courseService:CourseService) {
     this.sortOptions = [
       {
         label: 'Most Relevant',
@@ -53,121 +61,41 @@ export class CategoryComponent {
       }
     ];
   }
-  courses: Course[] = [
-  {
-    id: 1,
-    name: "Beginner’s Guide to UX Design",
-    image: "images/courseImage.png",
-    description: "22 Hours, 155 Lectures",
-    rate: 1200,
-    duration: 22,
-    price: 149.9,
-    instructorName: "Ronald Richards",
-    categoryName: "UX Design",
-    status: "Beginner"
-  },
-  {
-    id: 2,
-    name: "Mastering Web Development",
-    image: "images/courseImage.png",
-    description: "18 Hours, 120 Lectures",
-    rate: 980,
-    duration: 18,
-    price: 129.9,
-    instructorName: "Leslie Alexander",
-    categoryName: "Web Development",
-    status: "Intermediate"
-  },
-  {
-    id: 3,
-    name: "UI Design Bootcamp",
-    image: "images/courseImage.png",
-    description: "20 Hours, 140 Lectures",
-    rate: 875,
-    duration: 20,
-    price: 139.9,
-    instructorName: "Jenny Wilson",
-    categoryName: "UI Design",
-    status: "Beginner"
-  },
-  {
-    id: 4,
-    name: "Fullstack JavaScript Course",
-    image: "images/courseImage.png",
-    description: "25 Hours, 200 Lectures",
-    rate: 1100,
-    duration: 25,
-    price: 159.9,
-    instructorName: "Cody Fisher",
-    categoryName: "Fullstack",
-    status: "Advanced"
-  },
-  {
-    id: 5,
-    name: "Creative Graphic Design",
-    image: "images/courseImage.png",
-    description: "15 Hours, 100 Lectures",
-    rate: 760,
-    duration: 15,
-    price: 119.9,
-    instructorName: "Theresa Webb",
-    categoryName: "Graphic Design",
-    status: "Beginner"
-  },
-  {
-    id: 6,
-    name: "React for Professionals",
-    image: "images/courseImage.png",
-    description: "30 Hours, 180 Lectures",
-    rate: 1320,
-    duration: 30,
-    price: 179.9,
-    instructorName: "Guy Hawkins",
-    categoryName: "Web Development",
-    status: "Advanced"
-  }
-];
+  
    sortCourses(criteria: string) {
     console.log('Sorting by:', criteria);
    
   }
 
+  ngOnInit(): void {
+    this.getCategoryCourses();
+    this.getTopCourses()
+  }
 
-   instructors:instructor[]=[
-    {
-     name:'Ronald Richards',
-     title:'Web Developer',
-     rating:4.9,
-     studentsNum:2700,
-     image:'images/student/student.png'
-    },
-    {
-     name:'Ronald Richards',
-     title:'Web Developer',
-     rating:4.9,
-     studentsNum:2700,
-     image:'images/student/student.png'
-    },
-    {
-     name:'Ronald Richards',
-     title:'Web Developer',
-     rating:4.9,
-     studentsNum:2700,
-     image:'images/student/student.png'
-    },
-    {
-    name:'Ronald Richards',
-     title:'Web Developer',
-     rating:4.9,
-     studentsNum:2700,
-     image:'images/student/student.png'
-    },
-    {
-    name:'Ronald Richards',
-     title:'Web Developer',
-     rating:4.9,
-     studentsNum:2700,
-     image:'images/student/student.png'
-    }
-  ]
+  getCategoryCourses(){
+    this.courseService.getCategoryCourses(this.categoryId).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.courses=res.courses;
+        this.categoryName=res.name;
+      },
+      error:(err)=>{
+        console.log(err);
+
+      }
+    })
+  }
+
+  getTopCourses(){
+    this.courseService.getAllCourses().subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.topCourses=res.sort((a:ICourse, b:ICourse) => b.rate - a.rate);;
+      },
+      error:(err)=>{
+        console.log(err);
+
+      }
+    })
+  }
 }

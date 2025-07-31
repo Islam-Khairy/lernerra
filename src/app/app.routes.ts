@@ -10,6 +10,8 @@ import { ResetPasswordComponent } from '../components/log-in/reset-password/rese
 import { CourseDetailsComponent } from './features/course-details/course-details.component';
 import { InstructorDetailsComponent } from './features/instructor-details/instructor-details.component';
 import { CategoryComponent } from './features/category/category.component';
+import { AdminsComponent } from './features/admins/admins.component';
+import { AddAdminComponent } from './features/admins/add-admin/add-admin.component';
 
 export const routes: Routes = [
   {
@@ -40,7 +42,7 @@ export const routes: Routes = [
     component:DashboardComponent
   },
   {
-    path:'course',
+    path:'course/:id',
     component:CourseDetailsComponent
   },
   {
@@ -50,5 +52,13 @@ export const routes: Routes = [
   {
     path:'category',
     component:CategoryComponent
+  },
+  {
+    path:'Admins',
+    component:AdminsComponent
+  },
+  {
+    path:'addAdmin',
+    component:AddAdminComponent
   }
 ]

@@ -10,13 +10,22 @@ export class CourseService {
   }
 
   getStudentCourses(studentId:string):Observable<any>{
-    let token:any=localStorage.getItem("userToken")
     return this._http.get(`http://localhost:5138/api/Course/student/${studentId}` ,/*{
       headers:token
-    }*/)
+    }*/);
   }
 
   getCourseById(courseId:number):Observable<any>{
-    return this._http.get(`http://localhost:5138/api/Course/${courseId}` )
+    return this._http.get(`http://localhost:5138/api/Course/${courseId}` );
   }
+
+  getCategoryCourses(categoryId:number):Observable<any>{
+    return this._http.get(`http://localhost:5138/api/Category/${categoryId}/courses`);
+  }
+
+  getAllCourses():Observable<any>{
+    return this._http.get(`http://localhost:5138/api/Course/approved`);
+  }
+  
+
 }

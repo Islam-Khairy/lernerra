@@ -74,7 +74,7 @@ studentId!:string
       return;
     }
     let student: IStudent = {
-      Id: this.studentId,
+      id: this.studentId,
       fullName: this.updateProfileForm.get('firstName')?.value + " " + this.updateProfileForm.get('lastName')?.value,
       email: this.updateProfileForm.get('email')?.value,
       phoneNumber: this.updateProfileForm.get('phoneNumber')?.value,

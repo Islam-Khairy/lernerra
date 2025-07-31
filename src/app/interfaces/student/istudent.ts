@@ -1,7 +1,8 @@
 export interface IStudent {
-  Id: string
+  id: string
   fullName: string
   email: string
   phoneNumber: string
   imageUrl:string
+  instructorApplication?:string|null
 }
