@@ -12,6 +12,7 @@ import { InstructorDetailsComponent } from './features/instructor-details/instru
 import { CategoryComponent } from './features/category/category.component';
 import { AdminsComponent } from './features/admins/admins.component';
 import { AddAdminComponent } from './features/admins/add-admin/add-admin.component';
+import { AdminCoursesComponent } from './features/admin-courses/admin-courses.component';
 
 export const routes: Routes = [
   {
@@ -46,11 +47,11 @@ export const routes: Routes = [
     component:CourseDetailsComponent
   },
   {
-    path:'instructor',
+    path:'instructor/:id',
     component:InstructorDetailsComponent
   },
   {
-    path:'category',
+    path:'category/:id',
     component:CategoryComponent
   },
   {
@@ -60,5 +61,9 @@ export const routes: Routes = [
   {
     path:'addAdmin',
     component:AddAdminComponent
+  },
+  {
+    path:'adminCourses',
+    component:AdminCoursesComponent
   }
 ]

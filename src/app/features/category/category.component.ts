@@ -8,7 +8,7 @@ import { instructor } from '../../Shared/Models/instructor';
 import { MentorCardComponent } from '../../Shared/mentor-card/mentor-card.component';
 import { ICourse } from '../../interfaces/course/icourse';
 import { CourseService } from '../../services/course/course-service.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-category',
   imports: [Button, Menu, CourseCardComponent,MentorCardComponent,RouterLink],
@@ -17,12 +17,12 @@ import { RouterLink } from '@angular/router';
 })
 export class CategoryComponent {
   sortOptions:MenuItem[]
-  categoryId:number=2
+  categoryId!:number;
   categoryName!:string
   courses!:ICourse[];
   topCourses!:ICourse[];
 
-   constructor(private courseService:CourseService) {
+   constructor(private courseService:CourseService,private route :ActivatedRoute) {
     this.sortOptions = [
       {
         label: 'Most Relevant',
@@ -68,8 +68,13 @@ export class CategoryComponent {
   }
 
   ngOnInit(): void {
+     this.route.paramMap.subscribe(params => {
+       this.categoryId = parseInt(params.get('id')|| "0");
+     });
     this.getCategoryCourses();
     this.getTopCourses()
+
+   
   }
 
   getCategoryCourses(){

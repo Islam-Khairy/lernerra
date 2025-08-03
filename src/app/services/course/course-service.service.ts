@@ -10,9 +10,7 @@ export class CourseService {
   }
 
   getStudentCourses(studentId:string):Observable<any>{
-    return this._http.get(`http://localhost:5138/api/Course/student/${studentId}` ,/*{
-      headers:token
-    }*/);
+    return this._http.get(`http://localhost:5138/api/Course/student/${studentId}` );
   }
 
   getCourseById(courseId:number):Observable<any>{
@@ -26,6 +24,19 @@ export class CourseService {
   getAllCourses():Observable<any>{
     return this._http.get(`http://localhost:5138/api/Course/approved`);
   }
-  
 
+  getCoursesbystatus(courseStatus:number):Observable<any>{
+    return this._http.get(`http://localhost:5138/api/Course/Status?courseStatus=${courseStatus}`)
+  }
+  
+  updateCourseStatus(courseId:number,status:number):Observable<any>{
+    return this._http.put(`http://localhost:5138/api/Course/status`,{
+      "courseId":courseId, 
+  "status":status
+    })
+  }
+
+  deleteCourse(courseId:number):Observable<any>{
+    return this._http.delete(`http://localhost:5138/api/Course/${courseId}`);
+  }
 }

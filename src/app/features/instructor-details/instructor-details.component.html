@@ -1,4 +1,6 @@
-<div class="px-18  pt-8">
+
+@if(this.instructor){
+    <div class="px-18  pt-8">
     <div class="grid grid-cols-1 md:grid-cols-4 mb-2 sm:gap-10  lg:gap-44">
         <div class="col-span-3">
             <h5 class="text-gray-700">Instructor</h5>
@@ -44,3 +46,7 @@
 </p-carousel>
 
 </section>
+}
+@else {
+    <p class="text-center text-3xl m-10">Instructor not found</p>
+}

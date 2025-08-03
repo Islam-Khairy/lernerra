@@ -6,7 +6,6 @@ export interface Course {
   rate: number;
   duration:number
   price: number;
-  instructorName: string;
   categoryName: string;
   status: string;
 }

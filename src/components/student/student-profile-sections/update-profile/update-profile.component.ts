@@ -15,7 +15,7 @@ export class UpdateProfileComponent {
   constructor(private studentService: StudentService,private cloudinaryService:CloudinaryUploadService,private toastr:ToastrService,private accountService:AccountService) {
     this.studentId=this.accountService.user()?.userId || "";
    }
-studentId!:string
+studentId!:string ;
   socialLinks = [
     'Website',
     'X(Formerly twitter)',
@@ -53,6 +53,8 @@ studentId!:string
   getStudentData() {
     this.studentService.getStudentbById(this.studentId).subscribe({
       next: (res) => {
+        console.log(res);
+        
         const [firstName, lastName] = res.fullName?.split(' ') || [];
         this.updateProfileForm.patchValue({
           firstName: firstName || '',

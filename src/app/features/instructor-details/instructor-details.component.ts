@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { InstructorService } from './../../services/instructor/instructor-service.service';
 import { IInstructor } from '../../interfaces/instructor/iinstructor';
 import { ICourse } from '../../interfaces/course/icourse';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
 
 @Component({
@@ -18,10 +18,10 @@ templateUrl: './instructor-details.component.html',
 })
 export class InstructorDetailsComponent {
   rating!:number
-  instructorId:string="1";
+  instructorId!:string;
   instructor!:IInstructor;
   instructorCourses!:ICourse[];
-  constructor(private instructorService:InstructorService){}
+  constructor(private instructorService:InstructorService,private route:ActivatedRoute){}
 
   responsiveOptions = [
     {
@@ -37,8 +37,11 @@ export class InstructorDetailsComponent {
   ];
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params)=>{
+      this.instructorId=params.get('id') || "0";
+    })
+
     this.getInstructorDetails();
-    
   }
 
   getInstructorDetails(){

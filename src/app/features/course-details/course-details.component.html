@@ -13,7 +13,7 @@
                 <div class="rounded-full overflow-hidden w-[50px] h-[50px]">
                     <img class="w-full h-full" [src]="course.instructor.imageUrl">
                 </div>
-                <p class="text-gray-500">Created by <a class="text-blue-500" [routerLink]="['/instructor',course.instructor.id]">{{course.instructorName}}</a></p>
+                <p class="text-gray-500">Created by <a class="text-blue-500" [routerLink]="['/instructor',course.instructor.id]">{{course.instructor.fullName}}</a></p>
             </div>
             <p-divider></p-divider>
             <h3 class="text-2xl mb-2 ">Course Description</h3>
@@ -22,7 +22,7 @@
             <p-divider class="mb-6"></p-divider>
             <h3 class="text-2xl mb-4">Instructor</h3>
 
-            <a class="text-blue-500 text-xl mb-3 hover:text-blue-400 " [routerLink]="['/instructor',course.instructor.id]" >{{course.instructorName}}</a>
+            <a class="text-blue-500 text-xl mb-3 hover:text-blue-400 " [routerLink]="['/instructor',course.instructor.id]" >{{course.instructor.fullName}}</a>
             <p class="text-gray-700 text-md mb-3">{{course.instructor.instructorApplication.specialization}}</p>
             <div class="flex gap-2 mb-4">
                 <div class="rounded-full overflow-hidden w-[110px] h-[110px]">
@@ -30,7 +30,7 @@
                 </div>
                 
             </div>
-            <p class="text-gray-700 ">With extensive experience in the field, {{course.instructorName}} is dedicated to delivering high-quality education through practical insights and industry-relevant knowledge. Passionate about helping learners grow, they bring both expertise and enthusiasm to every course they teach</p>
+            <p class="text-gray-700 ">With extensive experience in the field, {{course.instructor.fullName}} is dedicated to delivering high-quality education through practical insights and industry-relevant knowledge. Passionate about helping learners grow, they bring both expertise and enthusiasm to every course they teach</p>
             <p-divider class="mb-6"></p-divider>
         </div>
         <!-- card -->

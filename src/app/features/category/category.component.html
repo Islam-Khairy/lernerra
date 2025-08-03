@@ -5,22 +5,26 @@
              <p-menu #menu [model]="sortOptions" [popup]="true" />
             <p-button severity="info" (click)="menu.toggle($event)" label="Relevance" icon="pi pi-angle-down"/>
         </div>
-        <section class="grid grid-cols-1 lg:grid-cols-3 mb-10">
-            <div class="col-span-3 gap-4">
-                <div class="grid grid-cols-2 lg:grid-cols-3">
+        @if (this.courses) {
+            <section>
+                <div class="flex flex-wrap justify-center">
                     @for (course of courses; track $index) {
-                        <app-course-card [course]="course" [routerLink]="['/course',course.id]" ></app-course-card>
+                        <app-course-card [course]="course" class="w-1/3" [routerLink]="['/course',course.id]"></app-course-card>
                     }
                 </div>
-            </div>
+
         </section>
+        }@else {
+            <p class="text-center text-3xl">no courses found</p>
+        }
+        
 
     </div>
     <section class="py-10 px-14 mb-10">
         <h3 class="text-lg font-semibold mb-4">Featured Courses</h3>
-        <div class="flex gap-10 flex-wrap justify-center">
+        <div class="flex flex-wrap justify-center">
             @for (item of topCourses.slice(0,4); track $index) {
-                <app-course-card [course]="item"></app-course-card>
+                <app-course-card [course]="item" class="w-1/3" [routerLink]="['/course',item.id]"></app-course-card>
             }
 
         </div>
