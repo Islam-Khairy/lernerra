@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { AccountService } from '../../app/core/services/account.service';
+import { registerDto } from '../../app/Shared/Models/User';
 @Component({
   selector: 'app-sign-up',
   imports: [DividerModule,ReactiveFormsModule],
@@ -34,6 +35,13 @@ export class SignUpComponent {
   } 
 
   onSubmit(){
-    this.accountService.register(this.signUpForm.value).subscribe()
+    const data = this.signUpForm.value
+    const registerDto:registerDto={
+      fullName:data.firstName+' '+data.lastName,
+      email:data.email!,
+      password:data.password!,
+      confirmPassword:data.confirmPassword!
+    }
+    this.accountService.register(registerDto).subscribe()
   }
 }

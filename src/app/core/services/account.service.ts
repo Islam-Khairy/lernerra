@@ -51,7 +51,8 @@ export class AccountService {
   }
 
   register(data:any){
-      return this.http.post(this.url+'/user/register',{data})
+    console.log(data)
+      return this.http.post(this.url+'/user/register',data)
   }
 
   forgetPassword(value:any){
