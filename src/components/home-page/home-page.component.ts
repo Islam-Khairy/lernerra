@@ -3,10 +3,11 @@ import { CourseCardComponent } from '../student/student-courses/course-card/cour
 import { MatCardModule } from '@angular/material/card';
 import { WhatTheySayCarousalComponent } from './what-they-say-carousal/what-they-say-carousal.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CourseCardComponent, MatCardModule, WhatTheySayCarousalComponent],
+  imports: [CourseCardComponent, MatCardModule, WhatTheySayCarousalComponent,RouterLink],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })

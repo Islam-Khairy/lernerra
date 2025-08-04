@@ -1,0 +1,7 @@
+<div class="flex gap-2  flex-wrap">
+
+     @for (item of applications(); track $index) {
+         <app-application-card (review)="sendReview($event)"  [application]="item"></app-application-card>
+     }
+    <p-toast></p-toast>
+</div>

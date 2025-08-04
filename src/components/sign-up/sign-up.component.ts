@@ -33,5 +33,7 @@ export class SignUpComponent {
   return password === confirmPassword ? null : { passwordMismatch: true };
   } 
 
- 
+  onSubmit(){
+    this.accountService.register(this.signUpForm.value).subscribe()
+  }
 }

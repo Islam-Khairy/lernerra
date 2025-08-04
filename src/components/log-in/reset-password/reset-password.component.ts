@@ -17,6 +17,7 @@ export class ResetPasswordComponent {
   router=inject(Router)
   email=signal('')
   token=signal('')
+  isSubmited=signal<boolean>(false)
 
   resetPassword=this.fb.group({
     newPassword:['',Validators.required],
@@ -34,7 +35,7 @@ export class ResetPasswordComponent {
   onSubmit(){
     this.accountService.resetPassword({password:this.resetPassword.value.newPassword,confirmPassword:this.resetPassword.value.confirmPassword,token:this.token(),email:this.email()})
     .subscribe({
-      next:()=>this.router.navigateByUrl('/login')
+      next:()=>this.isSubmited.set(true)
     })
   }
 }

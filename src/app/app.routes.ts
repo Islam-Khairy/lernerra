@@ -12,6 +12,10 @@ import { ResetPasswordComponent } from '../components/log-in/reset-password/rese
 import { CourseDetailsComponent } from './features/course-details/course-details.component';
 import { InstructorDetailsComponent } from './features/instructor-details/instructor-details.component';
 import { CategoryComponent } from './features/category/category.component';
+import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
+import { SuccessComponent } from './Shared/success/success.component';
+import { ApplicationFormComponent } from './features/application-form/application-form.component';
+import { InstructorApplicationsComponent } from './features/admin-dashboard/instructor-applications/instructor-applications.component';
 
 export const routes: Routes = [
   {
@@ -64,5 +68,21 @@ export const routes: Routes = [
   {
     path:'category',
     component:CategoryComponent
-  }
+  },
+  {
+    path:'application-form',
+    component:ApplicationFormComponent
+  },
+  {
+    path:'admin-dashboard',
+    component:AdminDashboardComponent,
+    children:[
+      {path:'instructor-applications' , component:InstructorApplicationsComponent }
+    ]
+  },
+  {
+    path:'success',
+    component:SuccessComponent
+  },
+
 ]
