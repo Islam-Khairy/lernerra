@@ -4,10 +4,11 @@ import { StudentSectionHeaderComponent } from '../student-profile-sections/stude
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ICourse } from '../../../app/interfaces/course/icourse';
 import { AccountService } from '../../../app/core/services/account.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-student-courses',
-  imports: [CourseCardComponent, StudentSectionHeaderComponent],
+  imports: [CourseCardComponent, StudentSectionHeaderComponent,RouterLink],
   templateUrl: './student-courses.component.html',
   styleUrl: './student-courses.component.css',
 })
@@ -16,7 +17,7 @@ export class StudentCoursesComponent {
   StudentCourses!:ICourse[]
 
 ngOnInit(): void {
- this.getStudentCourses()
+ this.getStudentCourses();
   
 }
   constructor(private courseService:CourseService,private accountService:AccountService) {

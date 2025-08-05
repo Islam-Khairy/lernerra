@@ -7,7 +7,7 @@ import { CardModule } from 'primeng/card';
 import { Divider } from "primeng/divider";
 import { CourseService } from '../../services/course/course-service.service';
 import { ICourse } from '../../interfaces/course/icourse';
-import { RouterLink } from '@angular/router';
+import { RouterLink, ActivatedRoute } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
 @Component({
   selector: 'app-course-details',
@@ -21,7 +21,7 @@ export class CourseDetailsComponent {
    courseId:number =2;
    course!:ICourse
    fullduration:number=0
-  constructor(private courseService:CourseService){
+  constructor(private courseService:CourseService,private activatedRoute :ActivatedRoute){
     effect(()=>{
       this.items.set( [
       { label: 'Home', routerLink: '/home' },
@@ -31,6 +31,9 @@ export class CourseDetailsComponent {
     })
   }
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
+       this.courseId = parseInt(params.get('id')|| "0");
+     });
     this.getCourseDetails();
   }
   getCourseDetails(){

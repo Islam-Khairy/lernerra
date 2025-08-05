@@ -4,7 +4,6 @@ export interface ICourse {
   description: string
   rate: number
   price: number
-  instructorName: string
   categoryName: string
   status: string
   imageUrl: string

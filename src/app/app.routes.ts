@@ -14,6 +14,9 @@ import { InstructorDetailsComponent } from './features/instructor-details/instru
 import { CategoryComponent } from './features/category/category.component';
 import { SidebarComponent } from '../components/instructor/sidebar/sidebar.component';
 import { AddCourseComponent } from '../components/instructor/sidebar/add-course/add-course.component';
+import { AdminsComponent } from './features/admins/admins.component';
+import { AddAdminComponent } from './features/admins/add-admin/add-admin.component';
+import { AdminCoursesComponent } from './features/admin-courses/admin-courses.component';
 
 export const routes: Routes = [
   {
@@ -56,15 +59,19 @@ export const routes: Routes = [
     component:DashboardComponent
   },
   {
-    path:'course',
+    path:'course/:id',
     component:CourseDetailsComponent
   },
-  // {
-  //   path:'instructor',
-  //   component:InstructorDetailsComponent
-  // },
   {
-    path:'category',
+    path:'instructor',
+    component:InstructorDetailsComponent
+  },
+  {
+    path:'instructor/:id',
+    component:InstructorDetailsComponent
+  },
+  {
+    path:'category/:id',
     component:CategoryComponent
   },
   {
@@ -74,5 +81,17 @@ export const routes: Routes = [
   {
     path:'add-course',
     component:AddCourseComponent
+  },
+  {
+    path:'Admins',
+    component:AdminsComponent
+  },
+  {
+    path:'addAdmin',
+    component:AddAdminComponent
+  },
+  {
+    path:'adminCourses',
+    component:AdminCoursesComponent
   }
 ]

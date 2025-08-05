@@ -9,6 +9,8 @@
     <span class="font-semibold text-xl mt-4">{{ course.name }}</span>
     <!-- <span class="text-lg">Category: {{ course.category }}</span> -->
     <span class="text-sm">By: {{ course.instructor }}</span>
+    <span class="text-lg">Category: {{ course.categoryName }}</span>
+    <span class="text-sm">By: {{ course.instructor.fullName }}</span>
     <div class="flex items-center gap-2">
       <span>
         <ng-container *ngFor="let star of getStars(+course.rate)">

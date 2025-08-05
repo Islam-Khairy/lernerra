@@ -3,6 +3,7 @@ import { Course } from '../Models/Course';
 import { Button } from "primeng/button";
 import { Rating } from "primeng/rating";
 import { FormsModule } from '@angular/forms';
+import { ICourse } from '../../interfaces/course/icourse';
 
 @Component({
   selector: 'app-course-card',
@@ -12,5 +13,5 @@ import { FormsModule } from '@angular/forms';
 })
 export class CourseCardComponent {
   rating=5
- course=input<Course>()
+ course=input<ICourse>()
 }
