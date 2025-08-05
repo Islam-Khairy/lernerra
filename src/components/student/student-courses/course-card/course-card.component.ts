@@ -11,7 +11,7 @@ import { ICourse } from '../../../../app/interfaces/course/icourse';
   styleUrl: './course-card.component.css',
 })
 export class CourseCardComponent {
-  @Input() course!: ICourse;
+  @Input() course!: any;
 
   getStars(rating: number): string[] {
     const fullStars = Math.floor(rating);
