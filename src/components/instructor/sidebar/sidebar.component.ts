@@ -84,7 +84,7 @@ export class SidebarComponent {
     },
   ];
 
-  selectedSection = 1;
+  selectedSection = 0;
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
 

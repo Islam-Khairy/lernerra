@@ -3,8 +3,6 @@ import { MenuItem } from 'primeng/api';
 import { Button } from "primeng/button";
 import {  Menu } from 'primeng/menu';
 import { CourseCardComponent } from "../../Shared/course-card/course-card.component";
-import { Course } from '../../Shared/Models/Course';
-import { instructor } from '../../Shared/Models/instructor';
 import { MentorCardComponent } from '../../Shared/mentor-card/mentor-card.component';
 import { ICourse } from '../../interfaces/course/icourse';
 import { CourseService } from '../../services/course/course-service.service';
