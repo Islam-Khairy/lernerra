@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0 pt-24 mx-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-0 pt-24 pb-4 mx-8 ">
   <div class="col-span-1 flex flex-col">
     <img src="/images/student/student.png" class="w-32 h-32 rounded-full" />
     <h1 class="my-4 font-medium text-xl">John Doe</h1>
@@ -11,7 +11,7 @@
     <div class="mt-12 flex flex-col items-center text-center gap-4">
       @for (item of profileSections; let i = $index; track $index) {
       <button
-        class="w-full text-left py-2 ps-2 pe-20 cursor-pointer transition-all duration-200"
+        class="w-full text-left py-2 ps-2 pe-20 cursor-pointer transition-all duration-200 text-nowrap"
         [ngClass]="{
           'bg-black text-white': selectedSection === i,
           'bg-white text-black': selectedSection !== i
@@ -23,7 +23,7 @@
       }
     </div>
   </div>
-  <div class="col-span-1 md:col-span-3 me-12">
+  <div class="col-span-1 md:!col-span-3 lg:me-12 ">
     @switch (selectedSection) { @case (0) {
     <app-update-profile></app-update-profile> } @case (1) {
     <app-student-courses></app-student-courses> } @case (2) {

@@ -7,19 +7,8 @@
       <div class="flex gap-2">
         <div class="flex items-center gap-1">
           <span class="text-[#FEC84B]">{{ course.rate }}</span>
-          <span>
-            <ng-container *ngFor="let star of getStars(+course.rate)">
-              <ng-container [ngSwitch]="star">
-                <span *ngSwitchCase="'full'" class="text-yellow-500 text-xl"
-                  >★</span
-                >
-                <span *ngSwitchCase="'half'" class="text-yellow-500 text-xl"
-                  >☆</span
-                >
-                <span *ngSwitchCase="'empty'" class="text-gray-300">★</span>
-              </ng-container>
-            </ng-container>
-          </span>
+                          <p-rating  [(ngModel)]="course.rate" [readonly]="true" />
+
           <span class="text-[#64748B]"
             >({{ course.numberOfRatings }} Ratings)</span
           >

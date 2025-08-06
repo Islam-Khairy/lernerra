@@ -51,67 +51,67 @@ export const routes: Routes = [
     path: 'order-completed',
     component: OrderCompletedComponent,
   },
-{
-    path:'forget-password',
-    component:ForgetPasswordComponent
+  {
+    path: 'forget-password',
+    component: ForgetPasswordComponent,
   },
-  { path:'reset-password',
-    component:ResetPasswordComponent
+  { path: 'reset-password', component: ResetPasswordComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   {
-    path:'dashboard',
-    component:DashboardComponent
+    path: 'course/:id',
+    component: CourseDetailsComponent,
   },
   {
-    path:'course/:id',
-    component:CourseDetailsComponent
+    path: 'instructor',
+    component: InstructorDetailsComponent,
   },
   {
-    path:'instructor',
-    component:InstructorDetailsComponent
+    path: 'instructor/:id',
+    component: InstructorDetailsComponent,
   },
   {
-    path:'instructor/:id',
-    component:InstructorDetailsComponent
+    path: 'category/:id',
+    component: CategoryComponent,
   },
   {
-    path:'category/:id',
-    component:CategoryComponent
+    path: 'instructor-dashboard',
+    component: SidebarComponent,
   },
   {
-    path:'instructor',
-    component:SidebarComponent
+    path: 'add-course',
+    component: AddCourseComponent,
   },
   {
-    path:'add-course',
-    component:AddCourseComponent
+    path: 'Admins',
+    component: AdminsComponent,
   },
   {
-    path:'Admins',
-    component:AdminsComponent
+    path: 'addAdmin',
+    component: AddAdminComponent,
   },
   {
-    path:'addAdmin',
-    component:AddAdminComponent
+    path: 'adminCourses',
+    component: AdminCoursesComponent,
   },
   {
-    path:'adminCourses',
-    component:AdminCoursesComponent
+    path: 'application-form',
+    component: ApplicationFormComponent,
   },
   {
-    path:'application-form',
-    component:ApplicationFormComponent
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent,
+    children: [
+      {
+        path: 'instructor-applications',
+        component: InstructorApplicationsComponent,
+      },
+    ],
   },
   {
-    path:'admin-dashboard',
-    component:AdminDashboardComponent,
-    children:[
-      {path:'instructor-applications' , component:InstructorApplicationsComponent }
-    ]
+    path: 'success',
+    component: SuccessComponent,
   },
-  {
-    path:'success',
-    component:SuccessComponent
-  },
-
-]
+];

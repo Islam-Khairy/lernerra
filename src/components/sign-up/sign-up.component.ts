@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { AccountService } from '../../app/core/services/account.service';
 import { registerDto } from '../../app/Shared/Models/User';

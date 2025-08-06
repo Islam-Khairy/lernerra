@@ -4,11 +4,18 @@ import { CourseCardComponent } from '../../student/student-courses/course-card/c
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { RouterLink } from '@angular/router';
+import { InstructorProfileComponent } from './instructor-profile/instructor-profile.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CourseCardComponent, ConfirmDialogModule, ToastModule, RouterLink],
+  imports: [
+    CourseCardComponent,
+    ConfirmDialogModule,
+    ToastModule,
+    RouterLink,
+    InstructorProfileComponent,
+  ],
   providers: [ConfirmationService, MessageService, RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
@@ -18,9 +25,11 @@ export class SidebarComponent {
     {
       id: 1,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
-      category: 'Design',
-      imageUrl: '/images/student/courseImage.png',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
+      categoryName: 'Design',
+      image: '/images/student/courseImage.png',
       rate: '4.5',
       numberOfRatings: 1200,
       duration: '22',
@@ -31,9 +40,11 @@ export class SidebarComponent {
     {
       id: 2,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
-      category: 'Design',
-      imageUrl: '/images/student/courseImage.png',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
+      categoryName: 'Design',
+      image: '/images/student/courseImage.png',
       rate: '5',
       numberOfRatings: 1200,
       duration: '22',
@@ -44,9 +55,11 @@ export class SidebarComponent {
     {
       id: 3,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
-      category: 'Design',
-      imageUrl: '/images/student/courseImage.png',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
+      categoryName: 'Design',
+      image: '/images/student/courseImage.png',
       rate: '4.5',
       numberOfRatings: 1200,
       duration: '22',
@@ -57,35 +70,11 @@ export class SidebarComponent {
     {
       id: 4,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
-      category: 'Design',
-      imageUrl: '/images/student/courseImage.png',
-      rate: '5',
-      numberOfRatings: 1200,
-      duration: '22',
-      Lectures: '155',
-      level: 'Beginner',
-      price: '149.9',
-    },
-    {
-      id: 5,
-      name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
-      category: 'Design',
-      imageUrl: '/images/student/courseImage.png',
-      rate: '5',
-      numberOfRatings: 1200,
-      duration: '22',
-      Lectures: '155',
-      level: 'Beginner',
-      price: '149.9',
-    },
-    {
-      id: 6,
-      name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
-      category: 'Design',
-      imageUrl: '/images/student/courseImage.png',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
+      categoryName: 'Design',
+      image: '/images/student/courseImage.png',
       rate: '5',
       numberOfRatings: 1200,
       duration: '22',
@@ -95,7 +84,7 @@ export class SidebarComponent {
     },
   ];
 
-  selectedSection = 0;
+  selectedSection = 1;
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
 
