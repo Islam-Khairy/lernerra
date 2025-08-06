@@ -1,5 +1,5 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1 lg:grid-cols-5">
-  <div class="col-span-3 boreder flex flex-col justify-center pt-6 px-8">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1 lg:!grid-cols-5">
+  <div class="col-span-3 boreder flex flex-col justify-center px-8">
     <h1 class="text-3xl font-bold text-[#0F172A] text-center">
       Sign in to your account
     </h1>
@@ -47,12 +47,12 @@
         </button>
         <a class="no-underline text-green-600 hover:text-green-500" routerLink="/forget-password">Forget password ?</a>
 
-        <div class="flex items-center">
+        <!-- <div class="flex items-center">
           <div class="flex-grow border-t border-[#94A3B8]"></div>
           <span class="px-3 text-[#94A3B8]">Sign in with</span>
           <div class="flex-grow border-t border-[#94A3B8]"></div>
-        </div>
-
+        </div> -->
+<!-- 
         <div class="w-full flex items-center justify-center gap-4">
           <button
             class="px-8 py-2 border border-gray-300 rounded-lg flex justify-center items-center gap-2"
@@ -66,11 +66,11 @@
             <img src="/images/google.svg" alt="" />
             <span class="text-sm text-[#EA4335]">Google</span>
           </button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
-  <div class="col-span-2 mt-6 lg:mt-0 w-full">
-    <img src="/images/log-in.svg" alt="" class="w-full object-contain" />
+  <div class="col-span-2 mt-6 lg:mt-0 w-full h-[calc(100vh-6rem)] overflow-hidden">
+    <img src="/images/log-in.svg" alt="" class="w-full h-full object-cover" />
   </div>
 </form>

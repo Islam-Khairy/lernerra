@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { User } from '../../Shared/Models/User';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
@@ -10,7 +10,33 @@ export class AccountService {
   user=signal<User|null>(null)
   private http=inject(HttpClient)
   private url='http://localhost:5138/api'
+
+
+  constructor(){
+    effect(()=>{
+      this.loadAuthenticatedUser()
+      const user=this.user()
+      if(user){
+        localStorage.setItem('currentUser',JSON.stringify(user))
+      }else{
+        localStorage.removeItem('currentUser')
+      }
+    })
+  }
   
+  private loadAuthenticatedUser(){
+  const userData=localStorage.getItem('currentUser')
+    if(userData){
+      try{
+        this.user.set( JSON.parse(userData))
+
+      }catch(error){
+        console.error(error)
+        localStorage.removeItem('currentUser')
+        this.user.set(null)
+      }
+    }
+  }
   
   login(credentials:any){
    return this.http.post<User>(this.url+'/user/login',credentials).pipe
@@ -25,7 +51,8 @@ export class AccountService {
   }
 
   register(data:any){
-      return this.http.post<{confirmationCode:string}>(this.url+'/user/register',{data})
+    console.log(data)
+      return this.http.post(this.url+'/user/register',data)
   }
 
   forgetPassword(value:any){
@@ -40,7 +67,10 @@ export class AccountService {
 
   logout(){
     this.user.set(null)
+    localStorage.removeItem('currentUser')
     localStorage.removeItem('token')
   }
+
+
 
 }

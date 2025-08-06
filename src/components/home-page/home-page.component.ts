@@ -3,10 +3,16 @@ import { CourseCardComponent } from '../student/student-courses/course-card/cour
 import { MatCardModule } from '@angular/material/card';
 import { WhatTheySayCarousalComponent } from './what-they-say-carousal/what-they-say-carousal.component';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CourseCardComponent, MatCardModule, WhatTheySayCarousalComponent],
+  imports: [
+    CourseCardComponent,
+    MatCardModule,
+    WhatTheySayCarousalComponent,
+    RouterLink,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
@@ -38,10 +44,13 @@ export class HomePageComponent {
     {
       id: 1,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
+      categoryName: 'Design',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
       image: '/images/student/courseImage.png',
       rate: '4.5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
       duration: '22',
       Lectures: '155',
       level: 'Beginner',
@@ -50,10 +59,13 @@ export class HomePageComponent {
     {
       id: 2,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
+      categoryName: 'Design',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
       image: '/images/student/courseImage.png',
       rate: '5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
       duration: '22',
       Lectures: '155',
       level: 'Beginner',
@@ -62,10 +74,13 @@ export class HomePageComponent {
     {
       id: 3,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
+      categoryName: 'Design',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
       image: '/images/student/courseImage.png',
       rate: '4.5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
       duration: '22',
       Lectures: '155',
       level: 'Beginner',
@@ -74,10 +89,13 @@ export class HomePageComponent {
     {
       id: 4,
       name: 'Beginner’s Guide to Design',
-      instructor: 'Ronald Richards',
+      categoryName: 'Design',
+      instructor: {
+        fullName: 'Ronald Richards',
+      },
       image: '/images/student/courseImage.png',
       rate: '5',
-      NumberOfRatings: 1200,
+      numberOfRatings: 1200,
       duration: '22',
       Lectures: '155',
       level: 'Beginner',
@@ -123,41 +141,41 @@ export class HomePageComponent {
     },
   ];
 
-  reviews = [
-    {
-      name: 'Islam',
-      role: 'Designer',
-      image: '/images/home/reviewer.svg',
-      content: `
-      Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-    },
-    {
-      name: 'Ahmed',
-      role: 'Designer',
-      image: '/images/home/reviewer.svg',
-      content: `
-      Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-    },
-    {
-      name: 'Sherif',
-      role: 'Designer',
-      image: '/images/home/reviewer.svg',
-      content: `
-      Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-    },
-    {
-      name: 'Mariem',
-      role: 'Designer',
-      image: '/images/home/reviewer.svg',
-      content: `
-      Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-    },
-    {
-      name: 'Edris',
-      role: 'Designer',
-      image: '/images/home/reviewer.svg',
-      content: `
-      Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-    },
-  ];
+  // reviews = [
+  //   {
+  //     name: 'Islam',
+  //     role: 'Designer',
+  //     image: '/images/home/reviewer.svg',
+  //     content: `
+  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
+  //   },
+  //   {
+  //     name: 'Ahmed',
+  //     role: 'Designer',
+  //     image: '/images/home/reviewer.svg',
+  //     content: `
+  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
+  //   },
+  //   {
+  //     name: 'Sherif',
+  //     role: 'Designer',
+  //     image: '/images/home/reviewer.svg',
+  //     content: `
+  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
+  //   },
+  //   {
+  //     name: 'Mariem',
+  //     role: 'Designer',
+  //     image: '/images/home/reviewer.svg',
+  //     content: `
+  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
+  //   },
+  //   {
+  //     name: 'Edris',
+  //     role: 'Designer',
+  //     image: '/images/home/reviewer.svg',
+  //     content: `
+  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
+  //   },
+  // ];
 }

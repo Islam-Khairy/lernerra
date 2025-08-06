@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { Button } from "primeng/button";
-import { StudentReviewCardComponent } from "../../../components/student/student-reviews-section/student-review-card/student-review-card.component";
 import { Rating } from "primeng/rating";
 import { FormsModule } from '@angular/forms';
 import { InstructorService } from './../../services/instructor/instructor-service.service';
@@ -12,7 +11,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-instructor-details',
-  imports: [CarouselModule, Button, StudentReviewCardComponent, Rating,FormsModule,RouterLink, NgClass],
+  imports: [CarouselModule, Button, Rating,FormsModule,RouterLink],
 templateUrl: './instructor-details.component.html',
   styleUrl: './instructor-details.component.css'
 })

@@ -25,11 +25,11 @@ ngOnInit(): void {
   }
   getStudentCourses(){
     this.courseService.getStudentCourses(this.studentId).subscribe({
-      next:(res)=>{
+      next:(res: any)=>{
         console.log(res);
         this.StudentCourses=res
       },
-      error:(err)=>{
+      error:(err: any)=>{
         console.log(err);
       }
     })

@@ -1,18 +1,26 @@
 import { Routes } from '@angular/router';
-import { UpdateProfileComponent } from '../components/student/student-profile-sections/update-profile/update-profile.component';
 import { StudentProfileSectionsComponent } from '../components/student/student-profile-sections/student-profile-sections.component';
 import { HomePageComponent } from '../components/home-page/home-page.component';
 import { SignUpComponent } from '../components/sign-up/sign-up.component';
 import { LogInComponent } from '../components/log-in/log-in.component';
+import { ShoppingCartComponent } from '../components/shopping-cart/shopping-cart.component';
+import { CheckOutPageComponent } from '../components/check-out-page/check-out-page.component';
+import { OrderCompletedComponent } from '../components/order-completed/order-completed.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { ForgetPasswordComponent } from '../components/log-in/forget-password/forget-password.component';
 import { ResetPasswordComponent } from '../components/log-in/reset-password/reset-password.component';
 import { CourseDetailsComponent } from './features/course-details/course-details.component';
 import { InstructorDetailsComponent } from './features/instructor-details/instructor-details.component';
 import { CategoryComponent } from './features/category/category.component';
+import { SidebarComponent } from '../components/instructor/sidebar/sidebar.component';
+import { AddCourseComponent } from '../components/instructor/sidebar/add-course/add-course.component';
 import { AdminsComponent } from './features/admins/admins.component';
 import { AddAdminComponent } from './features/admins/add-admin/add-admin.component';
 import { AdminCoursesComponent } from './features/admin-courses/admin-courses.component';
+import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
+import { SuccessComponent } from './Shared/success/success.component';
+import { ApplicationFormComponent } from './features/application-form/application-form.component';
+import { InstructorApplicationsComponent } from './features/admin-dashboard/instructor-applications/instructor-applications.component';
 
 export const routes: Routes = [
   {
@@ -32,38 +40,78 @@ export const routes: Routes = [
     component: LogInComponent,
   },
   {
-    path:'forget-password',
-    component:ForgetPasswordComponent
-  },
-  { path:'reset-password',
-    component:ResetPasswordComponent
+    path: 'shopping-cart',
+    component: ShoppingCartComponent,
   },
   {
-    path:'dashboard',
-    component:DashboardComponent
+    path: 'check-out',
+    component: CheckOutPageComponent,
   },
   {
-    path:'course/:id',
-    component:CourseDetailsComponent
+    path: 'order-completed',
+    component: OrderCompletedComponent,
   },
   {
-    path:'instructor/:id',
-    component:InstructorDetailsComponent
+    path: 'forget-password',
+    component: ForgetPasswordComponent,
+  },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
   },
   {
-    path:'category/:id',
-    component:CategoryComponent
+    path: 'course/:id',
+    component: CourseDetailsComponent,
   },
   {
-    path:'Admins',
-    component:AdminsComponent
+    path: 'instructor',
+    component: InstructorDetailsComponent,
   },
   {
-    path:'addAdmin',
-    component:AddAdminComponent
+    path: 'instructor/:id',
+    component: InstructorDetailsComponent,
   },
   {
-    path:'adminCourses',
-    component:AdminCoursesComponent
-  }
-]
+    path: 'category/:id',
+    component: CategoryComponent,
+  },
+  {
+    path: 'instructor-dashboard',
+    component: SidebarComponent,
+  },
+  {
+    path: 'add-course',
+    component: AddCourseComponent,
+  },
+  {
+    path: 'Admins',
+    component: AdminsComponent,
+  },
+  {
+    path: 'addAdmin',
+    component: AddAdminComponent,
+  },
+  {
+    path: 'adminCourses',
+    component: AdminCoursesComponent,
+  },
+  {
+    path: 'application-form',
+    component: ApplicationFormComponent,
+  },
+  {
+    path: 'admin-dashboard',
+    component: AdminDashboardComponent,
+    children: [
+      {
+        path: 'instructor-applications',
+        component: InstructorApplicationsComponent,
+      },
+    ],
+  },
+  {
+    path: 'success',
+    component: SuccessComponent,
+  },
+];

@@ -1,16 +1,23 @@
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { AccountService } from '../../app/core/services/account.service';
+import { registerDto } from '../../app/Shared/Models/User';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import {  ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-sign-up',
-  imports: [DividerModule,ReactiveFormsModule],
+  imports: [DividerModule,ReactiveFormsModule,ToastModule],
+  providers:[MessageService],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
   fb=inject(FormBuilder)
   accountService=inject(AccountService)
+  messageService=inject(MessageService)
+  router=inject(Router)
   signUpForm=this.fb.group({
     firstName:['',Validators.required],
     lastName:['',Validators.required],
@@ -33,5 +40,23 @@ export class SignUpComponent {
   return password === confirmPassword ? null : { passwordMismatch: true };
   } 
 
- 
+  onSubmit(){
+    const data = this.signUpForm.value
+    const registerDto:registerDto={
+      fullName:data.firstName+' '+data.lastName,
+      email:data.email!,
+      password:data.password!,
+      confirmPassword:data.confirmPassword!
+    }
+    this.accountService.register(registerDto).subscribe({
+      next:()=>{
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Registered Successfully',
+          detail: 'please login'
+        });
+      this.router.navigateByUrl("/log-in")
+      }
+    })
+  }
 }
