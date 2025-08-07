@@ -8,14 +8,8 @@
     <div class="flex flex-col md:flex-row gap-3 md:gap-8">
       <input
         type="text"
-        placeholder="First Name"
-        formControlName="firstName"
-        class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
-      />
-      <input
-        type="text"
-        placeholder="Last Name"
-        formControlName="lastName"
+        placeholder="Full Name"
+        formControlName="fullName"
         class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
       />
     </div>
@@ -28,7 +22,7 @@
         type="text"
         placeholder="Email ID"
         formControlName="email"
-        class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+        class="w-full border border-gray-300 rounded-lg text-gray-500 p-4 placeholder:text-[#94A3B8]"
       />
     </div>
     <div class="flex flex-col gap-2 w-full">
@@ -41,50 +35,24 @@
       />
     </div>
   </div>
-
-  <div class="flex flex-col md:flex-row w-full gap-8">
-    <div class="flex flex-col gap-2 w-full">
-      <label class="text-lg text-[#0F172A] font-medium">Specialization</label>
-      <p-select
-        [options]="specializations"
-        formControlName="specialization"
-        optionLabel="name"
-        optionValue="value"
-        placeholder="Select a Specialization"
-        class="w-full p-1"
-      ></p-select>
-    </div>
-    <div class="flex flex-col gap-2 w-full">
-      <label class="text-lg text-[#0F172A] font-medium">CV</label>
-      <div class="relative">
-        <input
-          type="file"
-          id="cv"
-          accept="application/pdf"
-          (change)="onFileSelected($event)"
-          class="hidden"
-          #fileInput
+  <div class="flex flex-col gap-2 w-full">
+     <label class="text-lg text-[#0F172A] font-medium">Update Image</label>
+    <input
+           (change)="onImageUpload($event)"
+            type="file"
+            accept=".png .jpg"
+            placeholder="Upload Image"
+            class=" w-fit border  border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
         />
-        <div
-          (click)="fileInput.click()"
-          class="border border-gray-300 rounded-md p-4 w-full cursor-pointer hover:bg-gray-50 transition-colors"
-        >
-          <div class="flex items-center justify-between">
-            <span [class.text-gray-500]="!selectedFile">
-              {{ selectedFile ? selectedFile.name : "Choose PDF (CV)" }}
-            </span>
-            <i class="pi pi-upload text-gray-500"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
+  </div>
+    
   <button
     type="submit"
-    [disabled]="!isActuallyChanged || profileForm.invalid"
-    class="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold w-fit self-end disabled:opacity-50 cursor-pointer"
+    [disabled]="!profileForm.valid || !hasChanges()"
+    class="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold w-fit items-end  disabled:opacity-50 cursor-pointer"
   >
     Update
   </button>
 </form>
+<p-toast></p-toast>

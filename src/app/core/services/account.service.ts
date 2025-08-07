@@ -45,6 +45,7 @@ export class AccountService {
       if(user.token){
         this.user.set(user)
         localStorage.setItem('token',user.token)
+        console.log(user)
       }
     })
    )
@@ -71,6 +72,9 @@ export class AccountService {
     localStorage.removeItem('token')
   }
 
+  getUserById(){
+   return  this.http.get(this.url+'/user')
+  }
 
 
 }

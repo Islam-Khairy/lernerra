@@ -5,3 +5,4 @@ export interface instructor{
     rating:number,
     studentsNum:number
 }
+

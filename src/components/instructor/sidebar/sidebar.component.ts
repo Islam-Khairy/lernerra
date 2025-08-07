@@ -5,6 +5,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { RouterLink } from '@angular/router';
 import { InstructorProfileComponent } from './instructor-profile/instructor-profile.component';
+import { UserService } from '../../../app/services/admin/user-service.service';
+import { AccountService } from '../../../app/core/services/account.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,6 +23,8 @@ import { InstructorProfileComponent } from './instructor-profile/instructor-prof
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
+  accountService=inject(AccountService)
+  apiUrl="http://localhost:5138"
   courses = [
     {
       id: 1,
