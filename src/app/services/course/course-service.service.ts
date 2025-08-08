@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ICourse } from '../../interfaces/course/icourse';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,12 @@ export class CourseService {
   }
 
   deleteCourse(courseId:number):Observable<any>{
-    return this._http.delete(`http://localhost:5138/api/Course/${courseId}`);
+    return this._http.delete(`http://localhost:5138/api/Course/${courseId}`,{responseType:'text'});
+  }
+
+  createCourse(course:any):Observable<any>{
+    return this._http.post(`http://localhost:5138/api/Course/Upload`,course,{
+    responseType: 'text'
+    })
   }
 }

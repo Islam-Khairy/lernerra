@@ -1,0 +1,216 @@
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+<form [formGroup]="this.CourseForm" (ngSubmit)="this.updateCourse()">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 m-8">
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="title">Name</label>
+      <input type="text" id="title" formControlName="name" class="border border-gray-300 rounded-md p-3 w-full" />
+      @if ( CourseForm.get('name')?.errors &&CourseForm.get('name')?.touched ) {
+      <p *ngIf="CourseForm.get('name')?.getError('required')" class="text-red-700">Name is required</p>
+      <p *ngIf="CourseForm.get('name')?.getError('minlength')" class="text-red-700">Name must be more than 3 characters
+      </p>
+      }
+    </div>
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="category">Category</label>
+      <select name="category" formControlName="categoryId" id="category"
+        class="border border-gray-300 rounded-md p-3 w-full">
+        @for (item of categories; track $index) {
+        <option [value]="item.id">{{item.name}}</option>
+        }
+      </select>
+      @if ( CourseForm.get('categoryId')?.errors &&CourseForm.get('categoryId')?.touched ) {
+      <p *ngIf="CourseForm.get('categoryId')?.getError('required')" class="text-red-700">Category is required</p>
+      }
+    </div>
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="description">Description</label>
+      <input type="text" id="description" formControlName="description"
+        class="border border-gray-300 rounded-md p-3 w-full" />
+      @if ( CourseForm.get('description')?.errors &&CourseForm.get('description')?.touched ) {
+      <p *ngIf="CourseForm.get('description')?.getError('required')" class="text-red-700">Description is required</p>
+      <p *ngIf="CourseForm.get('description')?.getError('minlength')" class="text-red-700">Description must be more than
+        10 characters</p>
+      }
+    </div>
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="price">Price</label>
+      <input type="number" id="price" formControlName="price" class="border border-gray-300 rounded-md p-3 w-full" />
+      @if ( CourseForm.get('price')?.errors && CourseForm.get('price')?.touched ) {
+      <p *ngIf="CourseForm.get('price')?.getError('required')" class="text-red-700">Price is required</p>
+      <p *ngIf="CourseForm.get('price')?.getError('min')" class="text-red-700">Price must be greater than 0</p>
+      }
+    </div>
+    <div class="col-span-1 flex flex-col gap-2">
+      <label for="image">Image</label>
+      <div class="relative">
+        <input type="file" id="image" accept="image/*" (change)="onCourseImageSelect($event)" class="hidden"
+          #fileInput />
+        <div (click)="fileInput.click()"
+          class="border border-gray-300 rounded-md p-3 w-full cursor-pointer hover:bg-gray-50 transition-colors">
+          <div class="flex items-center justify-between">
+            <span [class.text-gray-500]="!selectedImage">
+              {{ selectedImage ? selectedImage.name : "Choose file" }}
+            </span>
+            <i class="pi pi-upload text-gray-500"></i>
+          </div>
+        </div>
+
+        @if (imagePreview) {
+        <div class="mt-3 relative">
+          <img [src]="imagePreview" alt="Course preview" class="w-200 h-fit object-cover rounded-md" />
+          <button type="button" (click)="removeImage()"
+            class="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full hover:bg-red-600 shadow-lg">
+            <i class="pi pi-times text-sm"></i>
+          </button>
+        </div>
+        }
+        @if ( CourseForm.get('imageUrl')?.errors ) {
+        <p *ngIf="CourseForm.get('imageUrl')?.getError('required')" class="text-red-700">Image is required</p>
+        }
+      </div>
+
+    </div>
+    <div class="flex justify-end ">
+      <input type="submit" value="Save"
+        class="bg-green-600 hover:bg-green-700 text-white cursor-pointer px-3 py-2 h-fit my-5">
+    </div>
+  </div>
+</form>
+
+<div class="w-full flex justify-end my-4 pe-8">
+  <button type="button" (click)="openAddLessonModal()"
+    class="px-4 py-2 bg-green-600 text-white hover:bg-green-700 flex items-center gap-2 cursor-pointer">
+    <i class="pi pi-plus"></i>
+    Add Lesson
+  </button>
+</div>
+
+@if(lessons && lessons.length > 0) {
+<div class="flex flex-col gap-2 mx-8 mb-8">
+  <label class="text-lg font-semibold">Course Lessons</label>
+
+  <div class="border border-gray-200 p-4 bg-gray-50">
+    <div class="space-y-3">
+      @for (lesson of lessons; track lesson.id) {
+      <div class="bg-white p-4 shadow-sm border flex border-gray-200 justify-between items-center">
+        <div class="flex-1">
+          <h4 class="font-medium">{{ lesson.title }}</h4>
+          <p class="text-sm text-gray-600">{{ lesson.description }}</p>
+          <div class="flex flex-col md:flex-row md:items-center gap-4 mt-2 text-xs text-gray-500">
+            <span>Duration: {{ lesson.duration }} min</span>
+            <span>{{ getVideoInfo(lesson.id) }}</span>
+            <span class="px-2 py-1 rounded w-fit" [class]="
+                lesson.isFree
+                  ? 'bg-green-100 text-green-800'
+                  : 'bg-blue-100 text-blue-800'
+              ">
+              {{ lesson.isFree ? "Free" : "Premium" }}
+            </span>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button type="button" (click)="editLesson(lesson)"
+            class="bg-blue-500 text-white w-10 h-10 rounded-full hover:bg-blue-600 shadow-lg cursor-pointer"
+            title="Edit Lesson">
+            <i class="pi pi-pencil text-sm"></i>
+          </button>
+          <button type="button" (click)="confirmDelete($event,lesson.id)"
+            class="bg-red-500 text-white w-10 h-10 rounded-full hover:bg-red-600 shadow-lg cursor-pointer"
+            title="Delete Lesson">
+            <i class="pi pi-trash text-sm"></i>
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+}
+
+<p-dialog [header]="editingLesson ? 'Edit Lesson' : 'Add New Lesson'" [(visible)]="showLessonModal" [modal]="true"
+  [style]="{ width: '600px', maxWidth: '90%' }" [closable]="true">
+  <form [formGroup]="lessonForm" (ngSubmit)="handleLesson()">
+    <div class="grid grid-cols-1 gap-4">
+      <div class="flex flex-col gap-2">
+        <label for="lessonTitle">Lesson Title *</label>
+        <input type="text" id="lessonTitle" formControlName="title"
+          class="border border-gray-300 rounded-md p-3 w-full" />
+        @if ( lessonForm.get('title')?.errors && lessonForm.get('title')?.touched ) {
+        <p *ngIf="lessonForm.get('title')?.getError('required')" class="text-red-700">Title is required</p>
+        <p *ngIf="lessonForm.get('title')?.getError('minlength')" class="text-red-700">Title must be at least 10
+          characters long</p>
+        }
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="lessonDescription">Description</label>
+        <textarea id="lessonDescription" formControlName="description" rows="3"
+          class="border border-gray-300 rounded-md p-3 w-full resize-none">
+        </textarea>
+        @if ( lessonForm.get('description')?.errors && lessonForm.get('description')?.touched ) {
+        <p *ngIf="lessonForm.get('description')?.getError('required')" class="text-red-700">Description is required</p>
+        <p *ngIf="lessonForm.get('description')?.getError('minlength')" class="text-red-700">Description must be at
+          least 40 characters long</p>
+        }
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="video">Video File</label>
+        <div class="relative">
+          <input type="file" id="video" accept="video/*" (change)="onVideoSelected($event)" class="hidden"
+            #videoFileInput />
+          <div (click)="videoFileInput.click()"
+            class="border border-gray-300 rounded-md p-3 w-full cursor-pointer hover:bg-gray-50 transition-colors">
+            <div class="flex items-center justify-between">
+              <span [class.text-gray-500]="!selectedVideo">
+                {{ selectedVideo ? selectedVideo.name : "Choose video file" }}
+              </span>
+              <i class="pi pi-upload text-gray-500"></i>
+            </div>
+          </div>
+
+          @if (videoPreview) {
+          <div class="mt-3 relative">
+            <video [src]="videoPreview" controls class="w-full h-48 object-cover rounded-md">
+              Your browser does not support the video tag.
+            </video>
+            <button type="button" (click)="removeVideo()"
+              class="absolute top-2 right-2 bg-red-500 text-white w-8 h-8 rounded-full hover:bg-red-600 shadow-lg">
+              <i class="pi pi-times text-sm"></i>
+            </button>
+          </div>
+          }
+          @if ( lessonForm.get('VedioURL')?.errors && lessonForm.get('VedioURL')?.touched ) {
+          <p *ngIf="lessonForm.get('VedioURL')?.getError('required')" class="text-red-700">VedioURL is required</p>
+          }
+          @if ( lessonForm.get('duration')?.errors && lessonForm.get('duration')?.touched ) {
+          <p *ngIf="lessonForm.get('duration')?.getError('min')" class="text-red-700">Duration is cannot be under 1 min
+          </p>
+          }
+        </div>
+      </div>
+      <div *ngIf="isuploading" class="fixed inset-0 bg-transparent bg-opacity-30 flex items-center justify-center z-50">
+        <div class="w-12 h-12 border-4 border-blue-500 border-solid border-t-transparent rounded-full animate-spin">
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex items-center gap-2 md:mt-8">
+          <p-checkbox formControlName="isFree" inputId="isFree" [binary]="true">
+          </p-checkbox>
+          <label for="isFree">Free Lesson</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-3 mt-6">
+      <button type="button" (click)="closeLessonModal()"
+        class="px-4 py-2 border border-gray-300 text-gray-700 hover:bg-gray-50">
+        Cancel
+      </button>
+      <button type="submit" class="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50">
+        {{ editingLesson ? "Update" : "Add" }} Lesson
+      </button>
+    </div>
+  </form>
+</p-dialog>

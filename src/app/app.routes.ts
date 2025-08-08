@@ -21,6 +21,7 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 import { SuccessComponent } from './Shared/success/success.component';
 import { ApplicationFormComponent } from './features/application-form/application-form.component';
 import { InstructorApplicationsComponent } from './features/admin-dashboard/instructor-applications/instructor-applications.component';
+import { UpdateCourseComponent } from '../components/instructor/sidebar/update-course/update-course.component';
 
 export const routes: Routes = [
   {
@@ -85,17 +86,14 @@ export const routes: Routes = [
     component: AddCourseComponent,
   },
   {
-    path: 'Admins',
-    component: AdminsComponent,
+    path: 'update-course/:id',
+    component: UpdateCourseComponent
   },
   {
     path: 'addAdmin',
     component: AddAdminComponent,
   },
-  {
-    path: 'adminCourses',
-    component: AdminCoursesComponent,
-  },
+
   {
     path: 'application-form',
     component: ApplicationFormComponent,
@@ -107,6 +105,14 @@ export const routes: Routes = [
       {
         path: 'instructor-applications',
         component: InstructorApplicationsComponent,
+      },
+      {
+        path: 'adminCourses',
+        component: AdminCoursesComponent,
+      },
+      {
+        path: 'Admins',
+        component: AdminsComponent,
       },
     ],
   },

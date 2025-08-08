@@ -1,10 +1,14 @@
 <mat-card>
-  <img
+  <div class="overflow-hidden rounded-lg w-full h-48">
+    <img
     mat-card-image
-    src="{{ course.image }}"
+    [src]="course.imageUrl"
     alt="course image"
-    class="rounded-lg"
+    class="w-full h-full object-cover"
   />
+  </div>
+
+  
   <div class="flex flex-col gap-2 ps-3 pb-2">
     <span class="font-semibold text-xl mt-4">{{ course.name }}</span>
     <!-- <span class="text-lg">Category: {{ course.category }}</span> -->
@@ -23,13 +27,9 @@
       <span>{{ course.level }}</span>
     </div>
     } -->
-    <div class="text-sm text-[#334155]">
-      <div class="flex items-center gap-2 text-[#020617]">
-        <span>{{ course.duration }} Total Hours</span>
-        <span>{{ course.Lectures }} Lectures</span>
-        <span>{{ course.level }}</span>
-      </div>
-    </div>
+    @if(this.role=="instructor"){
+      <p>Status: {{course.status}}</p>
+    }
     @if (course.price) {
     <span class="text-[#0F172A] font-semibold text-lg"
       >${{ course.price }}</span

@@ -5,14 +5,14 @@
     <div class="mb-4">
       <div class="flex justify-center">
         <img
-          src=" https://res.cloudinary.com/dnade0nhi/image/upload/v1753542856/cld-sample-5.jpg "
+          [src]="course.imageUrl"
           [alt]="course.name"
           class="h-full w-ful rounded-lg"
         />
       </div>
     </div>
     <div class="mb-2 font-bold">{{ course.name }}</div>
-    <div class="mb-2 text-gray-700">By Sherif Ali</div>
+    <div class="mb-2 text-gray-700">{{course.instructor.fullName}}</div>
     <div class="flex mb-2 gap-2 items-center">
       <i class="fa-solid fa-star text-amber-300"></i>
       <p class="text-gray-500 text-sm font-semibold">({{ course.rate }})</p>
