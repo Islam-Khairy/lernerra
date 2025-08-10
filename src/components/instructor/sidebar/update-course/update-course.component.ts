@@ -232,55 +232,6 @@ export class UpdateCourseComponent {
     this.videoPreview = null;
   }
 
-  onSubmitLesson() {
-    if (this.lessonForm.valid) {
-      const lessonData = { ...this.lessonForm.value };
-
-      if (this.editingLesson) {
-        const index = this.lessons.findIndex(
-          (l) => l.id === this.editingLesson.id
-        );
-        this.lessons[index] = { ...this.editingLesson, ...lessonData };
-
-        if (this.selectedVideo && this.videoPreview) {
-          this.lessonVideos.set(this.editingLesson.id, {
-            file: this.selectedVideo,
-            preview: this.videoPreview,
-            fileName: this.selectedVideo.name,
-          });
-        } else if (!lessonData.VedioURL) {
-          this.lessonVideos.delete(this.editingLesson.id);
-        }
-      } else {
-        const newLesson = {
-          id: Date.now(),
-          ...lessonData,
-        };
-        this.lessons.push(newLesson);
-
-        if (this.selectedVideo && this.videoPreview) {
-          this.lessonVideos.set(newLesson.id, {
-            file: this.selectedVideo,
-            preview: this.videoPreview,
-            fileName: this.selectedVideo.name,
-          });
-        }
-      }
-
-      this.closeLessonModal();
-    }
-  }
-
-  // deleteLesson(lessonId: number) {
-  //   this.lessons = this.lessons.filter((l) => l.id !== lessonId);
-
-  //   const lessonVideo = this.lessonVideos.get(lessonId);
-  //   if (lessonVideo && lessonVideo.preview) {
-  //     URL.revokeObjectURL(lessonVideo.preview);
-  //   }
-  //   this.lessonVideos.delete(lessonId);
-  // }
-
   confirmDelete(event: Event,lessonId:number) {
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete this lesson?',

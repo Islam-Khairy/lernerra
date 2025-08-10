@@ -5,9 +5,8 @@
 @if (this.StudentCourses) {
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 mt-6">
   @for (course of StudentCourses; track $index) {
-  <div class="border border-gray-300 rounded-xl p-4">
     <app-course-card [course]="course" [routerLink]="['/course',course.id]"  ></app-course-card>
-  </div>
+
   }
 </div>
 
