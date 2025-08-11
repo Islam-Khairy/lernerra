@@ -27,6 +27,7 @@ import { UserInfo } from '../../../app/Shared/Models/User';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
+  accountService=inject(AccountService)
   constructor(private instructorService:InstructorService,private courseService:CourseService){}
   courses!:ICourse[]
 
