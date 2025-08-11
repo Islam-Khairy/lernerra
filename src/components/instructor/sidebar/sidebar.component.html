@@ -50,19 +50,20 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       @for (item of courses; track $index) {
       <div class="relative group">
-        <app-course-card [course]="item"></app-course-card>
+        <app-course-card [course]="item" [role]="'instructor'"></app-course-card>
 
         <div
           class="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
         >
-          <button
-            class="bg-blue-500 text-white w-10 h-10 rounded-full hover:bg-blue-600 shadow-lg cursor-pointer"
+          <a
+            class="bg-blue-500 text-white w-10 h-10 rounded-full hover:bg-blue-600 shadow-lg cursor-pointer flex justify-center items-center"
             title="Edit Course"
+            [routerLink]="['/update-course', item.id]"
           >
             <i class="pi pi-pencil text-sm"></i>
-          </button>
+      </a>
           <button
-            (click)="confirmDelete($event)"
+            (click)="confirmDelete($event,item.id)"
             class="bg-red-500 text-white w-10 h-10 rounded-full hover:bg-red-600 shadow-lg cursor-pointer"
             title="Delete Course"
           >

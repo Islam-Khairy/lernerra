@@ -6,6 +6,7 @@ import {
   Validators,
   ReactiveFormsModule,
   FormsModule,
+  FormControl,
 } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -14,11 +15,19 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { RouterLink } from '@angular/router';
+import { InstructorService } from './../../../../app/services/instructor/instructor-service.service';
+import { NgClass, NgIf } from '@angular/common';
+import { CourseService } from '../../../../app/services/course/course-service.service';
+import { AccountService } from '../../../../app/core/services/account.service';
+import { CloudinaryUploadService } from '../../../../app/services/images/cloudinary-upload-service.service';
+import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from '../../../../app/services/category/category-service.service';
+
 
 @Component({
   selector: 'app-add-course',
   imports: [
-    ReactiveFormsModule,
+  ReactiveFormsModule,
     DialogModule,
     CheckboxModule,
     ButtonModule,
@@ -28,11 +37,14 @@ import { RouterLink } from '@angular/router';
     SelectModule,
     FormsModule,
     RouterLink,
+    NgClass,
+    NgIf
   ],
   templateUrl: './add-course.component.html',
   styleUrl: './add-course.component.css',
 })
 export class AddCourseComponent {
+  isSaved:boolean=false;
   selectedLevel: string = '';
   levels = [
     { name: 'Beginner', value: 'beginner' },
@@ -43,206 +55,121 @@ export class AddCourseComponent {
 
   selectedImage: File | null = null;
   imagePreview: string | null = null;
+  courseImageUrl!:string
 
-  lessonForm: FormGroup;
+  CourseForm:FormGroup=new FormGroup({
+    name:new FormControl('',[Validators.required,Validators.minLength(3)]),
+    description:new FormControl('',[Validators.required,Validators.minLength(10)]),
+    price:new FormControl('',[Validators.required,Validators.min(0)]),
+    currency:new FormControl('',),
+    imageUrl:new FormControl('',[Validators.required]),
+    instructorId:new FormControl('',),
+    categoryId:new FormControl('',[Validators.required])
+  })
+  categories:any
 
-  lessons: any[] = [];
-  showLessonModal = false;
-  editingLesson: any = null;
 
-  selectedVideo: File | null = null;
-  videoPreview: string | null = null;
 
-  private lessonVideos = new Map<
-    number,
-    {
-      file: File | null;
-      preview: string | null;
-      fileName: string | null;
-    }
-  >();
-
-  constructor(private fb: FormBuilder) {
-    this.lessonForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: [''],
-      videoURL: [''],
-      duration: [0, [Validators.required, Validators.min(1)]],
-      isFree: [false],
-    });
-  }
-
-  private resetVideoSelection() {
-    this.selectedVideo = null;
-    if (this.videoPreview) {
-      URL.revokeObjectURL(this.videoPreview);
-      this.videoPreview = null;
-    }
-  }
-
-  onVideoSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      if (this.videoPreview) {
-        URL.revokeObjectURL(this.videoPreview);
-      }
-
-      this.selectedVideo = file;
-      this.videoPreview = URL.createObjectURL(file);
-
-      this.uploadVideoFile(file);
-    }
-  }
-
-  uploadVideoFile(file: File) {
-    console.log('Video selected:', file.name);
-    this.lessonForm.patchValue({ videoURL: this.videoPreview });
-  }
-
-  removeVideo() {
-    if (this.videoPreview) {
-      URL.revokeObjectURL(this.videoPreview);
-    }
-    this.selectedVideo = null;
-    this.videoPreview = null;
-
-    this.lessonForm.patchValue({ videoURL: '' });
-
-    if (this.editingLesson) {
-      this.lessonVideos.delete(this.editingLesson.id);
-    }
-  }
-
-  openAddLessonModal() {
-    this.editingLesson = null;
-    this.lessonForm.reset({ isFree: false, duration: 0 });
-    this.resetVideoSelection();
-    this.showLessonModal = true;
-  }
-
-  editLesson(lesson: any) {
-    this.editingLesson = lesson;
-    this.lessonForm.patchValue(lesson);
-
-    this.resetVideoSelection();
-
-    const lessonVideo = this.lessonVideos.get(lesson.id);
-    if (lessonVideo && lessonVideo.file && lessonVideo.preview) {
-      this.selectedVideo = lessonVideo.file;
-      this.videoPreview = lessonVideo.preview;
-      this.lessonForm.patchValue({ videoURL: this.videoPreview });
-    } else if (lesson.videoURL) {
-      this.lessonForm.patchValue({ videoURL: lesson.videoURL });
-    }
-
-    this.showLessonModal = true;
-  }
-
-  closeLessonModal() {
-    this.showLessonModal = false;
-    this.lessonForm.reset();
-    this.editingLesson = null;
-
-    this.selectedVideo = null;
-    this.videoPreview = null;
-  }
-
-  onSubmitLesson() {
-    if (this.lessonForm.valid) {
-      const lessonData = { ...this.lessonForm.value };
-
-      if (this.editingLesson) {
-        const index = this.lessons.findIndex(
-          (l) => l.id === this.editingLesson.id
-        );
-        this.lessons[index] = { ...this.editingLesson, ...lessonData };
-
-        if (this.selectedVideo && this.videoPreview) {
-          this.lessonVideos.set(this.editingLesson.id, {
-            file: this.selectedVideo,
-            preview: this.videoPreview,
-            fileName: this.selectedVideo.name,
-          });
-        } else if (!lessonData.videoURL) {
-          this.lessonVideos.delete(this.editingLesson.id);
-        }
-      } else {
-        const newLesson = {
-          id: Date.now(),
-          ...lessonData,
-        };
-        this.lessons.push(newLesson);
-
-        if (this.selectedVideo && this.videoPreview) {
-          this.lessonVideos.set(newLesson.id, {
-            file: this.selectedVideo,
-            preview: this.videoPreview,
-            fileName: this.selectedVideo.name,
-          });
-        }
-      }
-
-      this.closeLessonModal();
-    }
-  }
-
-  deleteLesson(lessonId: number) {
-    this.lessons = this.lessons.filter((l) => l.id !== lessonId);
-
-    const lessonVideo = this.lessonVideos.get(lessonId);
-    if (lessonVideo && lessonVideo.preview) {
-      URL.revokeObjectURL(lessonVideo.preview);
-    }
-    this.lessonVideos.delete(lessonId);
-  }
-
-  getVideoInfo(lessonId: number): string {
-    const lessonVideo = this.lessonVideos.get(lessonId);
-    if (lessonVideo && lessonVideo.fileName) {
-      return lessonVideo.fileName;
-    }
-
-    const lesson = this.lessons.find((l) => l.id === lessonId);
-    if (lesson && lesson.videoURL) {
-      return 'Video attached';
-    }
-
-    return 'No video';
-  }
-
-  onImageSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-
-    if (input.files && input.files[0]) {
-      this.selectedImage = input.files[0];
-
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.imagePreview = e.target.result;
-      };
-      reader.readAsDataURL(this.selectedImage);
-    }
+  constructor(private courseService:CourseService,private accountService :AccountService,private cloudService:CloudinaryUploadService,private toastr:ToastrService,private categoryService:CategoryService ) {
+  
   }
 
   removeImage(): void {
-    this.selectedImage = null;
-    this.imagePreview = null;
-    const fileInput = document.getElementById('image') as HTMLInputElement;
-    if (fileInput) {
-      fileInput.value = '';
-    }
+  this.selectedImage = null;
+  this.imagePreview = null;
+
+  const fileInput = document.getElementById('image') as HTMLInputElement;
+  if (fileInput) {
+    fileInput.value = '';
   }
 
-  ngOnDestroy() {
-    this.lessonVideos.forEach((video) => {
-      if (video.preview) {
-        URL.revokeObjectURL(video.preview);
+  // Clear image URL from form & cloud URL if needed
+  this.courseImageUrl = '';
+  this.CourseForm.patchValue({
+    imageUrl: ''
+  });
+}
+
+  onCourseImageSelect(event: Event): void {
+  const input = event.target as HTMLInputElement;
+
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+    this.selectedImage = file;
+
+    // ⬇️ Show preview
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imagePreview = e.target.result;
+    };
+    reader.readAsDataURL(file);
+
+    // ⬇️ Upload to server/cloud
+    this.cloudService.uploadImage(file).subscribe({
+      next: (res: any) => {
+        console.log(res.secure_url);
+        this.toastr.success("Image is uploaded successfully");
+        this.courseImageUrl = res.secure_url;
+
+        this.CourseForm.patchValue({
+          imageUrl: res.secure_url
+        });
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastr.error("Image upload failed");
       }
     });
-    this.lessonVideos.clear();
-
-    if (this.videoPreview) {
-      URL.revokeObjectURL(this.videoPreview);
-    }
   }
+}
+
+  createCourse(){
+    if (this.CourseForm.invalid) {
+    this.CourseForm.markAllAsTouched();
+    return;
+    }
+    this.CourseForm.patchValue({
+      instructorId:"daa4a973-1fc1-49cc-bb25-3f2a5b9b888a"/*this.accountService.user()?.userId*/,
+      currency:"USD",
+    })
+    console.log(this.CourseForm.value);
+    
+    this.courseService.createCourse(this.CourseForm.value).subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.toastr.success("Course is uploaded successfully","Success",{
+          progressBar:true,
+          progressAnimation:'increasing',
+          closeButton:true
+        })
+        this.isSaved=true;
+            },
+      error:(err)=>{
+        console.log(err);
+        this.toastr.error(err.error.message,"Error",{
+          progressBar:true,
+          progressAnimation:'decreasing',
+          closeButton:true
+        })
+      }
+    })
+  }
+
+  getCategories(){
+    this.categoryService.getCategories().subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.categories=res
+      },
+      error:(err)=>{
+        console.log(err);
+        
+      }
+    })
+  }
+
+  ngOnInit(): void {
+    this.getCategories();
+  }
+
 }

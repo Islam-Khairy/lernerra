@@ -2,7 +2,7 @@ import { Component, Input, input, effect } from '@angular/core';
 import { ICourse } from '../../../interfaces/course/icourse';
 import { FormsModule } from '@angular/forms';
 import { InstructorDetailsComponent } from "../../instructor-details/instructor-details.component";
-  import { AdminCoursesComponent } from './../admin-courses.component';
+import { AdminCoursesComponent } from './../admin-courses.component';
 import { CourseService } from '../../../services/course/course-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgIf } from '@angular/common';
@@ -45,11 +45,11 @@ updateCourseStatus(courseId: number, status: string) {
     this.courseService.deleteCourse(courseId).subscribe({
       next:(res)=>{
         console.log(res);
-        this.toastr.success("Course deleted successfully")
+        this.admin.getCoursesByStatus();
       },
       error:(err)=>{
         console.log(err);
-        this.toastr.error(err.error.message)
+        this.admin.getCoursesByStatus();
         
       }
     })

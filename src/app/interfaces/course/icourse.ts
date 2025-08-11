@@ -11,6 +11,7 @@ export interface ICourse {
   lessons: Lesson[]
   enrollments: Enrollment[]
   duration?:number
+  categoryId?:number
 }
 
 export interface Lesson {
