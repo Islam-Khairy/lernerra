@@ -21,6 +21,7 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 import { SuccessComponent } from './Shared/success/success.component';
 import { ApplicationFormComponent } from './features/application-form/application-form.component';
 import { InstructorApplicationsComponent } from './features/admin-dashboard/instructor-applications/instructor-applications.component';
+import { UpdatedSuccssfullyComponent } from './Shared/updated-succssfully/updated-succssfully.component';
 
 export const routes: Routes = [
   {
@@ -114,4 +115,8 @@ export const routes: Routes = [
     path: 'success',
     component: SuccessComponent,
   },
+  {
+    path:'data-updated',
+    component:UpdatedSuccssfullyComponent
+  }
 ];

@@ -21,3 +21,10 @@ export interface updateUserDto{
     profilePictureUrl:string
     email:string
 }
+
+export interface UserInfo{
+    fullName:string,
+    phoneNumber:string,
+    profilePictureUrl:string
+    email:string
+}

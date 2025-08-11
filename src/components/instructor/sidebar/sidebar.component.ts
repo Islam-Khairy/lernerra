@@ -1,5 +1,5 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { CourseCardComponent } from '../../student/student-courses/course-card/course-card.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { InstructorProfileComponent } from './instructor-profile/instructor-profile.component';
 import { UserService } from '../../../app/services/admin/user-service.service';
 import { AccountService } from '../../../app/core/services/account.service';
+import { UserInfo } from '../../../app/Shared/Models/User';
 
 @Component({
   selector: 'app-sidebar',
@@ -23,7 +24,15 @@ import { AccountService } from '../../../app/core/services/account.service';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  accountService=inject(AccountService)
+  accountService=inject(AccountService)  
+  userInfo=signal<UserInfo|null>(null)
+  constructor(){
+    effect(()=>{
+      this.accountService.getUserInfo().subscribe({
+        next:value=>this.userInfo.set(value)
+      })
+    })
+  }
   apiUrl="http://localhost:5138"
   courses = [
     {

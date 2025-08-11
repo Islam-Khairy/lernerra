@@ -1,5 +1,5 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
-import { User } from '../../Shared/Models/User';
+import { User, UserInfo } from '../../Shared/Models/User';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 
@@ -74,6 +74,10 @@ export class AccountService {
 
   getUserById(){
    return  this.http.get(this.url+'/user')
+  }
+
+  getUserInfo(){
+    return  this.http.get<UserInfo>(this.url+'/user/user-info')
   }
 
 

@@ -1,13 +1,14 @@
-import { ChangeDetectorRef, Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder,  Validators, ReactiveFormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { CommonModule } from '@angular/common';
 import { CloudinaryUploadService } from '../../../../app/services/images/cloudinary-upload-service.service';
 import { InstructorService } from '../../../../app/services/instructor/instructor-service.service';
-import { updateUserDto } from '../../../../app/Shared/Models/User';
+import { updateUserDto, UserInfo } from '../../../../app/Shared/Models/User';
 import { AccountService } from '../../../../app/core/services/account.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from "primeng/toast";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instructor-profile',
@@ -23,66 +24,55 @@ export class InstructorProfileComponent {
   accountService=inject(AccountService)
   cloudinaryService=inject(CloudinaryUploadService)
   messageService=inject(MessageService)
-  originalData=signal<any>(null)
+  router=inject(Router)
   profileForm=this.fb.group({
       fullName: ['', Validators.required],
       email: [{value:'',disabled:true}],
       phone: ['', Validators.required],
       image:['']
     });
-
+    
+    imageUrl=signal<string>("https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg")
+    userInfo=signal<UserInfo|null>(null)
+    isSubmitted=signal<boolean>(false)
     constructor(){
       effect(()=>{
-       const user = this.accountService.user();
-        if(user){
-        const initialData={
-           fullName: user.fullName || '',
-           email: user.email || '',
-           phone: user.phoneNumber || '',
-           image: user.pictureUrl || ''
-        }
-        this.profileForm.patchValue(initialData);
-        this.originalData.set(initialData);
-        
+      this.accountService.getUserInfo().subscribe({
+      next: value => {
+        this.userInfo.set(value);
+        this.profileForm.patchValue({
+          fullName: value.fullName,
+          email: value.email,
+          phone: value.phoneNumber,
+          image: value.profilePictureUrl
+        });
       }
-    })
-    }
+      });
+    
+     }
+    )
+  }
 
 
-  imageUrl=signal<string>("")
   onSubmit() {
       const value =this.profileForm.value
       const updateDto:updateUserDto={
         fullName:value.fullName!, 
         phoneNumber:value.phone!,
-        email:this.originalData().email!,
+        email:this.accountService.user()?.email!,
         profilePictureUrl:this.imageUrl()? this.imageUrl()! : this.accountService.user()?.pictureUrl!
       }
       console.log(updateDto)
       this.instructorService.updateInstructor(updateDto).subscribe({
         
         next:()=>{
+          console.log(this.accountService.user())
+          this.router.navigateByUrl('/data-updated',)
           this.messageService.add({
             severity: 'success',
             summary: 'Data Updated',
             detail: 'Data Updated Successfully'
-          });
-          const CurrentUser=this.accountService.user()
-          if(!CurrentUser) return
-          const updatedUser= {...CurrentUser,fullName:updateDto.fullName,phoneNumber:updateDto.phoneNumber,pictureUrl:updateDto.profilePictureUrl}
-          console.log(updatedUser)
-          this.accountService.user.set(updatedUser);
-
-            const initialData = {
-              fullName: updatedUser.fullName || '',
-              email: updatedUser.email || '',
-              phone: updatedUser.phoneNumber || '',
-              image: updatedUser.pictureUrl || ''
-            };
-          
-            this.profileForm.patchValue(initialData);
-            this.profileForm.markAsPristine(); 
-            this.originalData.set(initialData);
+          });       
         }
       })
     
@@ -102,13 +92,6 @@ export class InstructorProfileComponent {
     });
   }
 
-  hasChanges(): boolean {
-   const current = this.profileForm.getRawValue();
-    const original = this.originalData();
-    if(this.imageUrl()){
-      return true
-    }
-  return JSON.stringify(current) !== JSON.stringify(original);
-}
+ 
   
 }
