@@ -1,5 +1,5 @@
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Component, inject } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { CourseCardComponent } from '../../student/student-courses/course-card/course-card.component';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
@@ -8,6 +8,9 @@ import { InstructorProfileComponent } from './instructor-profile/instructor-prof
 import { InstructorService } from '../../../app/services/instructor/instructor-service.service';
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ICourse } from '../../../app/interfaces/course/icourse';
+import { UserService } from '../../../app/services/admin/user-service.service';
+import { AccountService } from '../../../app/core/services/account.service';
+import { UserInfo } from '../../../app/Shared/Models/User';
 
 @Component({
   selector: 'app-sidebar',

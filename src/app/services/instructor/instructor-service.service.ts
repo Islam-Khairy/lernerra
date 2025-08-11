@@ -22,4 +22,8 @@ export class InstructorService {
     const headers = new HttpHeaders().set('Authorization', this.token);
     return this._http.put(`http://localhost:5138/api/Course/${courseId}`,course,{headers,responseType:"text"},)
   }
+
+  updateInstructor(data:any){
+    return this._http.put(`http://localhost:5138/api/User/update`,data)
+  }
 }

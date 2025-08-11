@@ -1,5 +1,5 @@
 import { effect, inject, Injectable, signal } from '@angular/core';
-import { User } from '../../Shared/Models/User';
+import { User, UserInfo } from '../../Shared/Models/User';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
 
@@ -45,6 +45,7 @@ export class AccountService {
       if(user.token){
         this.user.set(user)
         localStorage.setItem('token',user.token)
+        console.log(user)
       }
     })
    )
@@ -71,6 +72,13 @@ export class AccountService {
     localStorage.removeItem('token')
   }
 
+  getUserById(){
+   return  this.http.get(this.url+'/user')
+  }
+
+  getUserInfo(){
+    return  this.http.get<UserInfo>(this.url+'/user/user-info')
+  }
 
 
 }

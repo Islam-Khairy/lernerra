@@ -22,6 +22,10 @@ import { SuccessComponent } from './Shared/success/success.component';
 import { ApplicationFormComponent } from './features/application-form/application-form.component';
 import { InstructorApplicationsComponent } from './features/admin-dashboard/instructor-applications/instructor-applications.component';
 import { UpdateCourseComponent } from '../components/instructor/sidebar/update-course/update-course.component';
+import { AccessDeniedComponent } from './Shared/access-denied/access-denied.component';
+import { authGuard } from './core/guards/auth.guard';
+import { UserRole } from './Shared/Models/User';
+
 
 export const routes: Routes = [
   {
@@ -80,6 +84,7 @@ export const routes: Routes = [
   {
     path: 'instructor-dashboard',
     component: SidebarComponent,
+    canActivate:[authGuard([UserRole.Instructor])]
   },
   {
     path: 'add-course',
@@ -107,6 +112,7 @@ export const routes: Routes = [
         component: InstructorApplicationsComponent,
       },
       {
+
         path: 'adminCourses',
         component: AdminCoursesComponent,
       },
@@ -114,10 +120,16 @@ export const routes: Routes = [
         path: 'Admins',
         component: AdminsComponent,
       },
+
     ],
+    canActivate:[authGuard([UserRole.Admin])]
   },
   {
     path: 'success',
     component: SuccessComponent,
   },
+  {
+    path:'access-denied',
+    component:AccessDeniedComponent
+  }
 ];

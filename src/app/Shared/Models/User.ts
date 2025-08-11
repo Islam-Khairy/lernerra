@@ -2,6 +2,8 @@ export interface User{
     userId:string,
     fullName:string,
     email:string,
+    phoneNumber?:string
+    pictureUrl?:string
     token:string,
     roles:string[]
 }
@@ -11,4 +13,24 @@ export interface registerDto{
     email:string,
     password:string,
     confirmPassword:string
+}
+
+export interface updateUserDto{
+    fullName:string,
+    phoneNumber:string,
+    profilePictureUrl:string
+    email:string
+}
+
+export interface UserInfo{
+    fullName:string,
+    phoneNumber:string,
+    profilePictureUrl:string
+    email:string
+}
+
+export enum UserRole {
+    Admin='Admin',
+    Instructor= 'Instructor',
+    Student='Student'
 }
