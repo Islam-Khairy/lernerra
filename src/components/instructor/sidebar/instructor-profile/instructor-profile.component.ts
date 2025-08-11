@@ -37,17 +37,15 @@ export class InstructorProfileComponent {
     isSubmitted=signal<boolean>(false)
     constructor(){
       effect(()=>{
-      this.accountService.getUserInfo().subscribe({
-      next: value => {
-        this.userInfo.set(value);
-        this.profileForm.patchValue({
-          fullName: value.fullName,
-          email: value.email,
-          phone: value.phoneNumber,
-          image: value.profilePictureUrl
-        });
+      const user = this.accountService.user()
+      if(user){
+         this.profileForm.patchValue({
+         fullName: user.fullName,
+         email: user.email,
+         phone: user.phoneNumber,
+         image: user.pictureUrl
+         });
       }
-      });
     
      }
     )
@@ -67,13 +65,19 @@ export class InstructorProfileComponent {
         
         next:()=>{
           console.log(this.accountService.user())
-          this.router.navigateByUrl('/data-updated',)
           this.messageService.add({
             severity: 'success',
             summary: 'Data Updated',
             detail: 'Data Updated Successfully'
-          });       
+          });   
+          const user=this.accountService.user()
+          if(user){
+         const modifiedUser={...user,fullName:value.fullName!, phoneNumber:value.phone!, pictureUrl:this.imageUrl()}
+          this.accountService.user.set(modifiedUser)
+          localStorage.setItem('currentUser',JSON.stringify(modifiedUser))
+          }
         }
+
       })
     
   }

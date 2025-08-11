@@ -1,5 +1,4 @@
-@if(!isSubmitted()){
-  <form
+<form
     [formGroup]="profileForm"
     (ngSubmit)="onSubmit()"
     class="flex flex-col gap-8"
@@ -54,8 +53,5 @@
     >
       Update
     </button>
-  </form>
-  <p-toast></p-toast>
-}@else {
-  <h1>lenny</h1>
-}
+</form>
+<p-toast></p-toast>
