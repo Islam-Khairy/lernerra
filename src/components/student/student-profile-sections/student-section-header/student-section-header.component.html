@@ -6,16 +6,11 @@
 <div class="relative w-full max-w-xs"> 
   <input
     type="search"
-    placeholder="Search Teacher"
+    placeholder="Search"
+    [(ngModel)]="searchInput"
+    (input)="sendData()"
     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
   />
   <i class="pi pi-search absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-black/70"></i>
 </div>
-  <div class="flex items-center gap-2">
-    <span>Sort By</span>
-    <select name="" id="" class="border border-black rounded-lg p-2">
-      <option value="">Relevance</option>
-      <option value="">profission</option>
-    </select>
-  </div>
 </div>

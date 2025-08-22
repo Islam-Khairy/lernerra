@@ -18,7 +18,7 @@ export interface registerDto{
 export interface updateUserDto{
     fullName:string,
     phoneNumber:string,
-    profilePictureUrl:string
+    imageUrl:string
     email:string
 }
 

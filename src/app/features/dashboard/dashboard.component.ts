@@ -1,15 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { Button } from "primeng/button";
-import { TagModule, Tag } from 'primeng/tag';
+import { Component } from '@angular/core';
+import { Tag } from 'primeng/tag';
 import { Divider } from "primeng/divider";
 import { ChartModule } from 'primeng/chart';
-import { DrawerModule, Drawer } from 'primeng/drawer';
-import { NgClass } from '@angular/common';
-import { Avatar, AvatarModule } from 'primeng/avatar';
+
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Button, Tag, Divider, ChartModule, Drawer,NgClass,Avatar],
+  imports: [Tag, Divider, ChartModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

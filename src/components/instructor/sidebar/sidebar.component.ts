@@ -9,7 +9,7 @@ import { InstructorService } from '../../../app/services/instructor/instructor-s
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ICourse } from '../../../app/interfaces/course/icourse';
 import { UserService } from '../../../app/services/admin/user-service.service';
-import { AccountService } from '../../../app/core/services/account.service';
+import { AccountService } from '../../../app/Core/Services/account.service';
 import { UserInfo } from '../../../app/Shared/Models/User';
 
 @Component({
@@ -27,23 +27,26 @@ import { UserInfo } from '../../../app/Shared/Models/User';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  accountService=inject(AccountService)
-  constructor(private instructorService:InstructorService,private courseService:CourseService){}
-  courses!:ICourse[]
+  accountService = inject(AccountService);
+  constructor(
+    private instructorService: InstructorService,
+    private courseService: CourseService
+  ) {}
+  courses!: ICourse[];
 
   selectedSection = 0;
   private confirmationService = inject(ConfirmationService);
   private messageService = inject(MessageService);
 
-ngOnInit(): void {
-  this.getInstructorCourses();
-}
+  ngOnInit(): void {
+    this.getInstructorCourses();
+  }
 
   selectSection(index: number) {
     this.selectedSection = index;
   }
 
-  confirmDelete(event: Event,courseId:number) {
+  confirmDelete(event: Event, courseId: number) {
     this.confirmationService.confirm({
       message: 'Are you sure you want to delete this course?',
       header: 'Delete Course',
@@ -63,29 +66,27 @@ ngOnInit(): void {
     });
   }
 
-  getInstructorCourses(){
+  getInstructorCourses() {
     this.instructorService.getInstructorCourses().subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
-        this.courses=res;
+        this.courses = res;
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
-        
-      }
-    })
+      },
+    });
   }
 
-  deleteCourse(courseId:number){
+  deleteCourse(courseId: number) {
     this.courseService.deleteCourse(courseId).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
         this.getInstructorCourses();
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
-        
-      }
-    })
+      },
+    });
   }
 }

@@ -9,7 +9,7 @@
       class="flex items-center gap-2 mt-4 cursor-pointer"
       (click)="selectSection(0)"
     >
-      <img src="/images/courses.svg" alt="" />
+      <i class="pi pi-book !text-lg"></i>
       <span>Courses</span>
     </button>
     <button
@@ -51,7 +51,9 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       @for (item of courses; track $index) {
       <div class="relative group">
-        <app-course-card [course]="item" [role]="'instructor'"></app-course-card>
+        <app-course-card [course]="item"
+         [role]="'instructor'
+         "></app-course-card>
 
         <div
           class="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"

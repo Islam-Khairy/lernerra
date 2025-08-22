@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -21,11 +21,14 @@
     "@angular/platform-browser-dynamic": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@cloudinary/url-gen": "^1.21.0",
+    "@fortawesome/fontawesome-free": "^7.0.0",
     "@primeuix/themes": "^1.2.1",
+    "@stripe/stripe-js": "^7.8.0",
     "@tailwindcss/postcss": "^4.1.11",
     "chart.js": "^4.5.0",
     "flowbite": "^3.1.2",
     "jwt-decode": "^4.0.0",
+    "ngx-stripe": "^20.7.0",
     "ngx-toastr": "^19.0.0",
     "postcss": "^8.5.6",
     "primeicons": "^7.0.0",

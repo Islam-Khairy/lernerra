@@ -12,6 +12,8 @@ import { ResetPasswordComponent } from '../components/log-in/reset-password/rese
 import { CourseDetailsComponent } from './features/course-details/course-details.component';
 import { InstructorDetailsComponent } from './features/instructor-details/instructor-details.component';
 import { CategoryComponent } from './features/category/category.component';
+import { Component } from '@angular/core';
+import { StudentCoursesComponent } from '../components/student/student-courses/student-courses.component';
 import { SidebarComponent } from '../components/instructor/sidebar/sidebar.component';
 import { AddCourseComponent } from '../components/instructor/sidebar/add-course/add-course.component';
 import { AdminsComponent } from './features/admins/admins.component';
@@ -21,11 +23,12 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 import { SuccessComponent } from './Shared/success/success.component';
 import { ApplicationFormComponent } from './features/application-form/application-form.component';
 import { InstructorApplicationsComponent } from './features/admin-dashboard/instructor-applications/instructor-applications.component';
-import { UpdateCourseComponent } from '../components/instructor/sidebar/update-course/update-course.component';
-import { AccessDeniedComponent } from './Shared/access-denied/access-denied.component';
-import { authGuard } from './core/guards/auth.guard';
 import { UserRole } from './Shared/Models/User';
-
+import { AccessDeniedComponent } from './Shared/access-denied/access-denied.component';
+import { StudentCourseComponent } from '../components/student/student-course/student-course.component';
+import { UpdateCourseComponent } from '../components/instructor/sidebar/update-course/update-course.component';
+import { authGuard } from '../../src/app/Core/guards/auth.guard';
+import { UpdateProfileComponent } from '../components/student/student-profile-sections/update-profile/update-profile.component';
 
 export const routes: Routes = [
   {
@@ -33,8 +36,23 @@ export const routes: Routes = [
     component: HomePageComponent,
   },
   {
+    path: 'home',
+    component: HomePageComponent,
+  },
+  {
     path: 'student',
     component: StudentProfileSectionsComponent,
+    canActivate: [authGuard([UserRole.Student])],
+    children: [
+      {
+        path: 'student-profile',
+        component: UpdateProfileComponent,
+      },
+      {
+        path: 'student-courses',
+        component: StudentCoursesComponent,
+      },
+    ],
   },
   {
     path: 'sign-up',
@@ -51,6 +69,7 @@ export const routes: Routes = [
   {
     path: 'check-out',
     component: CheckOutPageComponent,
+    canActivate: [authGuard([UserRole.Student])],
   },
   {
     path: 'order-completed',
@@ -70,10 +89,6 @@ export const routes: Routes = [
     component: CourseDetailsComponent,
   },
   {
-    path: 'instructor',
-    component: InstructorDetailsComponent,
-  },
-  {
     path: 'instructor/:id',
     component: InstructorDetailsComponent,
   },
@@ -84,7 +99,7 @@ export const routes: Routes = [
   {
     path: 'instructor-dashboard',
     component: SidebarComponent,
-    canActivate:[authGuard([UserRole.Instructor])]
+    canActivate: [authGuard([UserRole.Instructor])],
   },
   {
     path: 'add-course',
@@ -92,7 +107,7 @@ export const routes: Routes = [
   },
   {
     path: 'update-course/:id',
-    component: UpdateCourseComponent
+    component: UpdateCourseComponent,
   },
   {
     path: 'addAdmin',
@@ -112,7 +127,6 @@ export const routes: Routes = [
         component: InstructorApplicationsComponent,
       },
       {
-
         path: 'adminCourses',
         component: AdminCoursesComponent,
       },
@@ -120,16 +134,23 @@ export const routes: Routes = [
         path: 'Admins',
         component: AdminsComponent,
       },
-
     ],
-    canActivate:[authGuard([UserRole.Admin])]
+    canActivate: [authGuard([UserRole.Admin])],
   },
   {
     path: 'success',
     component: SuccessComponent,
   },
   {
-    path:'access-denied',
-    component:AccessDeniedComponent
-  }
+    path: 'access-denied',
+    component: AccessDeniedComponent,
+  },
+  {
+    path: 'owend-course/:id',
+    component: StudentCourseComponent,
+  },
+  {
+    path: '**',
+    component: HomePageComponent,
+  },
 ];

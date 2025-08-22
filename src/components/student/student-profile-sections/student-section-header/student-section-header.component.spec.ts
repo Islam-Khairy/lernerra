@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/Core/testing';
 
 import { StudentSectionHeaderComponent } from './student-section-header.component';
 
@@ -8,9 +8,8 @@ describe('StudentSectionHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StudentSectionHeaderComponent]
-    })
-    .compileComponents();
+      imports: [StudentSectionHeaderComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(StudentSectionHeaderComponent);
     component = fixture.componentInstance;

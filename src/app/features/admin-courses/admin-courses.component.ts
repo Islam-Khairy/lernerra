@@ -3,6 +3,7 @@ import { AdminCourseCardComponent } from "./admin-course-card/admin-course-card.
 import { ICourse } from './../../interfaces/course/icourse';
 import { CourseService } from '../../services/course/course-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { initFlowbite } from 'flowbite';
 @Component({
   selector: 'app-admin-courses',
   imports: [AdminCourseCardComponent],
@@ -11,18 +12,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AdminCoursesComponent {
   courses!: ICourse[];
-  courseStatus: WritableSignal<string> =signal("0");
+  courseStatus: WritableSignal<string> = signal("0");
 
   constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.getCoursesByStatus();
   }
+  ngAfterViewInit(): void {
+    initFlowbite(); // re-attach dropdown JS after view loads
+  }
 
 
   onRadioChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
-    this.courseStatus.set(inputElement.value) ;
+    this.courseStatus.set(inputElement.value);
     console.log('Selected radio value:', this.courseStatus());
     this.getCoursesByStatus();
   }
@@ -40,6 +44,6 @@ export class AdminCoursesComponent {
     })
   }
 
-  
+
 
 }

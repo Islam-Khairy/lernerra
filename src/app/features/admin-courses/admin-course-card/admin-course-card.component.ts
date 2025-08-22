@@ -1,15 +1,13 @@
-import { Component, Input, input, effect } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ICourse } from '../../../interfaces/course/icourse';
 import { FormsModule } from '@angular/forms';
-import { InstructorDetailsComponent } from "../../instructor-details/instructor-details.component";
 import { AdminCoursesComponent } from './../admin-courses.component';
 import { CourseService } from '../../../services/course/course-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-admin-course-card',
-  imports: [AdminCourseCardComponent, FormsModule, InstructorDetailsComponent,NgIf],
+  imports: [FormsModule],
 templateUrl: './admin-course-card.component.html',
   styleUrl: './admin-course-card.component.css'
 })
@@ -17,11 +15,11 @@ export class AdminCourseCardComponent {
 @Input() course!: ICourse;
 @Input() status!:string
   showConfirm = false;
-
+note:string = '';
 constructor(private courseService :CourseService, private toastr:ToastrService ,private admin:AdminCoursesComponent){}
 
 updateCourseStatus(courseId: number, status: string) {
-    this.courseService.updateCourseStatus(courseId, parseInt(status,0)).subscribe({
+    this.courseService.updateCourseStatus(courseId, parseInt(status,0),this.note).subscribe({
       next: (res) => {
         console.log(res);
         this.toastr.success("Course updated successfully", "Success", {
@@ -29,6 +27,7 @@ updateCourseStatus(courseId: number, status: string) {
           progressAnimation: "increasing",
           closeButton: true
         })
+        this.admin.getCoursesByStatus();
       },
       error: (err) => {
         console.log(err);

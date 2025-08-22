@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/Core/testing';
 
 import { OrderCompletedComponent } from './order-completed.component';
 
@@ -8,9 +8,8 @@ describe('OrderCompletedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderCompletedComponent]
-    })
-    .compileComponents();
+      imports: [OrderCompletedComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(OrderCompletedComponent);
     component = fixture.componentInstance;

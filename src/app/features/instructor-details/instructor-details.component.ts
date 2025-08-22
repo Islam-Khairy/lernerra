@@ -11,16 +11,16 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-instructor-details',
-  imports: [CarouselModule, Button, Rating,FormsModule,RouterLink],
-templateUrl: './instructor-details.component.html',
+  imports: [CarouselModule, Button, Rating, FormsModule, RouterLink],
+  templateUrl: './instructor-details.component.html',
   styleUrl: './instructor-details.component.css'
 })
 export class InstructorDetailsComponent {
-  rating!:number
-  instructorId!:string;
-  instructor!:IInstructor;
-  instructorCourses!:ICourse[];
-  constructor(private instructorService:InstructorService,private route:ActivatedRoute){}
+  rating!: number
+  instructorId!: string;
+  instructor!: IInstructor;
+  instructorCourses!: ICourse[];
+  constructor(private instructorService: InstructorService, private route: ActivatedRoute) { }
 
   responsiveOptions = [
     {
@@ -36,50 +36,41 @@ export class InstructorDetailsComponent {
   ];
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params)=>{
-      this.instructorId=params.get('id') || "0";
+    this.route.paramMap.subscribe((params) => {
+      this.instructorId = params.get('id') || "0";
     })
 
     this.getInstructorDetails();
   }
 
-  getInstructorDetails(){
+  getInstructorDetails() {
     this.instructorService.getInstructorById(this.instructorId).subscribe({
-      next:(res)=>{
+      next: (res) => {
         console.log(res);
-        this.instructor=res;
+        this.instructor = res;
         this.getInstructorCourses();
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
       }
     })
   }
 
-  getInstructorCourses(){
-    this.instructorService.getInstructorCourses(this.instructorId).subscribe({
-      next:(res)=>{
+  getInstructorCourses() {
+    this.instructorService.getInstructorCoursesById(this.instructor.id).subscribe({
+      next: (res) => {
         console.log(res);
-        this.instructorCourses=res;
-        this.getDuration();
+        this.instructorCourses = res;
       },
-      error:(err)=>{
+      error: (err) => {
         console.log(err);
       }
     })
-  }
-
-  getDuration(){
-    this.instructorCourses.forEach(c=>{
-      let duration=0;
-      c.lessons.forEach(l=>{
-      duration=l.duration+duration;
-    });c.duration=duration })
   }
 
   getNumVisible(): number {
-  if (!this.instructorCourses) return 1;
-  return this.instructorCourses.length <= 2 ? this.instructorCourses.length : 3;
-}
+    if (!this.instructorCourses) return 1;
+    return this.instructorCourses.length <= 2 ? this.instructorCourses.length : 3;
+  }
 
 }

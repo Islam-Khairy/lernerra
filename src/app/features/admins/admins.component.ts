@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from './../../services/admin/user-service.service';
 import { IStudent } from '../../interfaces/student/istudent';
 import { RouterLink } from '@angular/router';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-admins',
@@ -17,6 +18,10 @@ constructor(private userService:UserService){}
 ngOnInit(): void {
   this.getAdmins()
 }
+
+ngAfterViewInit(): void {
+    initFlowbite(); // re-attach dropdown JS after view loads
+  }
 
 getAdmins(){
   this.userService.getAllUsersByRole("Admin").subscribe({

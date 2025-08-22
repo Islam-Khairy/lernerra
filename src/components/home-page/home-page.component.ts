@@ -1,181 +1,71 @@
-import { Component } from '@angular/core';
-import { CourseCardComponent } from '../student/student-courses/course-card/course-card.component';
+import { Component, effect, inject, signal } from '@angular/core';
+import { CourseCardComponent } from '../../app/Shared/course-card/course-card.component';
 import { MatCardModule } from '@angular/material/card';
-import { WhatTheySayCarousalComponent } from './what-they-say-carousal/what-they-say-carousal.component';
-import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
+import { CategoryService } from '../../app/Core/Services/category.service';
+import { Category } from '../../app/Shared/Models/category';
+import { ICourse } from './../../app/interfaces/course/icourse';
+import { CourseService } from '../../app/services/course/course-service.service';
+import { IInstructor } from '../../app/interfaces/instructor/iinstructor';
+import { InstructorService } from '../../app/services/instructor/instructor-service.service';
 
 @Component({
   selector: 'app-home-page',
   imports: [
     CourseCardComponent,
     MatCardModule,
-    WhatTheySayCarousalComponent,
     RouterLink,
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  topCategories = [
-    {
-      image: '/images/home/category1.svg',
-      name: 'Astrology',
-      numberOfCourses: 11,
-    },
-    {
-      image: '/images/home/category2.svg',
-      name: 'Development',
-      numberOfCourses: 12,
-    },
-    {
-      image: '/images/home/category3.svg',
-      name: 'Marketing',
-      numberOfCourses: 12,
-    },
-    {
-      image: '/images/home/category4.svg',
-      name: 'Physics',
-      numberOfCourses: 12,
-    },
-  ];
+  categoryService = inject(CategoryService);
+  courseService = inject(CourseService);
+  instructorService = inject(InstructorService);
+  topCategories = signal<Category[] | null>(null);
+  constructor() {
+    effect(() => {
+      this.categoryService.getCategories().subscribe({
+        next: (res: Category[]) => {
+          this.topCategories.set(res);
+        },
+      });
+    });
+  }
+  topCourses!: ICourse[];
 
-  topCourses = [
-    {
-      id: 1,
-      name: 'Beginner’s Guide to Design',
-      categoryName: 'Design',
-      instructor: {
-        fullName: 'Ronald Richards',
-      },
-      image: '/images/student/courseImage.png',
-      rate: '4.5',
-      numberOfRatings: 1200,
-      duration: '22',
-      Lectures: '155',
-      level: 'Beginner',
-      price: '149.9',
-    },
-    {
-      id: 2,
-      name: 'Beginner’s Guide to Design',
-      categoryName: 'Design',
-      instructor: {
-        fullName: 'Ronald Richards',
-      },
-      image: '/images/student/courseImage.png',
-      rate: '5',
-      numberOfRatings: 1200,
-      duration: '22',
-      Lectures: '155',
-      level: 'Beginner',
-      price: '149.9',
-    },
-    {
-      id: 3,
-      name: 'Beginner’s Guide to Design',
-      categoryName: 'Design',
-      instructor: {
-        fullName: 'Ronald Richards',
-      },
-      image: '/images/student/courseImage.png',
-      rate: '4.5',
-      numberOfRatings: 1200,
-      duration: '22',
-      Lectures: '155',
-      level: 'Beginner',
-      price: '149.9',
-    },
-    {
-      id: 4,
-      name: 'Beginner’s Guide to Design',
-      categoryName: 'Design',
-      instructor: {
-        fullName: 'Ronald Richards',
-      },
-      image: '/images/student/courseImage.png',
-      rate: '5',
-      numberOfRatings: 1200,
-      duration: '22',
-      Lectures: '155',
-      level: 'Beginner',
-      price: '149.9',
-    },
-  ];
+  topInstructors!: IInstructor[];
 
-  topInstructors = [
-    {
-      image: '/images/teacher.svg',
-      name: 'Ronald Richards',
-      role: 'UI/UX Designer',
-      rate: '4.9',
-      numberOfRatings: '2400',
-    },
-    {
-      image: '/images/teacher.svg',
-      name: 'Ronald Richards',
-      role: 'UI/UX Designer',
-      rate: '4.9',
-      numberOfRatings: '2400',
-    },
-    {
-      image: '/images/teacher.svg',
-      name: 'Ronald Richards',
-      role: 'UI/UX Designer',
-      rate: '4.9',
-      numberOfRatings: '2400',
-    },
-    {
-      image: '/images/teacher.svg',
-      name: 'Ronald Richards',
-      role: 'UI/UX Designer',
-      rate: '4.9',
-      numberOfRatings: '2400',
-    },
-    {
-      image: '/images/teacher.svg',
-      name: 'Ronald Richards',
-      role: 'UI/UX Designer',
-      rate: '4.9',
-      numberOfRatings: '2400',
-    },
-  ];
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.getTopCourses();
+    this.getTopInstructors();
+  }
+  getTopCourses() {
+    this.courseService.getAllCourses().subscribe({
+      next: (res: ICourse[]) => {
+        this.topCourses = res
+          .sort((a: ICourse, b: ICourse) => b.rate - a.rate)
+          .slice(0, 4);
+        console.log('Top Courses:', this.topCourses);
+      },
+      error: (err: any) => {
+        console.error('Error fetching top courses:', err);
+      },
+    });
+  }
 
-  // reviews = [
-  //   {
-  //     name: 'Islam',
-  //     role: 'Designer',
-  //     image: '/images/home/reviewer.svg',
-  //     content: `
-  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-  //   },
-  //   {
-  //     name: 'Ahmed',
-  //     role: 'Designer',
-  //     image: '/images/home/reviewer.svg',
-  //     content: `
-  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-  //   },
-  //   {
-  //     name: 'Sherif',
-  //     role: 'Designer',
-  //     image: '/images/home/reviewer.svg',
-  //     content: `
-  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-  //   },
-  //   {
-  //     name: 'Mariem',
-  //     role: 'Designer',
-  //     image: '/images/home/reviewer.svg',
-  //     content: `
-  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-  //   },
-  //   {
-  //     name: 'Edris',
-  //     role: 'Designer',
-  //     image: '/images/home/reviewer.svg',
-  //     content: `
-  //     Byway's tech courses are top-notch! As someone who's always looking to stay ahead in the rapidly evolving tech world, I appreciate the up-to-date content and engaging multimedia.`,
-  //   },
-  // ];
+  getTopInstructors() {
+    this.instructorService.getAllInstructors().subscribe({
+      next: (res: IInstructor[]) => {
+        this.topInstructors = res;
+        console.log('Top Instructors:', this.topInstructors);
+      },
+      error: (err: any) => {
+        console.error('Error fetching top instructors:', err);
+      },
+    });
+  }
 }

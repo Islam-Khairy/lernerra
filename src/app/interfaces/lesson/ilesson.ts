@@ -5,5 +5,4 @@ export interface ILesson {
     vedioURL:string
     duration:number
     uploadAt:Date
-    isFree:boolean
 }

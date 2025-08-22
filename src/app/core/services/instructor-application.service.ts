@@ -1,32 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { instructorApplicationResponse, ReviewDto } from '../../Shared/Models/InstructorApplication';
+import {
+  instructorApplicationResponse,
+  ReviewDto,
+} from '../../Shared/Models/InstructorApplication';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InstructorApplicationService {
- http= inject(HttpClient)
- private readonly url='http://localhost:5138/api'
- 
- addApplication(application:any){
-  return this.http.post(this.url+'/instructorapplication/apply',application)
- }
+  http = inject(HttpClient);
+  private readonly url = 'http://lernerra.runasp.net/api';
 
- getApplications():Observable<instructorApplicationResponse[]>{
-  return this.http.get<instructorApplicationResponse[]>(this.url+'/instructorapplication')
- }
+  addApplication(application: any) {
+    return this.http.post(
+      this.url + '/instructorapplication/apply',
+      application
+    );
+  }
 
- getApplicationById(id:number):Observable<instructorApplicationResponse>{
-  return this.http.get<instructorApplicationResponse>(this.url+`/instructorapplication/${id}`)
- }
+  getApplications(): Observable<instructorApplicationResponse[]> {
+    return this.http.get<instructorApplicationResponse[]>(
+      this.url + '/instructorapplication'
+    );
+  }
 
- postReview(review :ReviewDto):Observable<{review:boolean}>{
-  return this.http.put<{review:boolean}>(this.url+'/instructorapplication/review',review)
- }
+  getApplicationById(id: number): Observable<instructorApplicationResponse> {
+    return this.http.get<instructorApplicationResponse>(
+      this.url + `/instructorapplication/${id}`
+    );
+  }
 
-
-
+  postReview(review: ReviewDto): Observable<{ review: boolean }> {
+    return this.http.put<{ review: boolean }>(
+      this.url + '/instructorapplication/review',
+      review
+    );
+  }
 }

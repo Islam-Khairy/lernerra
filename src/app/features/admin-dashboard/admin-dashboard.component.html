@@ -3,8 +3,8 @@
     <div class="col-span-1 ">
         <div class="border  border-gray-100 bg-gray-100 rounded-xl ">
             <div class="flex flex-col items-center">
-                <img src="images/teacher.svg" class="my-5">
-                <h2 class="font-medium mb-7">Admin Name</h2>
+                <img [src]="adminImage()" class="my-5 w-[80%] h-40 rounded-lg object-cover" alt="Admin Image">
+                <h2 class="font-medium mb-7">{{adminName()}}</h2>
 
             </div>
             <p-divider></p-divider>

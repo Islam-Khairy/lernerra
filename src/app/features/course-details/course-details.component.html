@@ -7,7 +7,10 @@
             <p class="text-gray-500 mb-3">This course offers high-quality educational content carefully designed to meet the needs of learners. With a focus on practical applications and real-world skills, it provides an engaging learning experience suitable for both beginners and those looking to enhance their expertise.</p>
             <div class="flex gap-3 items-center mb-7">
                 <p-rating  [(ngModel)]="stars" [readonly]="true" />
-                <p class="text-gray-700"> | {{fullduration}} Total Hours. {{course.lessons.length}} Lectures. All levels</p>
+                 <p class="text-gray-700"> |
+                     <!-- {{fullduration}}  -->
+                    Total Hours. {{course.lessons.length}} Lectures. All levels</p> 
+                <!-- <p class="text-gray-700"> | {{fullduration}} Total Hours. {{course.lessons.length}} Lectures. All levels</p> -->
             </div>
             <div class="flex items-center mb-4 gap-2">
                 <div class="rounded-full overflow-hidden w-[50px] h-[50px]">
@@ -23,8 +26,8 @@
             <h3 class="text-2xl mb-4">Instructor</h3>
 
             <a class="text-blue-500 text-xl mb-3 hover:text-blue-400 " [routerLink]="['/instructor',course.instructor.id]" >{{course.instructor.fullName}}</a>
-            <p class="text-gray-700 text-md mb-3">{{course.instructor.instructorApplication.specialization}}</p>
-            <div class="flex gap-2 mb-4">
+            <!-- <p class="text-gray-700 text-md mb-3">{{course.instructor.instructorApplication.specialization}}</p>-->
+             <div class="flex gap-2 mb-4">
                 <div class="rounded-full overflow-hidden w-[110px] h-[110px]">
                     <img [src]="course.instructor.imageUrl" class="w-full h-full">
                 </div>
@@ -37,13 +40,38 @@
         <div class="col-span-1">
          <div class="p-5 border border-gray-200 rounded-xl !shadow-lg" >
                 <div class="mb-7">
-                  <img alt="Card" class="w-full" [src]="course.imageUrl" />
+                  <img alt="Card" class="w-full" [src]="this.course.imageUrl" />
                 </div>
-                <div class="flex items-center gap-5 mb-5 justify-center">
-                    <p class="text-2xl font-semibold">{{course.price|  currency:'USD'}}</p>
-                </div>
-                <button class="w-full py-3 cursor-pointer rounded-lg bg-black text-white hover:bg-gray-800 transition duration-200" [routerLink]="">Buy Now</button>
-                <p-divider></p-divider>
+
+                 @if(course.isFree)
+                    {
+                        <div class="flex items-center gap-5 mb-5 justify-center">
+                            <p class="text-2xl font-semibold text-green-600">Free</p>                   
+                        </div>
+                    }
+                 @else {
+                        <div class="flex items-center gap-5 mb-5 justify-center">
+                            <p class="text-2xl font-semibold">${{course.price }}</p>
+                        </div>
+                    }
+                    
+            
+                @if(isenrolled)
+                {
+                  <button [routerLink]="['/student/student-courses']"   class="w-full py-3 cursor-pointer rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-md hover:shadow-lg transition duration-300 ease-in-out"   > Go to Course</button>                    
+                }
+                @else {
+                    @if(course.isFree)
+                    {
+                         <button (click)="enrollFreeCourse(course.id)"class="w-full py-3 cursor-pointer rounded-lg bg-black text-white hover:bg-gray-800 transition duration-200  ">Enroll Free</button>
+
+                    }
+                 @else {
+                         <button [routerLink]="['/check-out']" [queryParams]="{id:course.id}" class="w-full py-3 cursor-pointer rounded-lg bg-black text-white hover:bg-gray-800 transition duration-200  ">Pay</button>
+                    }
+                }
+               
+                 <p-divider></p-divider>
                 <p class="mt-4 text-lg">Share</p>
                 <div class="flex gap-4 justify-center mb-4">
                     <a class="w-8 h-8 cursor-pointer shadow flex justify-center border border-gray-200 items-center bg-gray-100 rounded-full" target="_blank" href="https://www.facebook.com"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"class="w-5 h-5" alt="Facebook" /></a>
@@ -57,3 +85,4 @@
     </section>
     
 </div>
+<p-toast position="top-right" [baseZIndex]="10000" key="custom"></p-toast>

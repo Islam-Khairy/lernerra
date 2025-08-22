@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/Core/testing';
 
 import { CheckOutPageComponent } from './check-out-page.component';
 
@@ -8,9 +8,8 @@ describe('CheckOutPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CheckOutPageComponent]
-    })
-    .compileComponents();
+      imports: [CheckOutPageComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CheckOutPageComponent);
     component = fixture.componentInstance;

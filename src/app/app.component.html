@@ -3,3 +3,32 @@
   <router-outlet />
   <app-footer></app-footer>
 </div>
+<!-- Floating Chatbot Button -->
+@if (this.acountService.user()) {
+<button
+  (click)="toggleChatbot()"
+  style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #3c82f6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  "
+>
+  💬
+</button>
+}
+<!-- Chatbot Popup -->
+@if (this.acountService.user()) { @if(showChatbot) {
+<app-chatbot
+  class="fixed bottom-[90px] right-[20px] w-[300px] h-[400px] z-[1000] bg-white border border-gray-300 rounded-lg overflow-hidden"
+>
+</app-chatbot>
+} }

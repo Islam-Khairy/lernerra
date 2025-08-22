@@ -1,5 +1,5 @@
 export interface ICourse {
- id: number
+  id: number
   name: string
   description: string
   rate: number
@@ -11,7 +11,9 @@ export interface ICourse {
   lessons: Lesson[]
   enrollments: Enrollment[]
   duration?:number
+  notes?: string
   categoryId?:number
+  isFree?: boolean
 }
 
 export interface Lesson {
