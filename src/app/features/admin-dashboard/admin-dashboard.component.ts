@@ -1,18 +1,13 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { Divider } from 'primeng/divider';
-import { AccountService } from '../../../app/Core/Services/account.service';
+import { AccountService } from '../../../app/core/services/account.service';
 import { MessageService } from 'primeng/api';
 import { _supportsShadowDom } from '@angular/cdk/platform';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    Divider,
-    RouterOutlet,
-  ],
+  imports: [RouterLink, RouterLinkActive, Divider, RouterOutlet],
   templateUrl: './admin-dashboard.component.html',
   providers: [MessageService],
   styleUrl: './admin-dashboard.component.css',

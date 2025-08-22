@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CloudinaryUploadService } from '../../../../app/services/images/cloudinary-upload-service.service';
 import { InstructorService } from '../../../../app/services/instructor/instructor-service.service';
 import { updateUserDto, UserInfo } from '../../../../app/Shared/Models/User';
-import { AccountService } from '../../../../app/Core/Services/account.service';
+import { AccountService } from '../../../../app/core/services/account.service';
 import { MessageService } from 'primeng/api';
 import { Toast } from 'primeng/toast';
 import { Router } from '@angular/router';

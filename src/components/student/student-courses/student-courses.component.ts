@@ -4,9 +4,9 @@ import { StudentSectionHeaderComponent } from '../student-profile-sections/stude
 import { EnrolledCourse } from '../../../app/Shared/Models/enrolled-course';
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ICourse } from '../../../app/interfaces/course/icourse';
-import { AccountService } from '../../../app/Core/Services/account.service';
+import { AccountService } from '../../../app/core/services/account.service';
 import { RouterLink } from '@angular/router';
-import { EnrollmentService } from '../../../app/Core/Services/enrollmentService/enrollment.service';
+import { EnrollmentService } from '../../../app/core/services/enrollmentService/enrollment.service';
 import { FilterPipe } from '../../../app/Core/pipes/filter-pipe.pipe';
 
 @Component({

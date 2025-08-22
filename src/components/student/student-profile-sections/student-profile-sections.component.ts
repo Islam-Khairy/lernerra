@@ -7,14 +7,10 @@ import {
   RouterLinkActive,
   RouterOutlet,
 } from '@angular/router';
-import { AccountService } from '../../../app/Core/Services/account.service';
+import { AccountService } from '../../../app/core/services/account.service';
 @Component({
   selector: 'app-student-profile-sections',
-  imports: [
-    RouterOutlet,
-    RouterLink,
-    RouterLinkActive,
-  ],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './student-profile-sections.component.html',
   styleUrl: './student-profile-sections.component.css',
 })
