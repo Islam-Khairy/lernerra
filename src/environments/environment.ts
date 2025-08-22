@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://lernerra.runasp.net/api'
+  apiUrl: 'https://lernerra.runasp.net/api'
 };
