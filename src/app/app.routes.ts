@@ -27,7 +27,7 @@ import { UserRole } from './Shared/Models/User';
 import { AccessDeniedComponent } from './Shared/access-denied/access-denied.component';
 import { StudentCourseComponent } from '../components/student/student-course/student-course.component';
 import { UpdateCourseComponent } from '../components/instructor/sidebar/update-course/update-course.component';
-import { authGuard } from '../../src/app/Core/guards/auth.guard';
+import { authGuard } from '../../src/app/core/guards/auth.guard';
 import { UpdateProfileComponent } from '../components/student/student-profile-sections/update-profile/update-profile.component';
 
 export const routes: Routes = [

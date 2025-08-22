@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/Core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { ChatbotService } from './chatbot.service';
 

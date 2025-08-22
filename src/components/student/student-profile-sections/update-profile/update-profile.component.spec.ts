@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/Core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UpdateProfileComponent } from './update-profile.component';
 
