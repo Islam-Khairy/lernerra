@@ -4,7 +4,7 @@ import { catchError, throwError } from 'rxjs';
 
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
-import { AccountService } from '../../../app/core/services/account.service';
+import { AccountService } from '../services/account.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const accountService = inject(AccountService);

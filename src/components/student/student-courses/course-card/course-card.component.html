@@ -37,6 +37,7 @@
     } -->
     @if(this.role=="instructor"){
     <p>Status: {{course()?.status}}</p>
+    <p>purchased: {{course()?.enrollments?.length||0}}</p>
 
     <p-button (click)="showDialog()" label="Show" />
     <p-dialog header="notes" [modal]="true" [(visible)]="visible" [style]="{ width: '50rem' }"
@@ -45,7 +46,6 @@
         {{ course()?.notes ||"no notes" }}
       </p>
     </p-dialog>
-
 
     }
 

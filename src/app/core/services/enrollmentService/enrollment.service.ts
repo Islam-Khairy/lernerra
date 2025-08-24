@@ -21,8 +21,6 @@ export class EnrollmentService {
   }
 
   getStudentEnrolledCourses(): Observable<any> {
-    return this.http.get(
-      `${environment.apiUrl}/Enrollment/user/courses`
-    );
+    return this.http.get(`${environment.apiUrl}/Enrollment/user/courses`);
   }
 }

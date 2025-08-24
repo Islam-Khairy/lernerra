@@ -1,3 +1,4 @@
+
 export interface instructor{
     name:string,
     image:string,
@@ -5,4 +6,3 @@ export interface instructor{
     rating:number,
     studentsNum:number
 }
-

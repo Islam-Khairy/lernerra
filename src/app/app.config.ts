@@ -1,4 +1,4 @@
-// import { authInterceptor } from './../../../src/app/Core/interceptors/auth.interceptor';
+// import { authInterceptor } from './../../../src/app/core/interceptors/auth.interceptor';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';

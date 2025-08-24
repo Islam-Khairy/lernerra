@@ -11,6 +11,5 @@ export class CourseService {
 
   getSpecificCourse(courseId: number): Observable<any> {
     return this.http.get(`${environment.apiUrl}/Course/${courseId}`);
-
   }
 }

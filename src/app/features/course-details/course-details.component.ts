@@ -1,4 +1,4 @@
-import { Component, effect, Input, input, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MenuItem, MessageService } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
@@ -16,7 +16,7 @@ import { ICourse } from '../../interfaces/course/icourse';
 @Component({
   selector: 'app-course-details',
   imports: [
-    BreadcrumbModule,
+  BreadcrumbModule,
     RatingModule,
     FormsModule,
     CardModule,
@@ -29,7 +29,7 @@ import { ICourse } from '../../interfaces/course/icourse';
   providers: [MessageService],
 })
 export class CourseDetailsComponent {
-  course!: ICourse;
+  course!:ICourse;
   courseInfo: any;
   enrollmentData: any;
   isenrolled: boolean = false;
@@ -37,7 +37,7 @@ export class CourseDetailsComponent {
   stars: number = 5;
   courseId: number = 0;
   //  stars!:number
-  fullduration: number = 0;
+     fullduration:number=0
   constructor(
     private courseService: CourseService,
     private enrollService: EnrollmentService,
@@ -45,6 +45,7 @@ export class CourseDetailsComponent {
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService
   ) {
+    
     // constructor(private courseService:CourseService,private activatedRoute :ActivatedRoute){
     effect(() => {
       this.items.set([
@@ -54,97 +55,102 @@ export class CourseDetailsComponent {
       ]);
     });
   }
+  
+    ngOnInit(): void {
+      this.activatedRoute.paramMap.subscribe(params => {
+         this.courseId = parseInt(params.get('id')|| "0");
+       });
+       console.log("get course");
+      this.getCourseDetails();
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.courseId = parseInt(params.get('id') || '0');
-    });
-    console.log('get course');
-    this.getCourseDetails();
-  }
-  getCourseDetails() {
-    this.courseService.getCourseById(this.courseId).subscribe({
-      next: (res) => {
-        console.log('res', res);
-        console.log(res);
+    }
+    getCourseDetails(){
+      this.courseService.getCourseById(this.courseId).subscribe({
+        next:(res)=>{
 
-        this.course = res.data;
-        this.isenrolled = res.isEnrolled;
-        console.log('cours', this.course);
+          console.log("res",res);
+          console.log(res);
 
-        console.log(this.course.name);
-        console.log(this.course.lessons.length);
-        console.log(this.course.description);
-        console.log(this.course.instructor.fullName);
+          this.course=res.data
+          this.isenrolled = res.isEnrolled;
+          console.log("cours",this.course)
 
-        this.durationCalc();
-        this.stars = res.rate;
-      },
-      error: (err) => {
-        console.log('error', err);
-      },
-    });
-  }
+          console.log(this.course.name)
+          console.log(this.course.lessons.length)
+          console.log(this.course.description)
+          console.log(this.course.instructor.fullName)
 
-  durationCalc() {
-    this.course.lessons?.forEach((l) => {
-      this.fullduration = l.duration + this.fullduration;
-    });
-    console.log(this.fullduration);
-  }
+          this.durationCalc()
+          this.stars=res.rate
+        },
+        error:(err)=>{
+          console.log("error",err);
 
-  showSuccess(message: string) {
-    this.messageService.add({
-      key: 'custom',
-      severity: 'success',
-      summary: 'Success',
-      detail: message,
-    });
-  }
-  enrollFreeCourse(courseID: number) {
-    this.enrollmentData = { courseId: courseID };
-    console.log('enroll course =>', this.enrollmentData);
-
-    // Check authentication
-    const token = localStorage.getItem('token');
-    if (!token) {
-      this.router.navigate(['/log-in']);
-      return;
+        }
+      })
     }
 
-    this.enrollService.enrollFreeCourse(this.enrollmentData).subscribe({
-      next: (res) => {
-        setTimeout(() => {
-          this.showSuccess(res.message);
-        }, 3000);
-        this.router.navigate(['/student/student-courses']);
-        console.log('success response', res);
-      },
-      error: (err) => {
-        console.log('error', err.error);
-      },
-    });
+    durationCalc(){
+      this.course.lessons?.forEach(l => {
+      this.fullduration=l.duration+this.fullduration
+     });
+     console.log(this.fullduration);
+    }
+  
+
+ showSuccess(message: string) {
+  this.messageService.add({
+    key: 'custom',
+    severity: 'success',
+    summary: 'Success',
+    detail: message,
+  });
+}
+  enrollFreeCourse(courseID: number) {
+  this.enrollmentData = { courseId: courseID };
+  console.log('enroll course =>', this.enrollmentData);
+
+  // Check authentication
+  const token = localStorage.getItem('token');
+  if (!token) {
+    this.router.navigate(['/log-in']);
+    return;
   }
+
+  this.enrollService.enrollFreeCourse(this.enrollmentData).subscribe({
+    next: (res) => {
+      setTimeout(() => {
+        this.showSuccess(res.message);
+      }, 3000);
+      this.router.navigate(['/student/student-courses']);
+      console.log('success response', res);
+    },
+    error: (err) => {
+      console.log('error', err.error);
+    },
+  });
+}
+
 }
 // ngOnInit() {
-//   this.activatedRoute.paramMap.subscribe((params) => {
-//     this.courseId = parseInt(params.get('id') || '0');
-//   });
+  //   this.activatedRoute.paramMap.subscribe((params) => {
+  //     this.courseId = parseInt(params.get('id') || '0');
+  //   });
 
-//   this.getCourse();
-// }
+  //   this.getCourse();
+  // }
 
-// getCourse() {
-//   console.log('in course');
-//   this.courseService.getSpecificCourse(this.courseId).subscribe({
-//     next: (res) => {
-//       this.course = res.data;
-//       this.isenrolled = res.isEnrolled;
-//       console.log(res);
-//       console.log(this.courseInfo);
-//     },
-//     error: (err) => {
-//       console.log(err.error.message);
-//     },
-//   });
-//   console.log('after course');
+  // getCourse() {
+  //   console.log('in course');
+  //   this.courseService.getSpecificCourse(this.courseId).subscribe({
+  //     next: (res) => {
+  //       this.course = res.data;
+  //       this.isenrolled = res.isEnrolled;
+  //       console.log(res);
+  //       console.log(this.courseInfo);
+  //     },
+  //     error: (err) => {
+  //       console.log(err.error.message);
+  //     },
+  //   });
+  //   console.log('after course');

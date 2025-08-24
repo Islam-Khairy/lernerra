@@ -1,6 +1,6 @@
 import { ApplicationInitStatus, Component, input, output } from '@angular/core';
 import { ApplicationStatus, instructorApplicationResponse } from '../../../../Shared/Models/InstructorApplication';
-import { ProgressSpinnerModule, ProgressSpinner } from 'primeng/progressspinner';
+import { ProgressSpinner } from 'primeng/progressspinner';
 import { Button } from "primeng/button";
 import { NgClass } from '@angular/common';
 

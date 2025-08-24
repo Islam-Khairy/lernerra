@@ -10,18 +10,13 @@ export class CoursePrograssService {
   constructor(private http: HttpClient) {}
 
   getCoursePrograss(courseId: number): Observable<any> {
-    return this.http.get(
-      `${environment.apiUrl}/CourseProgress/${courseId}`
-    );
+    return this.http.get(`${environment.apiUrl}/CourseProgress/${courseId}`);
   }
 
   markLessonAsCompleted(lessonId: number, userId: string): Observable<any> {
-    return this.http.post(
-      `${environment.apiUrl}/CourseProgress/complete`,
-      {
-        userId: userId,
-        lessonId: lessonId,
-      }
-    );
+    return this.http.post(`${environment.apiUrl}/CourseProgress/complete`, {
+      userId: userId,
+      lessonId: lessonId,
+    });
   }
 }

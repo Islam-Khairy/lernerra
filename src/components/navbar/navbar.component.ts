@@ -6,13 +6,13 @@ import { AccountService } from '../../app/core/services/account.service';
   selector: 'app-navbar',
   imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
+  styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  accountService = inject(AccountService);
-  router = inject(Router);
-  logout() {
-    this.accountService.logout();
-    this.router.navigate(['/log-in']);
+  accountService=inject(AccountService)
+  router=inject(Router)
+  logout(){
+   this.accountService.logout();
+   this.router.navigate(['/log-in']);
   }
 }

@@ -11,57 +11,48 @@ import { InstructorService } from '../../app/services/instructor/instructor-serv
 
 @Component({
   selector: 'app-home-page',
-  imports: [CourseCardComponent, MatCardModule, RouterLink],
+  imports: [
+CourseCardComponent,
+    MatCardModule,
+    RouterLink,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
 export class HomePageComponent {
-  categoryService = inject(CategoryService);
-  courseService = inject(CourseService);
-  instructorService = inject(InstructorService);
-  topCategories = signal<Category[] | null>(null);
-  constructor() {
-    effect(() => {
+  categoryService=inject(CategoryService)
+  courseService=inject(CourseService)
+  instructorService=inject(InstructorService)
+  topCategories=signal<Category[]|null>(null)
+  constructor(){
+    effect(()=>{
       this.categoryService.getCategories().subscribe({
-        next: (res: Category[]) => {
-          this.topCategories.set(res);
-        },
-      });
-    });
+        next:(res:Category[])=>{
+          this.topCategories.set(res)
+        }
+      })
+    })
   }
-  topCourses!: ICourse[];
+  topCourses! : ICourse[]
 
-  topInstructors!: IInstructor[];
+  topInstructors! :IInstructor[];
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.getTopCourses();
-    this.getTopInstructors();
-  }
-  getTopCourses() {
+
+ngOnInit(): void {
+  //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+  //Add 'implements OnInit' to the class.
+  this.getTopCourses();
+}
+  getTopCourses(){
     this.courseService.getAllCourses().subscribe({
       next: (res: ICourse[]) => {
-        this.topCourses = res
-          .sort((a: ICourse, b: ICourse) => b.rate - a.rate)
-          .slice(0, 4);
+      this.topCourses=res.sort((a:ICourse, b:ICourse) => b.rate - a.rate).slice(0, 4);
         console.log('Top Courses:', this.topCourses);
       },
       error: (err: any) => {
         console.error('Error fetching top courses:', err);
-      },
-    });
+      }
+    })
   }
 
-  getTopInstructors() {
-    this.instructorService.getAllInstructors().subscribe({
-      next: (res: IInstructor[]) => {
-        this.topInstructors = res;
-        console.log('Top Instructors:', this.topInstructors);
-      },
-      error: (err: any) => {
-        console.error('Error fetching top instructors:', err);
-      },
-    });
-  }
 }
