@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FileUploadService {
   http = inject(HttpClient);
-  private readonly url = 'https://lernerra.runasp.net/api';
+  private readonly url = environment.apiUrl;
 
   uploadFile(file: File): Observable<{ cvUrl: string }> {
     const formData = new FormData();

@@ -1,6 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { InstructorApplicationService } from '../../../Core/Services/instructor-application.service';
-import { AccountService } from '../../../Core/Services/account.service';
+import { InstructorApplicationService } from '../../../core/services/instructor-application.service';
+import { AccountService } from '../../../core/services/account.service';
 import { MessageService } from 'primeng/api';
 import {
   instructorApplicationResponse,

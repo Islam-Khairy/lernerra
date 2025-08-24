@@ -2,14 +2,14 @@ import { Component, input, Input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CoursePrograssService } from '../../../../app/Core/Services/courseService/course-prograss.service';
+import { CoursePrograssService } from '../../../../app/core/services/courseService/course-prograss.service';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Dialog } from 'primeng/dialog';
 import { ButtonModule, Button } from 'primeng/button';
 import { ICourse } from '../../../../app/interfaces/course/icourse';
-import { AccountService } from '../../../../app/Core/Services/account.service';
+import { AccountService } from '../../../../app/core/services/account.service';
 @Component({
   selector: 'app-course-card',
   imports: [

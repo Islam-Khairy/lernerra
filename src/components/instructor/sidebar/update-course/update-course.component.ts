@@ -17,7 +17,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { InstructorService } from './../../../../app/services/instructor/instructor-service.service';
 import { CourseService } from '../../../../app/services/course/course-service.service';
-import { AccountService } from '../../../../app/Core/Services/account.service';
+import { AccountService } from '../../../../app/core/services/account.service';
 import { CloudinaryUploadService } from '../../../../app/services/images/cloudinary-upload-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { ICourse } from '../../../../app/interfaces/course/icourse';
@@ -25,7 +25,7 @@ import { ILesson } from '../../../../app/interfaces/lesson/ilesson';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
-import { CategoryService } from '../../../../app/Core/Services/category.service';
+import { CategoryService } from '../../../../app/core/services/category.service';
 import { LessonService } from '../../../../app/services/lesson/lesson-service.service';
 
 @Component({

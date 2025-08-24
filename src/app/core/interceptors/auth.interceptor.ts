@@ -3,14 +3,15 @@ import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 
 import { Router } from '@angular/router';
-import { AccountService } from '../Services/account.service';
+import { environment } from '../../../environments/environment';
+import { AccountService } from '../../../app/core/services/account.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const accountService = inject(AccountService);
   const router = inject(Router);
   var token = localStorage.getItem('token');
 
-  var isApiUrl = req.url.startsWith('https://lernerra.runasp.net/api');
+  var isApiUrl = req.url.startsWith(environment.apiUrl);
 
   if (token && isApiUrl) {
     var ModifiedRequest = req.clone({

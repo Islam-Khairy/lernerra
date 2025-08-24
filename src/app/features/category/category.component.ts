@@ -8,12 +8,7 @@ import { FormsModule, NgModel } from '@angular/forms';
 import { FilterPipe } from '../../Core/pipes/filter-pipe.pipe';
 @Component({
   selector: 'app-category',
-  imports: [
-    CourseCardComponent,
-    RouterLink,
-    FormsModule,
-    FilterPipe,
-  ],
+  imports: [CourseCardComponent, RouterLink, FormsModule, FilterPipe],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })

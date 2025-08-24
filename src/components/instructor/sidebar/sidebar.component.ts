@@ -9,7 +9,7 @@ import { InstructorService } from '../../../app/services/instructor/instructor-s
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ICourse } from '../../../app/interfaces/course/icourse';
 import { UserService } from '../../../app/services/admin/user-service.service';
-import { AccountService } from '../../../app/Core/Services/account.service';
+import { AccountService } from '../../../app/core/services/account.service';
 import { UserInfo } from '../../../app/Shared/Models/User';
 
 @Component({

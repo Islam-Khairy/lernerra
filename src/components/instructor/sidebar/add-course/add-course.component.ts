@@ -16,10 +16,10 @@ import { TextareaModule } from 'primeng/textarea';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { Router } from '@angular/router';
 import { CourseService } from '../../../../app/services/course/course-service.service';
-import { AccountService } from '../../../../app/Core/Services/account.service';
+import { AccountService } from '../../../../app/core/services/account.service';
 import { CloudinaryUploadService } from '../../../../app/services/images/cloudinary-upload-service.service';
 import { ToastrService } from 'ngx-toastr';
-import { CategoryService } from '../../../../app/Core/Services/category.service';
+import { CategoryService } from '../../../../app/core/services/category.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
