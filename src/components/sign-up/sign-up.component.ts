@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
-import { AccountService } from '../../app/core/services/account.service';
+import { AccountService } from '../../app/Core/Services/account.service';
 import { registerDto } from '../../app/Shared/Models/User';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';

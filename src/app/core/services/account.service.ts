@@ -2,7 +2,6 @@ import { effect, inject, Injectable, signal } from '@angular/core';
 import { User, UserInfo } from '../../Shared/Models/User';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +9,7 @@ import { environment } from '../../../environments/environment.prod';
 export class AccountService {
   user = signal<User | null>(null);
   private http = inject(HttpClient);
-  private url = environment.apiUrl;
+  private url = 'https://lernerra.runasp.net/api';
 
   constructor() {
     effect(() => {

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { ILesson } from '../../interfaces/lesson/ilesson';
 
 @Injectable({
   providedIn: 'root',
@@ -10,20 +10,20 @@ export class LessonService {
   constructor(private _http: HttpClient) {}
 
   uploadLesson(lesson: any): Observable<any> {
-    return this._http.post(`${environment.apiUrl}/Lesson`, lesson, {
+    return this._http.post(`https://lernerra.runasp.net/api/Lesson`, lesson, {
       responseType: 'text',
     });
   }
 
   getLessons(courseId: number): Observable<any> {
     return this._http.get(
-      `${environment.apiUrl}/Lesson/course/${courseId}`
+      `https://lernerra.runasp.net/api/Lesson/course/${courseId}`
     );
   }
 
   updateLesson(lessonId: number, lesson: any): Observable<any> {
     return this._http.put(
-      `${environment.apiUrl}/Lesson/${lessonId}`,
+      `https://lernerra.runasp.net/api/Lesson/${lessonId}`,
       lesson,
       { responseType: 'text' }
     );
@@ -31,7 +31,7 @@ export class LessonService {
 
   deleteLesson(lessonId: number): Observable<any> {
     return this._http.delete(
-      `${environment.apiUrl}/Lesson/${lessonId}`,
+      `https://lernerra.runasp.net/api/Lesson/${lessonId}`,
       { responseType: 'text' }
     );
   }

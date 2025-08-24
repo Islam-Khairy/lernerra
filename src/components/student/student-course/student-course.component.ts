@@ -4,8 +4,8 @@ import { CourseService } from '../../../app/services/course/course-service.servi
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ICourse } from '../../../app/interfaces/course/icourse';
 import { NgClass } from '@angular/common';
-import { CoursePrograssService } from '../../../app/core/services/courseService/course-prograss.service';
-import { AccountService } from '../../../app/core/services/account.service';
+import { CoursePrograssService } from '../../../app/Core/Services/courseService/course-prograss.service';
+import { AccountService } from '../../../app/Core/Services/account.service';
 import { FormsModule } from '@angular/forms';
 import { Rating } from 'primeng/rating';
 import { ToastrService } from 'ngx-toastr';

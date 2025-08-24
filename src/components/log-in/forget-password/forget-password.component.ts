@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AccountService } from '../../../app/core/services/account.service';
+import { AccountService } from '../../../app/Core/Services/account.service';
 
 @Component({
   selector: 'app-forget-password',

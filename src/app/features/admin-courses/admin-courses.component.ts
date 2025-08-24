@@ -1,5 +1,5 @@
 import { Component, signal, WritableSignal } from '@angular/core';
-import { AdminCourseCardComponent } from './admin-course-card/admin-course-card.component';
+import { AdminCourseCardComponent } from "./admin-course-card/admin-course-card.component";
 import { ICourse } from './../../interfaces/course/icourse';
 import { CourseService } from '../../services/course/course-service.service';
 import { ToastrService } from 'ngx-toastr';
@@ -8,13 +8,13 @@ import { initFlowbite } from 'flowbite';
   selector: 'app-admin-courses',
   imports: [AdminCourseCardComponent],
   templateUrl: './admin-courses.component.html',
-  styleUrl: './admin-courses.component.css',
+  styleUrl: './admin-courses.component.css'
 })
 export class AdminCoursesComponent {
   courses!: ICourse[];
-  courseStatus: WritableSignal<string> = signal('0');
+  courseStatus: WritableSignal<string> = signal("0");
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.getCoursesByStatus();
@@ -22,6 +22,7 @@ export class AdminCoursesComponent {
   ngAfterViewInit(): void {
     initFlowbite(); // re-attach dropdown JS after view loads
   }
+
 
   onRadioChange(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
@@ -31,16 +32,18 @@ export class AdminCoursesComponent {
   }
 
   getCoursesByStatus() {
-    this.courseService
-      .getCoursesbystatus(parseInt(this.courseStatus(), 0))
-      .subscribe({
-        next: (res) => {
-          console.log(res);
-          this.courses = res;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    this.courseService.getCoursesbystatus(parseInt(this.courseStatus(), 0)).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.courses = res;
+      },
+      error: (err) => {
+        console.log(err);
+
+      }
+    })
   }
+
+
+
 }

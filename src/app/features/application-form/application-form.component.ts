@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FileUploadService } from '../../core/services/file-upload.service';
-import { InstructorApplicationService } from '../../core/services/instructor-application.service';
+import { FileUploadService } from '../../Core/Services/file-upload.service';
+import { InstructorApplicationService } from '../../Core/Services/instructor-application.service';
 import { SuccessComponent } from '../../Shared/success/success.component';
 
 @Component({

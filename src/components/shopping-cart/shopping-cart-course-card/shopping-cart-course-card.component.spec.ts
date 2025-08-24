@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/Core/testing';
 
 import { ShoppingCartCourseCardComponent } from './shopping-cart-course-card.component';
 

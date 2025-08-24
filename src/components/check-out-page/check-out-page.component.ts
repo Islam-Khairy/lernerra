@@ -13,7 +13,7 @@ import {
 } from 'ngx-stripe';
 import { StripeService } from 'ngx-stripe';
 import { ToastModule } from 'primeng/toast';
-import { PaymentService } from '../../app/core/services/paymentService/Payment-service.service';
+import { PaymentService } from '../../app/Core/Services/paymentService/Payment-service.service';
 import { MessageService } from 'primeng/api';
 import { ICourse } from '../../app/interfaces/course/icourse';
 import { CourseService } from '../../app/services/course/course-service.service';

@@ -8,30 +8,31 @@ import { initFlowbite } from 'flowbite';
   selector: 'app-admins',
   imports: [RouterLink],
   templateUrl: './admins.component.html',
-  styleUrl: './admins.component.css',
+  styleUrl: './admins.component.css'
 })
 export class AdminsComponent {
-  admins!: IStudent[];
+admins!:IStudent[]
+  
+constructor(private userService:UserService){}
 
-  constructor(private userService: UserService) {}
+ngOnInit(): void {
+  this.getAdmins()
+}
 
-  ngOnInit(): void {
-    this.getAdmins();
-  }
-
-  ngAfterViewInit(): void {
+ngAfterViewInit(): void {
     initFlowbite(); // re-attach dropdown JS after view loads
   }
 
-  getAdmins() {
-    this.userService.getAllUsersByRole('Admin').subscribe({
-      next: (res) => {
-        console.log(res);
-        this.admins = res;
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
+getAdmins(){
+  this.userService.getAllUsersByRole("Admin").subscribe({
+    next:(res)=>{
+      console.log(res);
+      this.admins=res;
+    },
+    error:(err)=>{
+      console.log(err);
+      
+    }
+  })
+}
 }

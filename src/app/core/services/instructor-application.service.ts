@@ -5,14 +5,13 @@ import {
   ReviewDto,
 } from '../../Shared/Models/InstructorApplication';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InstructorApplicationService {
   http = inject(HttpClient);
-  private readonly url = environment.apiUrl;
+  private readonly url = 'https://lernerra.runasp.net/api';
 
   addApplication(application: any) {
     return this.http.post(

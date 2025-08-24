@@ -1,7 +1,6 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,7 @@ export class PaymentService {
 
   checkout(requestData: any): Observable<any> {
     return this.http.post(
-      `${environment.apiUrl}/Payment/create-payment-intent`,
+      'https://lernerra.runasp.net/api/Payment/create-payment-intent',
       requestData
     );
   }

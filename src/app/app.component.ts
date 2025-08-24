@@ -5,7 +5,7 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { initFlowbite } from 'flowbite';
 import { ChatbotComponent } from '../components/chatbot/chatbot.component';
 import { CommonModule } from '@angular/common';
-import { AccountService } from './core/services/account.service';
+import { AccountService } from '../app/Core/Services/account.service';
 
 @Component({
   selector: 'app-root',

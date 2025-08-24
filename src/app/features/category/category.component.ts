@@ -5,10 +5,15 @@ import { ICourse } from '../../interfaces/course/icourse';
 import { CourseService } from '../../services/course/course-service.service';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { FormsModule, NgModel } from '@angular/forms';
-import { FilterPipe } from '../../core/pipes/filter-pipe.pipe';
+import { FilterPipe } from '../../Core/pipes/filter-pipe.pipe';
 @Component({
   selector: 'app-category',
-  imports: [CourseCardComponent, RouterLink, FormsModule, FilterPipe],
+  imports: [
+    CourseCardComponent,
+    RouterLink,
+    FormsModule,
+    FilterPipe,
+  ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })

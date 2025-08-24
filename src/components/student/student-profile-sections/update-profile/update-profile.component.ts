@@ -11,7 +11,7 @@ import {
 } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { AccountService } from '../../../../app/core/services/account.service';
+import { AccountService } from '../../../../app/Core/Services/account.service';
 @Component({
   selector: 'app-update-profile',
   imports: [FormsModule, ReactiveFormsModule],

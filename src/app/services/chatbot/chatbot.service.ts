@@ -1,12 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatbotService {
-  private baseUrl = environment.apiUrl;
+  private baseUrl = 'https://lernerra.runasp.net/api/chatbot';
 
   constructor(private http: HttpClient) {}
 

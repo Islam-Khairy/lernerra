@@ -5,7 +5,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { RatingModule } from 'primeng/rating';
 import { CardModule } from 'primeng/card';
 import { Divider } from 'primeng/divider';
-import { EnrollmentService } from '../../core/services/enrollmentService/enrollment.service';
+import { EnrollmentService } from '../../Core/Services/enrollmentService/enrollment.service';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { ToastModule } from 'primeng/toast';
 import { CourseService } from '../../services/course/course-service.service';

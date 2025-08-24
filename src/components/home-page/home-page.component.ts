@@ -2,7 +2,7 @@ import { Component, effect, inject, signal } from '@angular/core';
 import { CourseCardComponent } from '../../app/Shared/course-card/course-card.component';
 import { MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
-import { CategoryService } from '../../app/core/services/category.service';
+import { CategoryService } from '../../app/Core/Services/category.service';
 import { Category } from '../../app/Shared/Models/category';
 import { ICourse } from './../../app/interfaces/course/icourse';
 import { CourseService } from '../../app/services/course/course-service.service';
@@ -11,7 +11,11 @@ import { InstructorService } from '../../app/services/instructor/instructor-serv
 
 @Component({
   selector: 'app-home-page',
-  imports: [CourseCardComponent, MatCardModule, RouterLink],
+  imports: [
+    CourseCardComponent,
+    MatCardModule,
+    RouterLink,
+  ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
