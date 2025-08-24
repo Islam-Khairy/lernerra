@@ -7,7 +7,7 @@ import { ICourse } from '../../../app/interfaces/course/icourse';
 import { AccountService } from '../../../app/core/services/account.service';
 import { RouterLink } from '@angular/router';
 import { EnrollmentService } from '../../../app/core/services/enrollmentService/enrollment.service';
-import { FilterPipe } from '../../../app/Core/pipes/filter-pipe.pipe';
+import {FilterPipe} from '../../../app/core/pipes/filter-pipe.pipe';
 
 @Component({
   selector: 'app-student-courses',
