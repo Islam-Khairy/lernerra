@@ -34,127 +34,154 @@ export const routes: Routes = [
   {
     path: '',
     component: HomePageComponent,
+    title: 'Home',
   },
   {
     path: 'home',
     component: HomePageComponent,
+    title: 'Home',
   },
   {
     path: 'student',
     component: StudentProfileSectionsComponent,
     canActivate: [authGuard([UserRole.Student])],
-   children:[
-    {
-      path:'student-profile',
-      component:UpdateProfileComponent
-    },
-    {
-      path:'student-courses',
-      component:StudentCoursesComponent
-    }
-   ]
-    
+    title: 'My Profile',
+    children: [
+      {
+        path: 'student-profile',
+        component: UpdateProfileComponent,
+        title: 'My Profile',
+      },
+      {
+        path: 'student-courses',
+        component: StudentCoursesComponent,
+        title: 'My Courses',
+      },
+    ],
   },
   {
     path: 'sign-up',
     component: SignUpComponent,
+    title: 'Sign Up',
   },
   {
     path: 'log-in',
     component: LogInComponent,
+    title: 'Log In',
   },
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent,
+    title: 'Shopping Cart',
   },
   {
     path: 'check-out',
     component: CheckOutPageComponent,
-    canActivate: [authGuard([UserRole.Student])]
-
+    canActivate: [authGuard([UserRole.Student])],
+    title: 'Check Out',
   },
   {
     path: 'order-completed',
     component: OrderCompletedComponent,
+    title: 'Order Completed',
   },
   {
     path: 'forget-password',
     component: ForgetPasswordComponent,
+    title: 'Forget Password',
   },
-  { path: 'reset-password', component: ResetPasswordComponent },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    title: 'Reset Password',
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    title: 'Dashboard',
   },
   {
     path: 'course/:id',
     component: CourseDetailsComponent,
+    title: 'Course Details',
   },
   {
     path: 'instructor/:id',
     component: InstructorDetailsComponent,
+    title: 'Instructor Details',
   },
   {
     path: 'category/:id',
     component: CategoryComponent,
+    title: 'Category Details',
   },
   {
     path: 'instructor-dashboard',
     component: SidebarComponent,
-    canActivate:[authGuard([UserRole.Instructor])]
+    canActivate: [authGuard([UserRole.Instructor])],
+    title: 'Instructor Dashboard',
   },
   {
     path: 'add-course',
     component: AddCourseComponent,
+    title: 'Add Course',
   },
   {
     path: 'update-course/:id',
-    component: UpdateCourseComponent
+    component: UpdateCourseComponent,
+    title: 'Update Course',
   },
   {
     path: 'addAdmin',
     component: AddAdminComponent,
+    title: 'Add Admin',
   },
 
   {
     path: 'application-form',
     component: ApplicationFormComponent,
+    title: 'Application Form',
   },
   {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
+    title: 'Admin Dashboard',
     children: [
       {
         path: 'instructor-applications',
         component: InstructorApplicationsComponent,
+        title: 'Instructor Applications',
       },
       {
-
         path: 'adminCourses',
         component: AdminCoursesComponent,
+        title: 'Admin Courses',
       },
       {
         path: 'Admins',
         component: AdminsComponent,
+        title: 'Admins',
       },
-
     ],
-    canActivate:[authGuard([UserRole.Admin])]
+    canActivate: [authGuard([UserRole.Admin])],
   },
   {
     path: 'success',
     component: SuccessComponent,
+    title: 'Success',
   },
   {
-    path:'access-denied',
-    component:AccessDeniedComponent
+    path: 'access-denied',
+    component: AccessDeniedComponent,
+    title: 'Access Denied',
   },
   {
-    path:'owend-course/:id',
-    component:StudentCourseComponent
+    path: 'owend-course/:id',
+    component: StudentCourseComponent,
+    title: 'My Course',
   },
   {
-    path:'**',
-    component:HomePageComponent
-  }
+    path: '**',
+    component: HomePageComponent,
+  },
 ];
