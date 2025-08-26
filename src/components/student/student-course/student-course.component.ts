@@ -2,18 +2,20 @@
 import { Component, effect, signal } from '@angular/core';
 import { Lesson } from '../../../app/Shared/Models/enrolled-course';
 import { CourseService } from '../../../app/services/course/course-service.service';
-import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ICourse } from '../../../app/interfaces/course/icourse';
+import { LessonService } from '../../../app/services/lesson/lesson-service.service';
 import { NgClass } from '@angular/common';
 import { CoursePrograssService } from '../../../app/core/services/courseService/course-prograss.service';
 import { AccountService } from '../../../app/core/services/account.service';
 import { FormsModule } from "@angular/forms";
+import { Rating } from 'primeng/rating';
 import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
   selector: 'app-student-course',
-  imports: [NgClass, FormsModule, RouterLink],
+  imports: [NgClass, FormsModule, RouterLink, Rating],
   templateUrl: './student-course.component.html',
   styleUrl: './student-course.component.css',
 })
