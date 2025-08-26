@@ -5,7 +5,7 @@ import {
   ReviewDto,
 } from '../../Shared/Models/InstructorApplication';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

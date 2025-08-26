@@ -63,6 +63,27 @@ export class SignUpComponent {
         });
         this.router.navigateByUrl('/log-in');
       },
+      error: (error) => {
+        console.log('error: ', error);
+
+        if (error.error?.errors) {
+          Object.entries(error.error.errors).forEach(([field, messages]) => {
+            (messages as string[]).forEach((message: string) => {
+              this.messageService.add({
+                severity: 'error',
+                summary: `Registration Failed - ${field}`,
+                detail: message,
+              });
+            });
+          });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Registration Failed',
+            detail: 'An unexpected error occurred',
+          });
+        }
+      },
     });
   }
 }
