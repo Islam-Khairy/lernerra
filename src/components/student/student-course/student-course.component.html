@@ -3,7 +3,7 @@
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
     <div class="col-span-1 lg:!col-span-2 flex flex-col gap-6">
       <div class="rounded-lg">
-        <video [src]="videoUrl()||''" controls class="w-full h-fit"></video>
+        <video [src]="vedioURL() || ''" controls class="w-full h-fit"></video>
       </div>
       <div class="flex flex-col gap-2">
         <h3 class="text-lg font-medium">Course Overview</h3>
@@ -11,27 +11,41 @@
       </div>
       <div class="flex flex-col gap-2">
         <h3 class="text-lg font-medium">Instructor</h3>
-        <a class="text-lg font-medium text-[#2563EB]" [routerLink]="['/instructor',course()?.instructor?.id]">
+        <a
+          class="text-lg font-medium text-[#2563EB]"
+          [routerLink]="['/instructor', course()?.instructor?.id]"
+        >
           {{ course()?.instructor?.fullName }}
         </a>
       </div>
     </div>
     <div class="col-span-1 bg-[#F8FAFC] rounded-lg p-6 flex flex-col gap-4">
       @for (lesson of course()?.lessons; track $index;let i =$index) {
-      <div class="flex justify-between items-center p-2 cursor-pointer" (click)="chooseVideo(lesson.vedioURL)"
-        [ngClass]="{'bg-blue-600 text-white': videoUrl() === lesson.vedioURL}">
+      <div
+        class="flex justify-between items-center p-2 cursor-pointer"
+        (click)="chooseVideo(lesson.vedioURL)"
+        [ngClass]="{ 'bg-blue-600 text-white': vedioURL() === lesson.vedioURL }"
+      >
         <div class="flex items-center gap-2">
           @if(progress >= ((i+1)/course()?.lessons?.length!)*100) {
-          <input type="checkbox" checked (change)="markLessonAsCompleted(lesson.id)" [disabled]="isChecked()" />
-          }
-          @else {
-          <input type="checkbox" (change)="markLessonAsCompleted(lesson.id)" [disabled]="isChecked()" />
+          <input
+            type="checkbox"
+            checked
+            (change)="markLessonAsCompleted(lesson.id)"
+            [disabled]="isChecked()"
+          />
+          } @else {
+          <input
+            type="checkbox"
+            (change)="markLessonAsCompleted(lesson.id)"
+            [disabled]="isChecked()"
+          />
           }
 
           <span>{{ lesson.title }}</span>
         </div>
         <div class="flex items-center gap-2">
-          <i class="pi pi-video text-lg text-[#64748B]"></i>
+          <i class="pi pi-video text-lg"></i>
 
           <span>{{ this.calcDuration(lesson.duration) }}m</span>
         </div>
@@ -40,7 +54,7 @@
     </div>
     <div>
       <p class="my-3 text-lg">rate this course ...</p>
-        <p-rating [(ngModel)]="this.rating" (click)="this.addRating()"/>
+      <p-rating [(ngModel)]="this.rating" (click)="this.addRating()" />
     </div>
   </div>
 </div>

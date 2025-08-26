@@ -1,7 +1,7 @@
-<div class="mx-6 lg:mx-24">
+<div class="mx-6 lg:mx-24 mb-4 lg:mb-0">
   <h1 class="text-3xl font-semibold mt-12 mb-6">Checkout Page</h1>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="col-span-1 lg:col-span-2 h-screen overflow-y-auto">
+    <div class="col-span-1 lg:col-span-2 lg:h-screen overflow-y-auto">
       <div class="border border-[#E2E8F0] rounded-lg flex flex-col gap-2 p-4">
         <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
           <div class="col-span-1 flex flex-col gap-1">
@@ -72,7 +72,7 @@
         }
       </div>
     </div>
-    <div class="col-span-1">
+    <div class="col-span-1 lg:-mt-11">
       <h1 class="text-[#0F172A] text-xl font-semibold mb-4">Order Details</h1>
       <div class="flex flex-col gap-4">
         <div
@@ -94,8 +94,8 @@
                 ><span>Lectures</span>
               </div>
               <div class="flex items-center gap-1">
-                <span>{{ fullduration }}</span
-                ><span>Total Hours</span>
+                <span>{{ (fullduration/60).toFixed(0) }}</span
+                ><span>Total Minutes</span>
               </div>
             </div>
             <h3 class="font-semibold">${{ course.price }}</h3>
@@ -134,7 +134,7 @@
         <!-- <a [routerLink]="['/order-completed']"> -->
         <button
           (click)="pay()"
-          class="text-[#FFFFFF] py-2 bg-[#020617] rounded-md mt-4 w-full"
+          class="text-[#FFFFFF] py-3 bg-[#020617] rounded-md mt-4 w-full cursor-pointer"
           [disabled]="disableBtn"
         >
           Proceed to Checkout
@@ -145,7 +145,7 @@
   </div>
 </div>
 
-<p-toast position="top-left" [baseZIndex]="10000" key="custom"></p-toast>
+<p-toast position="top-right" [baseZIndex]="10000" key="custom"></p-toast>
 
 <ng-template #noImage>
   <img

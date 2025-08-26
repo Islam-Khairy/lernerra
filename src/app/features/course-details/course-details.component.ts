@@ -34,7 +34,7 @@ export class CourseDetailsComponent {
   enrollmentData: any;
   isenrolled: boolean = false;
   items = signal<MenuItem[] | undefined>(undefined);
-  stars: number = 5;
+  stars!: number;
   courseId: number = 0;
   //  stars!:number
      fullduration:number=0
@@ -81,7 +81,7 @@ export class CourseDetailsComponent {
           console.log(this.course.instructor.fullName)
 
           this.durationCalc()
-          this.stars=res.rate
+          this.stars=res.data.rate
         },
         error:(err)=>{
           console.log("error",err);

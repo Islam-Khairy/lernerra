@@ -26,7 +26,7 @@
     <span class="text-sm">By: {{ course.instructor.fullName }}</span> -->
     <div class="!flex !items-center gap-2 my-2 mb-2">
       <i class="pi pi-star-fill text-yellow-500 text-lg"></i>
-      <span class="text-md"> ({{ course()?.rate }})</span>
+      <span class="text-md"> ({{ (course()?.rate)?.toFixed(1) }})</span>
     </div>
     <!-- @if (course.duration || course.lecture || course.level) {
     <div class="flex items-center gap-3 text-sm text-[#334155]">

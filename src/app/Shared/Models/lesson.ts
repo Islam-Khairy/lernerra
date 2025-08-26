@@ -2,8 +2,8 @@ export interface Lesson {
   id: number;
   title: string;
   description: string;
-  vedioURL: string; 
+  vedioURL: string;
   duration: number;
-  uploadAt: string;  
+  uploadAt: string;
   isFree: boolean;
 }

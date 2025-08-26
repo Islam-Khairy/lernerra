@@ -8,7 +8,7 @@
   @for (course of StudentCourses|filterPipe:searchInput; track $index) {
   <app-course-card
     [course]="course"
-    [routerLink]="['/owend-course', course.id]"
+    [routerLink]="['/owned-course', course.id]"
   ></app-course-card>
   }
 </div>

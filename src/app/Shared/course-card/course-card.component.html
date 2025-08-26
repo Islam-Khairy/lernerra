@@ -12,7 +12,7 @@
             <div class="mb-2 text-gray-700">By {{ course()?.instructor?.fullName }}</div>
             <div class="flex mb-2 gap-2 items-center">
                 <p-rating [(ngModel)]="rating"></p-rating>
-                <p class="text-gray-500 text-sm font-semibold">({{course()?.rate}})</p>
+                <p class="text-gray-500 text-sm font-semibold">({{(course()?.rate)?.toFixed(1)}})</p>
             </div>
             <div class="text-gray-700 mb-1">{{course()?.description}}</div>
         </div>

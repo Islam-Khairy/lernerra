@@ -61,7 +61,7 @@ export class SignUpComponent {
           summary: 'Registered Successfully',
           detail: 'please login',
         });
-        this.router.navigateByUrl('/log-in');
+        // this.router.navigateByUrl('/log-in');
       },
       error: (error) => {
         console.log('error: ', error);

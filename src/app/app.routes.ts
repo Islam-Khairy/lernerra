@@ -29,6 +29,7 @@ import { StudentCourseComponent } from '../components/student/student-course/stu
 import { UpdateCourseComponent } from '../components/instructor/sidebar/update-course/update-course.component';
 import { authGuard } from '../../src/app/core/guards/auth.guard';
 import { UpdateProfileComponent } from '../components/student/student-profile-sections/update-profile/update-profile.component';
+import { enrollCourseGuard } from './core/guards/enrollCourseGuard';
 
 export const routes: Routes = [
   {
@@ -176,9 +177,10 @@ export const routes: Routes = [
     title: 'Access Denied',
   },
   {
-    path: 'owend-course/:id',
+    path: 'owned-course/:id',
     component: StudentCourseComponent,
     title: 'My Course',
+    canActivate: [enrollCourseGuard],
   },
   {
     path: '**',

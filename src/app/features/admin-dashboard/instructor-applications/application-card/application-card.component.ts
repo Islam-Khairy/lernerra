@@ -3,6 +3,7 @@ import { ApplicationStatus, instructorApplicationResponse } from '../../../../Sh
 import { ProgressSpinner } from 'primeng/progressspinner';
 import { Button } from "primeng/button";
 import { NgClass } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-application-card',
@@ -24,7 +25,7 @@ export class ApplicationCardComponent {
     
    }
    getCvPath(){
-    return "http://localhost:5138" + this.application()?.cvUrl
+    return environment.apiUrl + this.application()?.cvUrl
    }
 
    onClick(isApproved:boolean){

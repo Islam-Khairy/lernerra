@@ -1,4 +1,5 @@
-<h1 class="text-center text-4xl my-10">Admin Dashboard</h1>
+<div class="min-h-[calc(100vh-6rem)]">
+  <h1 class="text-center text-4xl my-10">Admin Dashboard</h1>
 <div class="grid grid-cols-1 lg:!grid-cols-4 lg:px-14 lg:gap-14">
   <div class="col-span-1">
     <div class="border border-gray-100 bg-gray-100 rounded-xl">
@@ -8,7 +9,7 @@
             adminImage() ||
             'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'
           "
-          class="my-5 w-[80%] h-40 rounded-lg object-cover"
+          class="my-5 w-40 h-40 rounded-full object-cover"
           alt="Admin Image"
         />
         <h2 class="font-medium mb-7">{{ adminName() }}</h2>
@@ -41,4 +42,6 @@
   <div class="col-span-1 lg:!col-span-3">
     <router-outlet></router-outlet>
   </div>
+</div>
+
 </div>
