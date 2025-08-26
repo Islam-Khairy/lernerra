@@ -57,7 +57,6 @@ export class SignUpComponent {
         });
       this.router.navigateByUrl("/log-in")
       },
-<<<<<<< HEAD
       error: (error) => {
         console.log('error: ', error);
 
@@ -79,16 +78,6 @@ export class SignUpComponent {
           });
         }
       },
-    });
-=======
-      error:(error)=>{
-        // this.messageService.add({
-        //   severity: 'error',
-        //   summary: 'Registration Failed',
-        //   detail: error.error
-        // });
-      }
     })
->>>>>>> 71848cad6d1795809ce6fa08667cfe10e1438603
   }
 }
