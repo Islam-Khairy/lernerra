@@ -2,7 +2,7 @@ import { effect, inject, Injectable, signal } from '@angular/core';
 import { User, UserInfo } from '../../Shared/Models/User';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

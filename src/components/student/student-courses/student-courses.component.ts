@@ -1,7 +1,6 @@
-import { Component, inject, Output, output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CourseCardComponent } from './course-card/course-card.component';
 import { StudentSectionHeaderComponent } from '../student-profile-sections/student-section-header/student-section-header.component';
-import { EnrolledCourse } from '../../../app/Shared/Models/enrolled-course';
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ICourse } from '../../../app/interfaces/course/icourse';
 import { AccountService } from '../../../app/core/services/account.service';
@@ -11,20 +10,15 @@ import { FilterPipe } from '../../../app/core/pipes/filter-pipe.pipe';
 
 @Component({
   selector: 'app-student-courses',
-  imports: [
-    CourseCardComponent,
-    StudentSectionHeaderComponent,
-    RouterLink,
-    FilterPipe,
-  ],
+  imports: [CourseCardComponent, StudentSectionHeaderComponent,RouterLink,FilterPipe],
   templateUrl: './student-courses.component.html',
   styleUrl: './student-courses.component.css',
 })
 export class StudentCoursesComponent {
-  enrollementService = inject(EnrollmentService);
+  enrollementService=inject(EnrollmentService)
   searchInput: string = '';
   // StudentCourses:EnrolledCourse[]=[];
-  courses: any;
+  courses:any;
 
   // getStudentCourses()
   // {
@@ -42,27 +36,29 @@ export class StudentCoursesComponent {
   //   )
   // }
 
-  studentId!: string;
-  StudentCourses!: ICourse[];
 
-  ngOnInit(): void {
-    this.getStudentCourses();
+
+
+studentId!:string;
+StudentCourses!:ICourse[]
+
+ngOnInit(): void {
+ this.getStudentCourses()
+  
+}
+  constructor(private courseService:CourseService,private accountService:AccountService) {
+    this.studentId=accountService.user()?.userId || "";
   }
-  constructor(
-    private courseService: CourseService,
-    private accountService: AccountService
-  ) {
-    this.studentId = accountService.user()?.userId || '';
-  }
-  getStudentCourses() {
+  getStudentCourses(){
     this.courseService.getStudentCourses().subscribe({
-      next: (res: any) => {
+      next:(res: any)=>{
         console.log(res);
-        this.StudentCourses = res;
+        this.StudentCourses=res
       },
-      error: (err: any) => {
+      error:(err: any)=>{
         console.log(err);
-      },
-    });
+      }
+    })
   }
+
 }

@@ -3,7 +3,7 @@
     <div class="col-span-1 ">
         <div class="border  border-gray-100 bg-gray-100 rounded-xl ">
             <div class="flex flex-col items-center">
-                <img [src]="adminImage()" class="my-5 w-[80%] h-40 rounded-lg object-cover" alt="Admin Image">
+                <img [src]="adminImage()|| 'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'" class="my-5 w-[80%] h-40 rounded-lg object-cover" alt="Admin Image">
                 <h2 class="font-medium mb-7">{{adminName()}}</h2>
 
             </div>
@@ -21,4 +21,3 @@
         <router-outlet></router-outlet>
     </div>
 </div>
-

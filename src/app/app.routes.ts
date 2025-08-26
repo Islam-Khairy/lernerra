@@ -43,16 +43,17 @@ export const routes: Routes = [
     path: 'student',
     component: StudentProfileSectionsComponent,
     canActivate: [authGuard([UserRole.Student])],
-    children: [
-      {
-        path: 'student-profile',
-        component: UpdateProfileComponent,
-      },
-      {
-        path: 'student-courses',
-        component: StudentCoursesComponent,
-      },
-    ],
+   children:[
+    {
+      path:'student-profile',
+      component:UpdateProfileComponent
+    },
+    {
+      path:'student-courses',
+      component:StudentCoursesComponent
+    }
+   ]
+    
   },
   {
     path: 'sign-up',
@@ -69,7 +70,8 @@ export const routes: Routes = [
   {
     path: 'check-out',
     component: CheckOutPageComponent,
-    canActivate: [authGuard([UserRole.Student])],
+    canActivate: [authGuard([UserRole.Student])]
+
   },
   {
     path: 'order-completed',
@@ -99,7 +101,7 @@ export const routes: Routes = [
   {
     path: 'instructor-dashboard',
     component: SidebarComponent,
-    canActivate: [authGuard([UserRole.Instructor])],
+    canActivate:[authGuard([UserRole.Instructor])]
   },
   {
     path: 'add-course',
@@ -107,7 +109,7 @@ export const routes: Routes = [
   },
   {
     path: 'update-course/:id',
-    component: UpdateCourseComponent,
+    component: UpdateCourseComponent
   },
   {
     path: 'addAdmin',
@@ -127,6 +129,7 @@ export const routes: Routes = [
         component: InstructorApplicationsComponent,
       },
       {
+
         path: 'adminCourses',
         component: AdminCoursesComponent,
       },
@@ -134,23 +137,24 @@ export const routes: Routes = [
         path: 'Admins',
         component: AdminsComponent,
       },
+
     ],
-    canActivate: [authGuard([UserRole.Admin])],
+    canActivate:[authGuard([UserRole.Admin])]
   },
   {
     path: 'success',
     component: SuccessComponent,
   },
   {
-    path: 'access-denied',
-    component: AccessDeniedComponent,
+    path:'access-denied',
+    component:AccessDeniedComponent
   },
   {
-    path: 'owend-course/:id',
-    component: StudentCourseComponent,
+    path:'owend-course/:id',
+    component:StudentCourseComponent
   },
   {
-    path: '**',
-    component: HomePageComponent,
-  },
+    path:'**',
+    component:HomePageComponent
+  }
 ];

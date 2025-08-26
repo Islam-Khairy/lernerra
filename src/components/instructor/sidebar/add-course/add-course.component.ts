@@ -35,13 +35,13 @@ import { MessageService } from 'primeng/api';
     SelectModule,
     FormsModule,
   ],
-  providers: [MessageService],
+  providers:[MessageService],
   templateUrl: './add-course.component.html',
   styleUrl: './add-course.component.css',
 })
 export class AddCourseComponent {
-  categoryService = inject(CategoryService);
-  router = inject(Router);
+  categoryService=inject(CategoryService)
+  router=inject(Router)
   isSaved: boolean = false;
   selectedLevel: string = '';
   levels = [
@@ -73,7 +73,8 @@ export class AddCourseComponent {
     private courseService: CourseService,
     private accountService: AccountService,
     private cloudService: CloudinaryUploadService,
-    private toastr: ToastrService // private categoryService: CategoryService
+    private toastr: ToastrService,
+    // private categoryService: CategoryService
   ) {}
 
   removeImage(): void {
@@ -131,7 +132,8 @@ export class AddCourseComponent {
       return;
     }
     this.CourseForm.patchValue({
-      instructorId: this.accountService.user()?.userId,
+      instructorId:
+      this.accountService.user()?.userId,
       currency: 'USD',
     });
     console.log(this.CourseForm.value);

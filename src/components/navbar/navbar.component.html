@@ -51,11 +51,11 @@
     }@else {
       @if (this.accountService.user()?.roles?.includes('Student')) {
         <a class="overflow-hidden rounded-full w-15 h-15" routerLink="/student/student-profile">
-        <img [src]="this.accountService.user()?.pictureUrl" [alt]="this.accountService.user()?.fullName" class="w-full h-full object-cover">
+        <img [src]="this.accountService.user()?.pictureUrl || 'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'" class="w-full h-full object-cover">
       </a>
       }@else if (this.accountService.user()?.roles?.includes('Instructor')) {
         <a class="overflow-hidden rounded-full w-15 h-15" routerLink="/instructor-dashboard">
-        <img [src]="this.accountService.user()?.pictureUrl" [alt]="this.accountService.user()?.fullName" class="w-full h-full object-cover">
+        <img [src]="this.accountService.user()?.pictureUrl || 'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'"  class="w-full h-full object-cover">
       </a>
       }
       <p class="text-lg text-gray-700">{{this.accountService.user()?.fullName}}</p>

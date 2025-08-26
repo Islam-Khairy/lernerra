@@ -6,8 +6,8 @@ import { CoursePrograssService } from '../../../../app/core/services/courseServi
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Dialog } from 'primeng/dialog';
-import { ButtonModule, Button } from 'primeng/button';
+import { Dialog } from "primeng/dialog";
+import { Button } from 'primeng/button';
 import { ICourse } from '../../../../app/interfaces/course/icourse';
 import { AccountService } from '../../../../app/core/services/account.service';
 @Component({
@@ -19,8 +19,8 @@ import { AccountService } from '../../../../app/core/services/account.service';
     RatingModule,
     FormsModule,
     Dialog,
-    Button,
-  ],
+    Button
+],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css',
 })
@@ -28,18 +28,18 @@ export class CourseCardComponent {
   constructor(
     private progressService: CoursePrograssService,
     private activatedRoute: ActivatedRoute,
-    private accountService: AccountService
+    private accountService:AccountService
   ) {
     this.userRoles.set(this.accountService.user()?.roles || []);
   }
-  course = input<ICourse>();
-  userRoles = signal<string[]>([]);
+ course=input<ICourse>()
+  userRoles = signal<string[]>([]) ;
   @Input() role: string = 'student';
   progress = 0;
-  courseId = signal<number>(0);
-  visible: boolean = false;
+  courseId=signal<number>(0);
+visible: boolean = false;
   lessonProgressList: any;
-  courseRate = this.course()?.rate || 0;
+courseRate=this.course()?.rate || 0;
   getStars(rating: number): string[] {
     const fullStars = Math.floor(rating);
     const halfStar = rating % 1 >= 0.5;
@@ -51,15 +51,16 @@ export class CourseCardComponent {
     ];
   }
 
-  ngOnInit() {
-    console.log('course', this.course()); // لو محتاجها للدبجنج
-    this.courseId.set(this.course()?.id || 0);
-
-    this.getCourseProgress();
-  }
-  showDialog() {
-    this.visible = true;
-  }
+ngOnInit() {
+  console.log('course', this.course()); // لو محتاجها للدبجنج
+  this.courseId.set( this.course()?.id || 0);
+  
+  this.getCourseProgress();
+}
+showDialog(){
+  this.visible = true;
+ 
+}
 
   getCourseProgress() {
     console.log(this.courseId());

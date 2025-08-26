@@ -12,7 +12,7 @@ export class EnrollmentService {
   enrollFreeCourse(enrollmentData: any): Observable<any> {
     console.log('call api ', enrollmentData);
     var res = this.http.post(
-      '${environment.apiUrl}/Enrollment/enroll',
+      `${environment.apiUrl}/Enrollment/enroll`,
       enrollmentData
     );
     console.log(res);
