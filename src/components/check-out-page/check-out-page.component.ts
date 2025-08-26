@@ -99,18 +99,17 @@ cardHolderName: any;
           this.course=res.data
           console.log("cours",this.course)
 
-          console.log(this.course.name)
-          console.log(this.course.lessons.length)
-          console.log(this.course.description)
-          console.log(this.course.instructor.fullName)
-          this.durationCalc()
-        },
-        error:(err)=>{
-          console.log("error",err);
-
-        }
-      })
-    }
+        // console.log(this.course.name);
+        // console.log(this.course.lessons.length);
+        // console.log(this.course.description);
+        // console.log(this.course.instructor.fullName);
+        this.durationCalc();
+      },
+      error: (err) => {
+        console.log('error', err);
+      },
+    });
+  }
 
      durationCalc(){
       this.course.lessons?.forEach(l => {
@@ -222,4 +221,3 @@ catch (err)
 //       alert('An error occurred during payment.');
 //     }
 //   }
- 

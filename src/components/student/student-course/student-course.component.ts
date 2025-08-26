@@ -1,10 +1,9 @@
 
-import { Component, effect, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { Lesson } from '../../../app/Shared/Models/enrolled-course';
 import { CourseService } from '../../../app/services/course/course-service.service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ICourse } from '../../../app/interfaces/course/icourse';
-import { LessonService } from '../../../app/services/lesson/lesson-service.service';
 import { NgClass } from '@angular/common';
 import { CoursePrograssService } from '../../../app/core/services/courseService/course-prograss.service';
 import { AccountService } from '../../../app/core/services/account.service';

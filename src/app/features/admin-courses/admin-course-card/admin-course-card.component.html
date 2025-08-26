@@ -1,4 +1,4 @@
-<div class="h-full">
+<div class="h-full col-span-1">
   <a
     class="border block border-gray-300 bg-white border-surface rounded-xl m-2 p-4 hover:shadow relative overflow-hidden"
   >
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="mb-2 font-bold">{{ course.name }}</div>
-    <div class="mb-2 text-gray-700">{{course.instructor.fullName}}</div>
+    <div class="mb-2 text-gray-700">{{course.instructor?.fullName}}</div>
     <div class="flex mb-2 gap-2 items-center">
       <i class="fa-solid fa-star text-amber-300"></i>
       <p class="text-gray-500 text-sm font-semibold">({{ course.rate }})</p>

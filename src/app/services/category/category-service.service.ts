@@ -12,5 +12,4 @@ export class CategoryService {
   getCategories():Observable<any>{
     return this._http.get(`${environment.apiUrl}/Category`);
   }
-
 }

@@ -17,7 +17,7 @@
                 <div class="rounded-full overflow-hidden w-[50px] h-[50px]">
                     <img class="w-full h-full" [src]="course.instructor.imageUrl">
                 </div>
-                <p class="text-gray-500">Created by <a class="text-blue-500" [routerLink]="['/instructor',course.instructor.id]">{{course.instructor.fullName}}</a></p>
+                <p class="text-gray-500">Created by <a class="hover:text-blue-500 hover:underline duration-75" [routerLink]="['/instructor',course.instructor.id]">{{course.instructor.fullName}}</a></p>
             </div>
             <p-divider></p-divider>
             <h3 class="text-2xl mb-2 ">Course Description</h3>
@@ -26,9 +26,9 @@
             <p-divider class="mb-6"></p-divider>
             <h3 class="text-2xl mb-4">Instructor</h3>
 
-            <a class="text-blue-500 text-xl mb-3 hover:text-blue-400 " [routerLink]="['/instructor',course.instructor.id]" >{{course.instructor.fullName}}</a>
+            <a class="text-xl mb-3 hover:text-blue-500 hover:underline duration-75" [routerLink]="['/instructor',course.instructor.id]" >{{course.instructor.fullName}}</a>
             <!-- <p class="text-gray-700 text-md mb-3">{{course.instructor.instructorApplication.specialization}}</p>-->
-             <div class="flex gap-2 mb-4">
+             <div class="flex gap-2 my-4">
                 <div class="rounded-full overflow-hidden w-[110px] h-[110px]">
                     <img [src]="course.instructor.imageUrl" class="w-full h-full">
                 </div>
@@ -73,14 +73,14 @@
                 }
                
                  <p-divider></p-divider>
-                <p class="mt-4 text-lg">Share</p>
+                <!-- <p class="mt-4 text-lg">Share</p>
                 <div class="flex gap-4 justify-center mb-4">
                     <a class="w-8 h-8 cursor-pointer shadow flex justify-center border border-gray-200 items-center bg-gray-100 rounded-full" target="_blank" href="https://www.facebook.com"> <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"class="w-5 h-5" alt="Facebook" /></a>
                     <a class="w-8 h-8 cursor-pointer shadow flex justify-center border border-gray-200 items-center bg-gray-100 rounded-full" target="_blank" href="https://www.github.com"> <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/github.svg" class="w-5 h-5" /></a>
                     <a class="w-8 h-8 cursor-pointer shadow flex justify-center border border-gray-200 items-center bg-gray-100 rounded-full" target="_blank" href="https://www.google.com"> <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="w-5 h-5" /></a>
                     <a class="w-8 h-8 cursor-pointer shadow flex justify-center border border-gray-200 items-center bg-gray-100 rounded-full" target="_blank" href="https://www.x.com"> <img src="https://cdn.jsdelivr.net/npm/simple-icons@v10/icons/x.svg" class="w-5 h-5" alt="X" /></a>
                     <a class="w-8 h-8 cursor-pointer shadow flex justify-center border border-gray-200 items-center bg-gray-100 rounded-full" target="_blank" href="https://www.microsoft.com"> <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="w-5 h-5" /></a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

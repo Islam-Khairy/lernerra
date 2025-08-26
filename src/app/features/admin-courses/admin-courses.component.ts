@@ -2,7 +2,6 @@ import { Component, signal, WritableSignal } from '@angular/core';
 import { AdminCourseCardComponent } from "./admin-course-card/admin-course-card.component";
 import { ICourse } from './../../interfaces/course/icourse';
 import { CourseService } from '../../services/course/course-service.service';
-import { ToastrService } from 'ngx-toastr';
 import { initFlowbite } from 'flowbite';
 @Component({
   selector: 'app-admin-courses',

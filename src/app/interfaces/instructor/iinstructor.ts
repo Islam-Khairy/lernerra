@@ -4,7 +4,7 @@ export interface IInstructor {
     fullName: string
     phoneNumber: string
     imageUrl: string
-    instructorApplication?: InstructorApplication
+    instructorApplication: InstructorApplication
 }
 
 export interface InstructorApplication {
@@ -12,7 +12,7 @@ export interface InstructorApplication {
     fullName: string
     email: string
     phone: string
-    specialization?: string
+    specialization: string
     cvUrl: string
     status: number
     appliedAt: string

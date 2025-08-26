@@ -1,23 +1,44 @@
-<h1  class="text-center text-4xl my-10">Admin Dashboard</h1>
-<div class="grid grid-cols-4 px-14 gap-14">
-    <div class="col-span-1 ">
-        <div class="border  border-gray-100 bg-gray-100 rounded-xl ">
-            <div class="flex flex-col items-center">
-                <img [src]="adminImage()|| 'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'" class="my-5 w-[80%] h-40 rounded-lg object-cover" alt="Admin Image">
-                <h2 class="font-medium mb-7">{{adminName()}}</h2>
-
-            </div>
-            <p-divider></p-divider>
-            <div class="flex flex-col">
-                <a routerLink="instructor-applications" routerLinkActive="bg-blue-600 text-white" class=" pl-4 py-3 hover:bg-blue-700 duration-200 transition  hover:text-white">Instructor Applications</a>
-                <hr class="text-gray-200">
-                <a class=" pl-4 py-3 hover:bg-blue-700 duration-200 transition  hover:text-white" routerLink="adminCourses" routerLinkActive="bg-blue-600 text-white">Courses</a>
-                <hr class="text-gray-200">
-                <a class=" pl-4 py-3 hover:bg-blue-700 duration-200 transition  hover:text-white" routerLink="Admins" routerLinkActive="bg-blue-600 text-white">Admins</a>
-            </div>
-        </div>
+<h1 class="text-center text-4xl my-10">Admin Dashboard</h1>
+<div class="grid grid-cols-1 lg:!grid-cols-4 lg:px-14 lg:gap-14">
+  <div class="col-span-1">
+    <div class="border border-gray-100 bg-gray-100 rounded-xl">
+      <div class="flex flex-col items-center">
+        <img
+          [src]="
+            adminImage() ||
+            'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'
+          "
+          class="my-5 w-[80%] h-40 rounded-lg object-cover"
+          alt="Admin Image"
+        />
+        <h2 class="font-medium mb-7">{{ adminName() }}</h2>
+      </div>
+      <p-divider></p-divider>
+      <div class="flex flex-col">
+        <a
+          routerLink="instructor-applications"
+          routerLinkActive="bg-blue-600 text-white"
+          class="pl-4 py-3 hover:bg-blue-700 duration-200 transition hover:text-white"
+          >Instructor Applications</a
+        >
+        <hr class="text-gray-200" />
+        <a
+          class="pl-4 py-3 hover:bg-blue-700 duration-200 transition hover:text-white"
+          routerLink="adminCourses"
+          routerLinkActive="bg-blue-600 text-white"
+          >Courses</a
+        >
+        <hr class="text-gray-200" />
+        <a
+          class="pl-4 py-3 hover:bg-blue-700 duration-200 transition hover:text-white"
+          routerLink="Admins"
+          routerLinkActive="bg-blue-600 text-white"
+          >Admins</a
+        >
+      </div>
     </div>
-    <div class="col-span-3">
-        <router-outlet></router-outlet>
-    </div>
+  </div>
+  <div class="col-span-1 lg:!col-span-3">
+    <router-outlet></router-outlet>
+  </div>
 </div>
