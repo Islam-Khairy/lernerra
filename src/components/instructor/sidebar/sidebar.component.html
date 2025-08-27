@@ -1,8 +1,8 @@
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div class="grid grid-cols-8">
+<div class="grid grid-cols-1 lg:!grid-cols-8 ">
   <div
-    class="col-span-1 flex flex-col gap-4 bg-[#0F172A] p-4 h-[calc(100vh-6rem)] text-[#E2E8F0] relative"
+    class="col-span-1 my-6 lg:!my-0 flex flex-col items-center lg:!items-start gap-4 lg:bg-[#0F172A] p-4 lg:h-[calc(100vh-6rem)] lg:text-[#E2E8F0] relative"
   >
   <img  [src]="accountService.user()?.pictureUrl" class="w-30 h-30 rounded-lg ">
     <button
@@ -37,7 +37,7 @@
       </div>
     </div> -->
   </div>
-  <div class="col-span-7 p-8 h-[calc(100vh-6rem)] overflow-y-auto">
+  <div class="col-span-7 p-8 lg:h-[calc(100vh-6rem)] lg:overflow-y-auto border border-gray-200 lg:border:transparent mx-2 lg:!mx-0">
     @switch (selectedSection) { @case (0) {
     <div class="w-full flex items-center justify-end">
       <button
@@ -48,7 +48,7 @@
         Add Course
       </button>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:col-span-4 gap-4">
       @for (item of courses; track $index) {
       <div class="relative group">
         <app-course-card [course]="item"

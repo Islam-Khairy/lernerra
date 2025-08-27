@@ -12,7 +12,6 @@ import { ResetPasswordComponent } from '../components/log-in/reset-password/rese
 import { CourseDetailsComponent } from './features/course-details/course-details.component';
 import { InstructorDetailsComponent } from './features/instructor-details/instructor-details.component';
 import { CategoryComponent } from './features/category/category.component';
-import { Component } from '@angular/core';
 import { StudentCoursesComponent } from '../components/student/student-courses/student-courses.component';
 import { SidebarComponent } from '../components/instructor/sidebar/sidebar.component';
 import { AddCourseComponent } from '../components/instructor/sidebar/add-course/add-course.component';

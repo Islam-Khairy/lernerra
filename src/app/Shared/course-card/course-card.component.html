@@ -1,11 +1,10 @@
-<a
-    class="border h-96 block border-gray-300 bg-white border-surface rounded-xl m-2 p-4 transfrom cursor-pointer transition-all duration-200 hover:scale-[1.05] hover:shadow-2xl">
-
-    <div class="flex flex-col justify-between h-full">
+<div
+    class="col-span-1 border border-gray-200 p-3 rounded-xl cursor-pointer">
+    <div class="flex flex-col justify-between ">
         <div>
             <div class="mb-4">
                 <div class="flex justify-center ">
-                    <img [src]=" course()?.imageUrl " [alt]="course()?.name" class="h-40 w-full rounded-lg" />
+                    <img [src]=" course()?.imageUrl " [alt]="course()?.name" class="h-56 w-full rounded-lg" />
                 </div>
             </div>
             <div class="mb-2 font-bold">{{ course()?.name }}</div>
@@ -18,4 +17,4 @@
         </div>
         <div class=" font-semibold text-xl">{{ '$' + course()?.price }}</div>
     </div>
-</a>
+</div>
