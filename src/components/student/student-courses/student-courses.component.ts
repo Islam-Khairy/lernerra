@@ -40,7 +40,7 @@ export class StudentCoursesComponent {
 
 
 studentId!:string;
-StudentCourses!:ICourse[]
+StudentCourses: ICourse[] = [];
 
 ngOnInit(): void {
  this.getStudentCourses()
