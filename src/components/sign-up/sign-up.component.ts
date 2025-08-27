@@ -67,11 +67,18 @@ export class SignUpComponent {
         console.log('error: ', error);
 
         if (error.error?.errors) {
+          console.log('error.error.errors: ', error.error.errors);
           Object.entries(error.error.errors).forEach(([field, messages]) => {
-            (messages as string[]).forEach((message: string) => {
+            const errorMessages = Array.isArray(messages)
+              ? messages
+              : [messages];
+
+            errorMessages.forEach((message: string) => {
               this.messageService.add({
                 severity: 'error',
-                summary: `Registration Failed - ${field}`,
+                summary: Array.isArray(messages)
+                  ? `Registration Failed - ${field}`
+                  : 'Registration Failed',
                 detail: message,
               });
             });
