@@ -1,6 +1,6 @@
-<div class="mx-6 lg:mx-24 min-h-[calc(100vh-6rem)] mb-6">
+<div class="mx-6 lg:!mx-24 min-h-[calc(100vh-6rem)] mb-6">
   <h1 class="text-lg font-semibold text-gray-900 my-6">{{ course()?.name }}</h1>
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 lg:!grid-cols-3 gap-6">
     <div class="col-span-1 lg:!col-span-2 flex flex-col gap-6">
       <div class="rounded-lg">
         <video [src]="vedioURL() || ''" controls class="w-full h-fit"></video>
@@ -19,7 +19,7 @@
         </a>
       </div>
     </div>
-    <div class="col-span-1 bg-[#F8FAFC] rounded-lg p-6 flex flex-col gap-4">
+    <div class="col-span-1 bg-[#F8FAFC] rounded-lg p flex flex-col gap-4">
       @for (lesson of course()?.lessons; track $index;let i =$index) {
       <div
         class="flex justify-between items-center p-2 cursor-pointer"
@@ -42,7 +42,7 @@
           />
           }
 
-          <span>{{ lesson.title }}</span>
+          <span class="px-2">{{ lesson.title }}</span>
         </div>
         <div class="flex items-center gap-2">
           <i class="pi pi-video text-lg"></i>

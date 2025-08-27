@@ -3,14 +3,16 @@
   (submit)="onSubmit()"
   class="grid grid-cols-1 lg:!grid-cols-5"
 >
-  <div class="col-span-2 w-full h-[calc(100vh-6rem)] overflow-hidden">
+  <div
+    class="col-span-2 w-full h-[calc(100vh-6rem)] overflow-hidden hidden lg:!block"
+  >
     <img src="/images/sign-up.svg" alt="" class="w-full h-full object-cover" />
   </div>
 
   <div
-    class="col-span-3 boreder flex flex-col justify-center px-8 mb-4"
+    class="col-span-3 boreder flex flex-col justify-center px-4 md:!px-8 mb-6 lg:!mb-4"
   >
-    <h1 class="text-3xl font-bold text-[#0F172A] text-center my-8 lg:my-0">
+    <h1 class="text-3xl font-bold text-[#0F172A] text-center my-8 lg:!my-0">
       Create Your Account
     </h1>
     <div class="flex flex-col gap-4">
@@ -18,7 +20,7 @@
         <label for="" class="text-lg text-[#0F172A] font-semibold"
           >Full Name</label
         >
-        <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+        <div class="flex flex-col md:!flex-row gap-3 md:!gap-4">
           <input
             type="text"
             class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
@@ -74,7 +76,7 @@
         }
       </div>
 
-      <div class="flex flex-col md:flex-row w-full gap-4 md:gap-8">
+      <div class="flex flex-col md:!flex-row w-full gap-4 md:!gap-8">
         <div class="flex flex-col w-full gap-2">
           <label for="" class="text-lg text-[#0F172A] font-semibold">
             Password</label

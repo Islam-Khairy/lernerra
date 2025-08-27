@@ -1,10 +1,13 @@
 <p-toast></p-toast>
 <p-confirmDialog></p-confirmDialog>
-<div class="grid grid-cols-1 lg:!grid-cols-8 ">
+<div class="grid grid-cols-1 lg:!grid-cols-8">
   <div
-    class="col-span-1 my-6 lg:!my-0 flex flex-col items-center lg:!items-start gap-4 lg:bg-[#0F172A] p-4 lg:h-[calc(100vh-6rem)] lg:text-[#E2E8F0] relative"
+    class="col-span-1 my-6 lg:!my-0 flex flex-col items-center lg:!items-start gap-4 lg:!bg-[#0F172A] p-4 lg:!h-[calc(100vh-6rem)] lg:!text-[#E2E8F0] relative"
   >
-  <img  [src]="accountService.user()?.pictureUrl" class="w-30 h-30 rounded-lg ">
+    <img
+      [src]="accountService.user()?.pictureUrl"
+      class="w-30 h-30 rounded-lg"
+    />
     <button
       class="flex items-center gap-2 mt-4 cursor-pointer"
       (click)="selectSection(0)"
@@ -37,7 +40,9 @@
       </div>
     </div> -->
   </div>
-  <div class="col-span-7 p-8 lg:h-[calc(100vh-6rem)] lg:overflow-y-auto border border-gray-200 lg:border:transparent mx-2 lg:!mx-0">
+  <div
+    class="col-span-7 p-8 lg:!h-[calc(100vh-6rem)] lg:!overflow-y-auto border border-gray-200 lg:!border:transparent mx-2 lg:!mx-0"
+  >
     @switch (selectedSection) { @case (0) {
     <div class="w-full flex items-center justify-end">
       <button
@@ -48,12 +53,13 @@
         Add Course
       </button>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:col-span-4 gap-4">
+    <div class="grid grid-cols-1 md:!grid-cols-3 lg:!col-span-4 gap-4">
       @for (item of courses; track $index) {
       <div class="relative group">
-        <app-course-card [course]="item"
-         [role]="'instructor'
-         "></app-course-card>
+        <app-course-card
+          [course]="item"
+          [role]="'instructor'"
+        ></app-course-card>
 
         <div
           class="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -64,9 +70,9 @@
             [routerLink]="['/update-course', item.id]"
           >
             <i class="pi pi-pencil text-sm"></i>
-      </a>
+          </a>
           <button
-            (click)="confirmDelete($event,item.id)"
+            (click)="confirmDelete($event, item.id)"
             class="bg-red-500 text-white w-10 h-10 rounded-full hover:bg-red-600 shadow-lg cursor-pointer"
             title="Delete Course"
           >

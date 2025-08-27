@@ -1,34 +1,43 @@
-<div class="p-4 md:p-14">
-        <h1 class="text-2xl md:text-4xl font-bold mb-3 text-nowrap">{{this.categoryName}} Courses</h1>
-        <div class="text-center w-full mb-6">
-            <input type="text" [(ngModel)]="search" placeholder="Search" class="rounded w-1/2 p-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6" />
-        </div>
-        <!-- <div class="flex justify-between">
+<div class="mx-4 md:!mx-12">
+  <h1 class="text-2xl md:!text-4xl font-bold mb-3 text-nowrap my-6">
+    {{ this.categoryName }} Courses
+  </h1>
+  <div class="text-center w-full mb-6">
+    <input
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Search"
+      class="rounded w-3/4 lg:!w-1/2 p-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6"
+    />
+  </div>
+  <!-- <div class="flex justify-between">
             <button class="border px-6 py-2 rounded-lg flex gap-2 items-center hover:bg-black hover:text-white transition duration-200 cursor-pointer"><i class="pi pi-filter"></i>Filter</button>
              <p-menu #menu [model]="sortOptions" [popup]="true" />
             <p-button severity="info" (click)="menu.toggle($event)" label="Relevance" icon="pi pi-angle-down"/>
         </div> -->
-        @if (this.courses) {
-            <section>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    @for (course of courses|filterPipe:search; track $index) {
-                        <app-course-card [course]="course" [routerLink]="['/course',course.id]"></app-course-card>
-                    }
-                </div>
-
-        </section>
-        }@else {
-            <p class="text-center text-3xl">no courses found</p>
-        }
-        
-
+  @if (this.courses) {
+  <section>
+    <div class="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-4">
+      @for (course of courses|filterPipe:search; track $index) {
+      <app-course-card
+        [course]="course"
+        [routerLink]="['/course', course.id]"
+      ></app-course-card>
+      }
     </div>
-    <section class="p-4 md:px-14 my-10">
-        <h3 class="text-lg font-semibold mb-4">Featured Courses</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            @for (item of topCourses.slice(0,4); track $index) {
-                <app-course-card [course]="item" [routerLink]="['/course',item.id]"></app-course-card>
-            }
-
-        </div>
-    </section>
+  </section>
+  }@else {
+  <p class="text-center text-3xl">no courses found</p>
+  }
+</div>
+<section class="mx-4 md:!mx-12 my-10 lg:!mt-20">
+  <h3 class="text-xl font-semibold mb-4">Featured Courses</h3>
+  <div class="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-4">
+    @for (item of topCourses.slice(0,4); track $index) {
+    <app-course-card
+      [course]="item"
+      [routerLink]="['/course', item.id]"
+    ></app-course-card>
+    }
+  </div>
+</section>

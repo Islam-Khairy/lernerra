@@ -66,30 +66,50 @@ export class SignUpComponent {
       error: (error) => {
         console.log('error: ', error);
 
-        if (error.error?.errors) {
-          console.log('error.error.errors: ', error.error.errors);
-          Object.entries(error.error.errors).forEach(([field, messages]) => {
-            const errorMessages = Array.isArray(messages)
-              ? messages
-              : [messages];
-
-            errorMessages.forEach((message: string) => {
-              this.messageService.add({
-                severity: 'error',
-                summary: Array.isArray(messages)
-                  ? `Registration Failed - ${field}`
-                  : 'Registration Failed',
-                detail: message,
-              });
-            });
-          });
-        } else {
+       if (error.error?.errors) {
+  console.log('error.error.errors: ', error.error.errors);
+  
+  // Check if it's a plain array (not an object)
+  if (Array.isArray(error.error.errors)) {
+    // Handle array case directly
+    error.error.errors.forEach((message: string) => {
+      if (message) { // Optional: check if message exists
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Registration Failed',
+          detail: message,
+        });
+      }
+    });
+  } else {
+    // Handle object case (field-specific errors)
+    Object.entries(error.error.errors).forEach(([field, messages]) => {
+      const errorMessages = Array.isArray(messages) ? messages : [messages];
+      errorMessages.forEach((message: string) => {
+        if (message) {
           this.messageService.add({
             severity: 'error',
-            summary: 'Registration Failed',
-            detail: 'An unexpected error occurred',
+            summary: `Registration Failed - ${field}`,
+            detail: message,
           });
         }
+      });
+    });
+  }
+} else if (error.error?.message) {
+  // Handle single message case
+  this.messageService.add({
+    severity: 'error',
+    summary: 'Registration Failed',
+    detail: error.error.message,
+  });
+} else {
+  this.messageService.add({
+    severity: 'error',
+    summary: 'Registration Failed',
+    detail: 'An unexpected error occurred',
+  });
+}
       },
     });
   }

@@ -1,9 +1,9 @@
-<div class="mx-6 lg:mx-24 mb-4 lg:mb-0">
+<div class="mx-6 lg:!mx-24 mb-4 lg:!mb-0">
   <h1 class="text-3xl font-semibold mt-12 mb-6">Checkout Page</h1>
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="col-span-1 lg:col-span-2 lg:h-screen overflow-y-auto">
+  <div class="grid grid-cols-1 lg:!grid-cols-2 gap-6">
+    <div class="col-span-1 lg:!col-span-2 lg:!h-screen overflow-y-auto">
       <div class="border border-[#E2E8F0] rounded-lg flex flex-col gap-2 p-4">
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+        <div class="grid grid-cols-1 md:!grid-cols-1 gap-4">
           <div class="col-span-1 flex flex-col gap-1">
             <label for="" class="font-semibold text-lg">Country</label>
             <input
@@ -44,7 +44,7 @@
               ></ngx-stripe-card-number>
             </div>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:!grid-cols-2 gap-4">
             <div class="flex flex-col gap-2">
               <label for="" class="text-sm text-[#0F172A]">Expiry Date</label>
               <div
@@ -72,7 +72,7 @@
         }
       </div>
     </div>
-    <div class="col-span-1 lg:-mt-11">
+    <div class="col-span-1 lg:!-mt-11">
       <h1 class="text-[#0F172A] text-xl font-semibold mb-4">Order Details</h1>
       <div class="flex flex-col gap-4">
         <div
@@ -94,7 +94,7 @@
                 ><span>Lectures</span>
               </div>
               <div class="flex items-center gap-1">
-                <span>{{ (fullduration/60).toFixed(0) }}</span
+                <span>{{ (fullduration / 60).toFixed(0) }}</span
                 ><span>Total Minutes</span>
               </div>
             </div>

@@ -1,6 +1,6 @@
 <form [formGroup]="updateProfileForm" (ngSubmit)="updateStudent()">
   <div class="flex flex-col gap-4 border border-gray-300 rounded-lg p-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+    <div class="grid grid-cols-1 md:!grid-cols-2 gap-6 md:!gap-12">
       <div class="grid-cols-1 flex flex-col gap-2">
         <label for="firstName">First Name</label>
         <input
@@ -38,7 +38,7 @@
         } }
       </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+    <div class="grid grid-cols-1 md:!grid-cols-2 gap-6 md:!gap-12">
       <div class="col-span-1 flex flex-col gap-2">
         <label for="phoneNumber">Phone Number</label>
         <input
@@ -87,13 +87,13 @@
             updateProfileForm.get('imageUrl')?.value ||
             '/images/student/image.jpg'
           "
-          class="md:ms-8 w-56 h-56 rounded-md object-cover mb-4"
+          class="md:!ms-8 w-56 h-56 rounded-md object-cover mb-4"
           alt="Profile Preview"
         />
       </div>
 
       <div class="mt-2">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:!grid-cols-2 gap-4">
           <div class="col-span-1 flex flex-col gap-2">
             <label class="font-medium">Image URL</label>
             <input
@@ -101,7 +101,6 @@
               formControlName="imageUrl"
               class="border border-gray-300 rounded-md p-3 w-full"
             />
-          
           </div>
 
           <input
@@ -119,13 +118,13 @@
           </label>
         </div>
         <div class="mt-2">
-            @if ( updateProfileForm.get('imageUrl')?.errors &&
-            updateProfileForm.get('imageUrl')?.touched ) {
-            @if(updateProfileForm.get('imageUrl')?.getError('required')) {
-            <p class="text-red-700">Image URL is required</p>
-            } @if(updateProfileForm.get('imageUrl')?.getError('pattern')) {
-            <p class="text-red-700">Image URL is invalid</p>
-            } }
+          @if ( updateProfileForm.get('imageUrl')?.errors &&
+          updateProfileForm.get('imageUrl')?.touched ) {
+          @if(updateProfileForm.get('imageUrl')?.getError('required')) {
+          <p class="text-red-700">Image URL is required</p>
+          } @if(updateProfileForm.get('imageUrl')?.getError('pattern')) {
+          <p class="text-red-700">Image URL is invalid</p>
+          } }
         </div>
       </div>
     </div>
