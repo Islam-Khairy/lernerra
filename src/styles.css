@@ -4,7 +4,7 @@
 @import "primeicons/primeicons.css";
 
 body {
-    font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 *::-webkit-scrollbar {
@@ -14,9 +14,14 @@ body {
 .p-rating .p-rating-icon,
 .p-rating .p-rating-on-icon,
 .p-rating .p-rating-off-icon {
-  color: #F59E42  !important;
+  color: #f59e42 !important;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
