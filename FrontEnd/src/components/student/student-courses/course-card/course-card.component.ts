@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { CoursePrograssService } from '../../../../app/core/services/courseService/course-prograss.service';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { ICourse } from '../../../../app/interfaces/course/icourse';
 import { AccountService } from '../../../../app/core/services/account.service';
 @Component({
@@ -23,7 +22,6 @@ import { AccountService } from '../../../../app/core/services/account.service';
 export class CourseCardComponent {
   constructor(
     private progressService: CoursePrograssService,
-    private activatedRoute: ActivatedRoute,
     private accountService:AccountService
   ) {
     this.userRoles.set(this.accountService.user()?.roles || []);
