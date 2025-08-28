@@ -26,12 +26,26 @@
           <img class="w-full h-full" [src]="course.instructor.imageUrl" />
         </div>
         <p class="text-gray-500">
-          Created by
+          Created by:
           <a
-            class="hover:text-blue-500 hover:underline duration-75"
+            class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
             [routerLink]="['/instructor', course.instructor.id]"
-            >{{ course.instructor.fullName }}</a
           >
+            {{ course.instructor.fullName }}
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
         </p>
       </div>
       <p-divider></p-divider>
@@ -42,10 +56,24 @@
       <h3 class="text-2xl mb-4">Instructor</h3>
 
       <a
-        class="text-xl mb-3 hover:text-blue-500 hover:underline duration-75"
+        class="text-xl text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200 cursor-pointer inline-flex items-center gap-1"
         [routerLink]="['/instructor', course.instructor.id]"
-        >{{ course.instructor.fullName }}</a
       >
+        {{ course.instructor.fullName }}
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+          />
+        </svg>
+      </a>
       <!-- <p class="text-gray-700 text-md mb-3">{{course.instructor.instructorApplication.specialization}}</p>-->
       <div class="flex gap-2 my-4">
         <div class="rounded-full overflow-hidden w-32 h-32">
