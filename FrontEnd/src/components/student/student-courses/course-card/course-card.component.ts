@@ -48,7 +48,7 @@ courseRate=this.course()?.rate || 0;
   }
 
 ngOnInit() {
-  console.log('course', this.course()); // لو محتاجها للدبجنج
+  console.log('course', this.course());
   this.courseId.set( this.course()?.id || 0);
   
   this.getCourseProgress();
@@ -57,7 +57,6 @@ showDialog(){
   this.visible = true;
  
 }
-
   getCourseProgress() {
     console.log(this.courseId());
     this.progressService.getCoursePrograss(this.courseId()).subscribe({
