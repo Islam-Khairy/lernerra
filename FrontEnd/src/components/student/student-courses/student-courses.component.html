@@ -1,0 +1,18 @@
+<app-student-section-header
+  [title]="'Courses'"
+  [count]="StudentCourses.length || 0"
+  (search)="searchInput = $event"
+></app-student-section-header>
+@if (StudentCourses.length > 0) {
+<div class="grid grid-cols-1 md:!grid-cols-3 gap-6 mb-12 mt-6">
+  @for (course of StudentCourses|filterPipe:searchInput; track $index) {
+  <app-course-card
+    [course]="course"
+    [routerLink]="['/owned-course', course.id]"
+  ></app-course-card>
+  }
+</div>
+
+}@else {
+<p class="text-center text-3xl m-10">no courses to show</p>
+}

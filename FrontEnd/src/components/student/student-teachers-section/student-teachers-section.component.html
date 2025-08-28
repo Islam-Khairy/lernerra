@@ -1,0 +1,11 @@
+<app-student-section-header
+  [title]="'Teachers'"
+  [count]="20"
+></app-student-section-header>
+<div class="grid grid-cols-1 md:!grid-cols-2 lg:!grid-cols-4 gap-6 mb-12 mt-6">
+  @for (teacher of studentTeachers; track $index) {
+  <div class="border border-gray-300 rounded-xl p-4">
+    <app-student-teacher-card [teacher]="teacher"></app-student-teacher-card>
+  </div>
+  }
+</div>

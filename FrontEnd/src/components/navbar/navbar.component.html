@@ -1,0 +1,127 @@
+<div
+  class="w-full h-24 border-b border-gray-200 px-4 md:!px-16 items-center justify-between flex gap-6 md:!gap-0"
+>
+  <div class="flex items-center gap-4">
+    <div class="overflow-hidden hidden md:!block">
+      <img
+        src="/images/Blue Online Learning Interactive UI Education Logo.png"
+        alt=""
+        class="w-55 h-55"
+      />
+    </div>
+    <div
+      class="flex items-center gap-2 md:!gap-4 text-sm md:!text-base text-nowrap"
+    >
+      @if(accountService.user()?.roles?.includes('Student')){
+      <a
+        [routerLink]="['/home']"
+        class="text-black"
+        routerLinkActive="text-blue-700"
+        >Home</a
+      >
+      <a
+        [routerLink]="['/student/student-courses']"
+        routerLinkActive="text-blue-700"
+        >My Courses</a
+      >
+      } @else if (accountService.user()?.roles?.includes('Instructor')) {
+      <a
+        [routerLink]="['/instructor-dashboard']"
+        routerLinkActive="text-blue-700"
+        >Dashboard</a
+      >
+      } @else if (accountService.user()?.roles?.includes('Admin')) {
+      <a
+        [routerLink]="['/admin-dashboard/adminCourses']"
+        routerLinkActive="text-blue-700"
+        >Courses</a
+      >
+      <a
+        [routerLink]="['/admin-dashboard/instructor-applications']"
+        routerLinkActive="text-blue-700"
+        >Applications</a
+      >
+      <a
+        [routerLink]="['/admin-dashboard/Admins']"
+        routerLinkActive="text-blue-700"
+        >Admins</a
+      >
+      } @else{
+      <a
+        [routerLink]="['/home']"
+        class="text-black text-nowrap me-2"
+        routerLinkActive="text-blue-700"
+        >Home</a
+      >
+      }
+    </div>
+    <!-- <a [routerLink]="['/student']">student</a>
+    <a routerLink="/admin-dashboard">admin</a>
+    <a routerLink="/instructor-dashboard">instructor</a> -->
+    <!-- <div class="relative w-full min-w-2xl">
+      <input
+        type="search"
+        placeholder="Search courses"
+        class="w-full px-4 py-2 border border-black/70 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <i
+        class="pi pi-search absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-black/70"
+      ></i>
+    </div> -->
+    <!-- <span class="text-nowrap">Teach on Udemy</span> -->
+  </div>
+
+  <div class="flex items-center gap-4">
+    <!-- <button>
+      <i class="pi pi-shopping-cart hover:text-green-600 transition duration-200 cursor-pointer !text-2xl text-black/70 "></i>
+    </button> -->
+    @if(accountService.user()==null){
+    <a
+      [routerLink]="['log-in']"
+      class="border border-black p-2 hover:bg-gray-100 hover:text-black transition duration-200 text-sm md:!text-base text-nowrap"
+      >Log In</a
+    >
+    <a
+      [routerLink]="['sign-up']"
+      class="border border-black p-2 text-white bg-[#334155] hover:bg-[#1e293b] duration-200 transition text-sm md:!text-base text-nowrap"
+      >Sign Up</a
+    >
+    }@else { @if (this.accountService.user()?.roles?.includes('Student')) {
+    <a
+      class="overflow-hidden rounded-full w-8 h-8 md:!w-15 md:!h-15"
+      routerLink="/student/student-profile"
+    >
+      <img
+        [src]="
+          this.accountService.user()?.pictureUrl ||
+          'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'
+        "
+        class="w-full h-full object-cover"
+      />
+    </a>
+    }@else if (this.accountService.user()?.roles?.includes('Instructor')) {
+    <a
+      class="overflow-hidden rounded-full w-8 h-8 md:!w-15 md:!h-15"
+      routerLink="/instructor-dashboard"
+    >
+      <img
+        [src]="
+          this.accountService.user()?.pictureUrl ||
+          'https://res.cloudinary.com/dnade0nhi/image/upload/v1754849990/DefaultImage_bixccf.jpg'
+        "
+        class="w-full h-full object-cover"
+      />
+    </a>
+    }
+    <p class="text-sm md:!text-lg text-nowrap text-gray-700">
+      {{ this.accountService.user()?.fullName }}
+    </p>
+    <button
+      (click)="logout()"
+      class="border cursor-pointer border-red-600 text-red-600 px-2 py-1 md:!px-4 md:!py-2 rounded hover:bg-red-100 transition-colors duration-200 text-sm md:!text-base"
+    >
+      Logout
+    </button>
+    }
+  </div>
+</div>

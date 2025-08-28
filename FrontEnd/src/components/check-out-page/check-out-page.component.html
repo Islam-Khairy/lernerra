@@ -1,0 +1,156 @@
+<div class="mx-6 lg:!mx-24 mb-4 lg:!mb-0">
+  <h1 class="text-3xl font-semibold mt-12 mb-6">Checkout Page</h1>
+  <div class="grid grid-cols-1 lg:!grid-cols-2 gap-6">
+    <div class="col-span-1 lg:!col-span-2 lg:!h-screen overflow-y-auto">
+      <div class="border border-[#E2E8F0] rounded-lg flex flex-col gap-2 p-4">
+        <div class="grid grid-cols-1 md:!grid-cols-1 gap-4">
+          <div class="col-span-1 flex flex-col gap-1">
+            <label for="" class="font-semibold text-lg">Country</label>
+            <input
+              type="text"
+              class="placeholder:text-[#94A3B8] p-4 rounded-lg border border-[#E2E8F0]"
+              placeholder="Enter Country"
+            />
+          </div>
+          <!-- <div class="col-span-1 flex flex-col gap-1">
+            <label for="" class="font-semibold text-lg"
+              >State/Union Territory</label
+            >
+            <input
+              type="text"
+              class="placeholder:text-[#94A3B8] p-4 rounded-lg border border-[#E2E8F0]"
+              placeholder="Enter State"
+            />
+          </div> -->
+        </div>
+        <div class="w-full flex items-center justify-between mt-4 mb-2">
+          <h3 class="font-semibold text-lg">Credit/Debit Card</h3>
+          <img class="w-20" src="/images/visa.png" alt="" />
+        </div>
+        @if(course) {
+        <ngx-stripe-card-group class="flex flex-col gap-4">
+          <!-- <div class="flex flex-col gap-2">
+            <label for="" class="text-sm text-[#0F172A]">Name of Card</label>
+
+          </div> -->
+          <div class="flex flex-col gap-2">
+            <label for="" class="text-sm text-[#0F172A]">Card Number</label>
+            <div
+              class="p-4 rounded-lg border-2 border-[#E2E8F0] focus-within:border-black hover:border-black transition-colors duration-200"
+            >
+              <ngx-stripe-card-number
+                class="form-control"
+                [options]="cardOptions"
+              ></ngx-stripe-card-number>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:!grid-cols-2 gap-4">
+            <div class="flex flex-col gap-2">
+              <label for="" class="text-sm text-[#0F172A]">Expiry Date</label>
+              <div
+                class="p-4 rounded-lg border-2 border-[#E2E8F0] focus-within:border-black hover:border-black transition-colors duration-200"
+              >
+                <ngx-stripe-card-expiry
+                  [options]="cardOptions"
+                ></ngx-stripe-card-expiry>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="" class="text-sm text-[#0F172A]">CVC/CVV</label>
+              <!-- <div class="p-4 rounded-lg border border-[#E2E8F0]"> -->
+              <div
+                class="p-4 rounded-lg border-2 border-[#E2E8F0] focus-within:border-black hover:border-black transition-colors duration-200"
+              >
+                <ngx-stripe-card-cvc
+                  class="form-control"
+                  [options]="cardOptions"
+                ></ngx-stripe-card-cvc>
+              </div>
+            </div>
+          </div>
+        </ngx-stripe-card-group>
+        }
+      </div>
+    </div>
+    <div class="col-span-1 lg:!-mt-11">
+      <h1 class="text-[#0F172A] text-xl font-semibold mb-4">Order Details</h1>
+      <div class="flex flex-col gap-4">
+        <div
+          class="bg-[#F8FAFC] border border-[#E2E8F0] p-4 rounded-lg gap-2 flex"
+        >
+          @if(course.imageUrl) {
+          <img
+            [src]="course.imageUrl"
+            alt="course-image"
+            class="max-w-1/2 h-full"
+          />
+          } @else { noImage }
+          <div class="flex flex-col gap-2 text-sm">
+            <!-- <span class="text-[#2563EB]">Design</span> -->
+            <h3 class="font-semibold">{{ course.name }}</h3>
+            <div class="flex items-center gap-2 text-xs">
+              <div class="flex items-center gap-1">
+                <span>{{ course.lessons.length }}</span
+                ><span>Lectures</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <span>{{ (fullduration / 60).toFixed(0) }}</span
+                ><span>Total Minutes</span>
+              </div>
+            </div>
+            <h3 class="font-semibold">${{ course.price }}</h3>
+          </div>
+        </div>
+
+        <!-- <button
+          class="bg-[#F8FAFC] border border-[#E2E8F0] p-3 rounded-lg text-sm cursor-pointer flex items-center gap-2"
+        >
+          <img src="/images/coupon.svg" alt="" /><span>APPLY COUPON CODE</span>
+        </button> -->
+        <div
+          class="rounded-md border border-[#E2E8F0] p-4 flex flex-col gap-4 bg-[#F8FAFC]"
+        >
+          <div class="flex justify-between items-center">
+            <span>Price</span>
+            <span class="text-[#0F172A] font-semibold"
+              >${{ course.price }}</span
+            >
+          </div>
+          <div class="flex justify-between items-center">
+            <span>Discount</span>
+            <span class="text-[#0F172A] font-semibold">0.00</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span>Tax</span>
+            <span class="text-[#0F172A] font-semibold">0.00</span>
+          </div>
+          <div
+            class="flex justify-between items-center mt-4 text-[#0F172A] font-semibold text-lg"
+          >
+            <span>Total</span>
+            <span>${{ course.price }}</span>
+          </div>
+        </div>
+        <!-- <a [routerLink]="['/order-completed']"> -->
+        <button
+          (click)="pay()"
+          class="text-[#FFFFFF] py-3 bg-[#020617] rounded-md mt-4 w-full cursor-pointer"
+          [disabled]="disableBtn"
+        >
+          Proceed to Checkout
+        </button>
+        <!-- </a> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-toast position="top-right" [baseZIndex]="10000" key="custom"></p-toast>
+
+<ng-template #noImage>
+  <img
+    src="images/default-course.png"
+    alt="No Image Available"
+    class="max-w-1/2 h-full"
+  />
+</ng-template>

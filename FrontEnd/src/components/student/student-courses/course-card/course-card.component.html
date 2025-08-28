@@ -1,0 +1,61 @@
+<mat-card
+  class="transform transition duration-200 hover:scale-105 hover:shadow-xl shadow-md cursor-pointer p-2"
+>
+  <div class="overflow-hidden rounded-lg w-full h-56 p-2">
+    <img
+      mat-card-image
+      [src]="course()?.imageUrl"
+      alt="course image"
+      class="w-full h-full"
+    />
+  </div>
+  <div class="flex flex-col gap-2 px-2">
+    <span class="font-semibold text-lg mt-4 truncate">{{
+      course()?.name
+    }}</span>
+    <span class="text-lg">By: {{ course()?.instructor?.fullName }}</span>
+    @if(userRoles().includes('Student')) {
+    <div class="w-full">
+      <meter
+        class="custom-meter w-full h-2 rounded-lg"
+        [value]="progress || 0"
+        [min]="0"
+        [max]="100"
+      ></meter>
+    </div>
+    }
+
+    <!-- <div class="flex flex-col gap-2 ps-3 pb-2">
+  </div>
+
+  
+  <div class="flex flex-col gap-2 ps-3 pb-2">
+
+    <span class="font-semibold text-xl mt-4">{{ course.name }}</span>
+    <span class="text-lg">Category: {{ course.category }}</span> -->
+    <!-- <span class="text-sm">By: {{ course.instructor }}</span> -->
+    <!-- <span>Category: {{ course.categoryName }}</span>
+    <span class="text-sm">By: {{ course.instructor.fullName }}</span> -->
+    <div class="!flex !items-center gap-2 my-2 mb-2">
+      <i class="pi pi-star-fill text-yellow-500 text-lg"></i>
+      <span class="text-md"> ({{ course()?.rate?.toFixed(1) }})</span>
+    </div>
+    <!-- @if (course.duration || course.lecture || course.level) {
+    <div class="flex items-center gap-3 text-sm text-[#334155]">
+      <span>{{ course.duration }} Total Hours.</span>
+      <span>{{ course.Lectures }} Lectures</span>
+      <span>{{ course.level }}</span>
+    </div>
+    } -->
+    @if(this.role=="instructor"){
+    <p>Status: {{ course()?.status }}</p>
+    <p>purchased: {{ course()?.enrollments?.length || 0 }}</p>
+
+    <div class="flex items-center gap-2">
+      <span>Notes:</span>
+      <span class="truncate"> {{ course()?.notes || "no notes" }}</span>
+    </div>
+
+    }
+  </div>
+</mat-card>

@@ -1,0 +1,20 @@
+ <a href="#" class="border block border-gray-300 bg-white border-surface rounded-xl m-2 p-4 cursor-pointer shadow-lg transfrom transition-all duration-200 hover:scale-[1.1] hover:shadow-2xl">
+            <div class="mb-2">
+                <div class="relative mx-auto">
+                    <img [src]=" instuctor()?.image " [alt]="instuctor()?.name" class="w-40 h-30 rounded-lg" />
+                </div>
+            </div>
+            <div class="mb-1 text-lg font-semibold text-center">{{ instuctor()?.name }}</div>
+            <div class="mb-1 text-gray-700 text-center">{{ instuctor()?.title }}</div>
+            <p-divider></p-divider>
+            <div class="flex justify-between items-center">
+                <div class="flex gap-1 items-center">
+                    <div>
+                        <i class=" pi pi-star-fill text-orange-400"></i>
+                    </div>
+                    <p class="text-sm font-semibold">4.9</p>
+                </div>
+                <p class="text-gray-700 text-sm">{{instuctor()?.studentsNum}} Students</p>
+            </div>
+
+   </a>

@@ -1,0 +1,50 @@
+<div class="mx-6 lg:!mx-24">
+  <h1 class="text-3xl font-semibold mt-12 mb-6">Shopping Cart</h1>
+  <div class="grid grid-cols-1 lg:!grid-cols-3 gap-16">
+    <div class="col-span-1 lg:!col-span-2 h-screen overflow-y-auto">
+      <div
+        class="flex items-center gap-1 text-[#334155] border-b border-[#E2E8F0] mb-4"
+      >
+        <span>1</span>
+        <span> Course in cart</span>
+      </div>
+      @for (item of shoppingCartCourses; track $index) {
+      <app-shopping-cart-course-card
+        [course]="item"
+      ></app-shopping-cart-course-card>
+      }
+    </div>
+    <div class="col-span-1">
+      <h1 class="text-[#0F172A] text-xl font-semibold mb-4">Order Details</h1>
+      <div
+        class="rounded-md border border-[#E2E8F0] p-4 flex flex-col gap-4 bg-[#F8FAFC]"
+      >
+        <div class="flex justify-between items-center">
+          <span>Price</span>
+          <span class="text-[#0F172A] font-semibold">$300.00</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Discount</span>
+          <span class="text-[#0F172A] font-semibold">-$10.00</span>
+        </div>
+        <div class="flex justify-between items-center">
+          <span>Tax</span>
+          <span class="text-[#0F172A] font-semibold">$20.00</span>
+        </div>
+        <div
+          class="flex justify-between items-center mt-4 text-[#0F172A] font-semibold text-lg"
+        >
+          <span>Total</span>
+          <span>$290.00</span>
+        </div>
+      </div>
+      <a [routerLink]="['/check-out']"
+        ><button
+          class="text-[#FFFFFF] py-2 bg-[#020617] rounded-md mt-4 w-full cursor-pointer"
+        >
+          Proceed to Checkout
+        </button></a
+      >
+    </div>
+  </div>
+</div>

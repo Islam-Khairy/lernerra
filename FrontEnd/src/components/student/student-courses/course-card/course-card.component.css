@@ -1,0 +1,21 @@
+.custom-meter {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px; /* full rounded */
+  background: #e5e7eb; /* Tailwind gray-200 */
+}
+
+.custom-meter::-webkit-meter-bar {
+  background: #e5e7eb; /* gray-200 */
+  border-radius: 9999px;
+}
+
+.custom-meter::-webkit-meter-optimum-value {
+  background: #2563eb; /* Tailwind blue-600 */
+  border-radius: 9999px;
+}
+
+.custom-meter::-moz-meter-bar {
+  background: #2563eb; /* blue-600 */
+  border-radius: 9999px;
+}

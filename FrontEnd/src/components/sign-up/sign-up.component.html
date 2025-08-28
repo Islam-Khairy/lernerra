@@ -1,0 +1,149 @@
+<form
+  [formGroup]="signUpForm"
+  (submit)="onSubmit()"
+  class="grid grid-cols-1 lg:!grid-cols-5"
+>
+  <div
+    class="col-span-2 w-full h-[calc(100vh-6rem)] overflow-hidden hidden lg:!block"
+  >
+    <img src="/images/sign-up.svg" alt="" class="w-full h-full object-cover" />
+  </div>
+
+  <div
+    class="col-span-3 boreder flex flex-col justify-center px-4 md:!px-8 mb-6 lg:!mb-4"
+  >
+    <h1 class="text-3xl font-bold text-[#0F172A] text-center my-8 lg:!my-0">
+      Create Your Account
+    </h1>
+    <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
+        <label for="" class="text-lg text-[#0F172A] font-semibold"
+          >Full Name</label
+        >
+        <div class="flex flex-col md:!flex-row gap-3 md:!gap-4">
+          <input
+            type="text"
+            class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+          <input
+            type="text"
+            class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+            placeholder="Last Name"
+            formControlName="lastName"
+          />
+        </div>
+        <div class="flex flex-col gap-3">
+          @if(signUpForm.get('firstName')?.hasError('required')&&
+          signUpForm.get('firstName')?.touched){
+          <span class="text-red-500 block">First Name is required</span>
+          } @if(signUpForm.get('lastName')?.hasError('required')&&
+          signUpForm.get('lastName')?.touched){
+          <span class="text-red-500 block">Last Name is required</span>
+          }
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="" class="text-lg text-[#0F172A] font-semibold"
+          >Username</label
+        >
+        <input
+          type="text"
+          class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+          placeholder="Username"
+          formControlName="userName"
+        />
+        @if(signUpForm.get('userName')?.hasError('required')&&
+        signUpForm.get('userName')?.touched){
+        <span class="text-red-500 block">User Name is required</span>
+        }
+      </div>
+      <div class="flex flex-col gap-2">
+        <label for="" class="text-lg text-[#0F172A] font-semibold">Email</label>
+        <input
+          type="text"
+          class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+          placeholder="Email ID"
+          formControlName="email"
+        />
+        @if(signUpForm.get('email')?.hasError('required')&&
+        signUpForm.get('email')?.touched){
+        <span class="text-red-500 block">Email is required</span>
+        }
+        @if(signUpForm.get('email')?.hasError('email')&&signUpForm.get('email')?.touched){
+        <span class="text-red-500 block">Invalid email format</span>
+        }
+      </div>
+
+      <div class="flex flex-col md:!flex-row w-full gap-4 md:!gap-8">
+        <div class="flex flex-col w-full gap-2">
+          <label for="" class="text-lg text-[#0F172A] font-semibold">
+            Password</label
+          >
+          <input
+            type="password"
+            class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+            placeholder="Enter Password"
+            formControlName="password"
+          />
+        </div>
+        <div class="flex flex-col w-full gap-2">
+          <label for="" class="text-lg text-[#0F172A] font-semibold">
+            Confirm Password</label
+          >
+          <input
+            type="password"
+            class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+            placeholder="Confirm Password"
+            formControlName="confirmPassword"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-3">
+        @if(signUpForm.get('password')?.hasError('required')&&
+        signUpForm.get('password')?.touched){
+        <span class="text-red-500 block">Password is required</span>
+        } @if(signUpForm.get('confirmPassword')?.hasError('required')&&
+        signUpForm.get('confirmPassword')?.touched){
+        <span class="text-red-500 block">Confirm Password is required</span>
+        }
+        @if(signUpForm.hasError('passwordMismatch')&&signUpForm.get('confirmPassword')?.touched){
+        <span class="text-red-500 block"
+          >Confirm Password dosen't match password</span
+        >
+        }
+      </div>
+
+      <button
+        class="text-[#FFFFFF] px-4 py-3 rounded-md bg-[#020617] w-fit flex items-center gap-3 cursor-pointer hover:bg-neutral-600 transition duration-200"
+        (click)="onSubmit()"
+      >
+        <span>Create Account</span>
+        <i class="pi pi-arrow-right"></i>
+      </button>
+
+      <!-- <div class="flex items-center">
+        <div class="flex-grow border-t border-[#94A3B8]"></div>
+        <span class="px-3 text-[#94A3B8]">Sign up with</span>
+        <div class="flex-grow border-t border-[#94A3B8]"></div>
+      </div> -->
+
+      <!-- <div class="w-full flex items-center justify-center gap-4">
+        <button
+          class="px-8 py-2 border border-gray-300 rounded-lg flex justify-center items-center gap-2"
+        >
+          <img src="/images/Facebook.svg" alt="" />
+          <span class="text-[#0866FF] text-sm">Facebook</span>
+        </button>
+        <button
+          class="px-8 py-2 border border-gray-300 rounded-lg flex justify-center items-center gap-2"
+        >
+          <img src="/images/google.svg" alt="" />
+          <span class="text-sm text-[#EA4335]">Google</span>
+        </button>
+      </div> -->
+    </div>
+    <p-toast></p-toast>
+  </div>
+</form>

@@ -1,0 +1,56 @@
+<form
+  [formGroup]="profileForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-8"
+>
+  <div class="flex flex-col gap-2">
+    <label class="text-lg text-[#0F172A] font-medium">Full Name</label>
+    <div class="flex flex-col md:!flex-row gap-3 md:!gap-8">
+      <input
+        type="text"
+        placeholder="Full Name"
+        formControlName="fullName"
+        class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col md:!flex-row w-full gap-8">
+    <div class="flex flex-col gap-2 w-full">
+      <label class="text-lg text-[#0F172A] font-medium">Email</label>
+      <input
+        type="text"
+        placeholder="Email ID"
+        formControlName="email"
+        class="w-full border border-gray-300 rounded-lg text-gray-500 p-4 placeholder:text-[#94A3B8]"
+      />
+    </div>
+    <div class="flex flex-col gap-2 w-full">
+      <label class="text-lg text-[#0F172A] font-medium">Phone</label>
+      <input
+        type="text"
+        placeholder="Phone"
+        formControlName="phone"
+        class="w-full border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+      />
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 w-full">
+    <label class="text-lg text-[#0F172A] font-medium">Update Image</label>
+    <input
+      (change)="onImageUpload($event)"
+      type="file"
+      accept=".png .jpg"
+      placeholder="Upload Image"
+      class="w-fit border border-gray-300 rounded-lg p-4 placeholder:text-[#94A3B8]"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="px-4 py-2 rounded-md bg-blue-600 text-white font-semibold w-fit items-end disabled:opacity-50 cursor-pointer"
+  >
+    Update
+  </button>
+</form>
+<p-toast></p-toast>

@@ -1,0 +1,80 @@
+<div class="min-h-screen">
+  @if(this.instructor){
+  <div class="px-4 lg:!px-12 pt-8">
+    <div class="grid grid-cols-1 md:!grid-cols-4 mb-2 sm:gap-10 lg:!gap-44">
+      <div class="col-span-3 flex flex-col gap-1">
+        <h5 class="text-gray-700">Instructor</h5>
+        <h2 class="text-3xl font-semibold">{{ instructor.fullName }}</h2>
+        <h5 class="text-gray-700 mb-5">
+          {{ instructor?.instructorApplication?.specialization || "" }}
+        </h5>
+        <div>
+          <h3 class="font-semibold text-lg">About {{ instructor.fullName }}</h3>
+          <p class="text-gray-700">
+            With extensive experience in the field, {{ instructor.fullName }} is
+            dedicated to delivering high-quality education through practical
+            insights and industry-relevant knowledge. Passionate about helping
+            learners grow, they bring both expertise and enthusiasm to every
+            course they teach
+          </p>
+        </div>
+      </div>
+      <div class="flex flex-col mt-4 md:!mt-0">
+        <div class="overflow-hidden w-[120px] h-[120px] rounded-full mb-4">
+          <img [src]="instructor.imageUrl" class="w-full h-full" />
+        </div>
+        <!-- <a class="w-full py-2 font-semibold rounded-lg border text-center hover:bg-black hover:text-white transition duration-200 cursor-pointer  mb-1"
+                    href="https://www.x.com" target="_blank">Twitter</a>
+                <a class="w-full py-2 font-semibold rounded-lg border text-center hover:bg-black hover:text-white transition duration-200 cursor-pointer  mb-1"
+                    href="https://www.youtube.com" target="_blank">YouTube</a> -->
+      </div>
+    </div>
+  </div>
+  <section class="bg-gray-100 py-10 lg:!px-4">
+    <h3 class="text-xl font-semibold mb-7 px-4">
+      More Courses by
+      <span class="text-blue-600">{{ instructor.fullName }}</span>
+    </h3>
+    <p-carousel
+      [value]="instructorCourses"
+      [numVisible]="3"
+      [numScroll]="1"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-course #item>
+        <div
+          class="border border-gray-300 bg-white border-surface rounded-xl m-2 p-4"
+        >
+          <div class="mb-4">
+            <div class="relative mx-auto overflow-hidden flex justify-center">
+              <img
+                [src]="course.imageUrl"
+                [alt]="course.name"
+                class="rounded w-95 h-50"
+              />
+            </div>
+          </div>
+          <div class="mb-2 font-bold">{{ course.name }}</div>
+          <div class="mb-2 text-gray-700">
+            By {{ course.instructor?.fullName }}
+          </div>
+          <p-rating class="mb-2" [(ngModel)]="course.rate"></p-rating>
+          <div class="flex justify-between items-center">
+            <div class="mt-0 font-semibold text-xl">{{ course.price }} $</div>
+            <span>
+              <p-button
+                icon="pi pi-shopping-cart"
+                styleClass="ml-2"
+                [routerLink]="['/course', course.id]"
+              />
+            </span>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </section>
+  } @else {
+  <p class="text-center text-3xl m-10">Instructor not found</p>
+  }
+</div>
