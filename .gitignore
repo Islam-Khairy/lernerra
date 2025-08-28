@@ -4,6 +4,15 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Ignore root level frontend files (in case they appear)
+/angular.json
+/package.json
+/package-lock.json
+/tsconfig*.json
+/.postcssrc.json
+/public/
+/src/
+
 BackEnd/ELearning.API/Migrations
 BackEnd/ELearning.API/appsettings.json
 BackEnd/ELearning.API/appsettings.Development.json

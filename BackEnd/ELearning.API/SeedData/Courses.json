@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Intro to Software Engineering",
+    "description": "Understand the fundamentals of software engineering principles.",
+    "rate": 4.5,
+    "price": 149.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "32e9a679-4120-4816-8ecc-d672d1ee6144",
+    "categoryId": 1
+  },
+  {
+    "name": "Agile & Scrum Practices",
+    "description": "Learn agile methodologies and scrum process for modern teams.",
+    "rate": 4.6,
+    "price": 129.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "32e9a679-4120-4816-8ecc-d672d1ee6144",
+    "categoryId": 1
+  },
+  {
+    "name": "System Design Basics",
+    "description": "Introduction to designing scalable software systems.",
+    "rate": 4.7,
+    "price": 199.99,
+    "currency": "USD",
+    "status": 0,
+    "instructorId": "32e9a679-4120-4816-8ecc-d672d1ee6144",
+    "categoryId": 1
+  },
+  {
+    "name": "Clean Code in C#",
+    "description": "Write cleaner, maintainable code in C# using SOLID principles.",
+    "rate": 4.8,
+    "price": 179.99,
+    "currency": "USD",
+    "status": 2,
+    "instructorId": "32e9a679-4120-4816-8ecc-d672d1ee6144",
+    "categoryId": 1
+  },
+  {
+    "name": "Photoshop for Beginners",
+    "description": "Get started with Adobe Photoshop and image editing techniques.",
+    "rate": 4.4,
+    "price": 99.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "e6664ec2-f012-4262-9226-82d5cc2e52cb",
+    "categoryId": 2
+  },
+  {
+    "name": "Illustrator Essentials",
+    "description": "Learn vector design using Adobe Illustrator.",
+    "rate": 4.5,
+    "price": 109.99,
+    "currency": "USD",
+    "status": 0,
+    "instructorId": "e6664ec2-f012-4262-9226-82d5cc2e52cb",
+    "categoryId": 2
+  },
+  {
+    "name": "UI/UX Design Foundations",
+    "description": "Principles of designing intuitive user experiences and interfaces.",
+    "rate": 4.6,
+    "price": 139.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "e6664ec2-f012-4262-9226-82d5cc2e52cb",
+    "categoryId": 2
+  },
+  {
+    "name": "Branding and Identity Design",
+    "description": "Create compelling brand visuals and identity systems.",
+    "rate": 4.3,
+    "price": 119.99,
+    "currency": "USD",
+    "status": 2,
+    "instructorId": "e6664ec2-f012-4262-9226-82d5cc2e52cb",
+    "categoryId": 2
+  },
+  {
+    "name": "Python for Data Science",
+    "description": "Learn Python basics with a focus on data analysis.",
+    "rate": 4.7,
+    "price": 159.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "ecbca88b-cc61-442a-a54f-550e3e5d216f",
+    "categoryId": 3
+  },
+  {
+    "name": "Data Visualization with Power BI",
+    "description": "Use Power BI to build interactive dashboards.",
+    "rate": 4.6,
+    "price": 169.99,
+    "currency": "USD",
+    "status": 0,
+    "instructorId": "ecbca88b-cc61-442a-a54f-550e3e5d216f",
+    "categoryId": 3
+  },
+  {
+    "name": "Statistics for Data Analysis",
+    "description": "Understand key statistical concepts used in data science.",
+    "rate": 4.5,
+    "price": 149.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "ecbca88b-cc61-442a-a54f-550e3e5d216f",
+    "categoryId": 3
+  },
+  {
+    "name": "SQL for Data Projects",
+    "description": "Master SQL queries for real-world data manipulation.",
+    "rate": 4.8,
+    "price": 139.99,
+    "currency": "USD",
+    "status": 2,
+    "instructorId": "ecbca88b-cc61-442a-a54f-550e3e5d216f",
+    "categoryId": 3
+  },
+  {
+    "name": "Intro to AI",
+    "description": "A beginner's guide to artificial intelligence concepts.",
+    "rate": 4.6,
+    "price": 179.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "ef5d5bed-bbaa-44ab-b3c7-220a582204eb",
+    "categoryId": 4
+  },
+  {
+    "name": "Neural Networks 101",
+    "description": "Understand the basics of how neural networks work.",
+    "rate": 4.7,
+    "price": 189.99,
+    "currency": "USD",
+    "status": 1,
+    "instructorId": "ef5d5bed-bbaa-44ab-b3c7-220a582204eb",
+    "categoryId": 4
+  },
+  {
+    "name": "Machine Learning with Python",
+    "description": "Build machine learning models using scikit-learn.",
+    "rate": 4.8,
+    "price": 209.99,
+    "currency": "USD",
+    "status": 0,
+    "instructorId": "ef5d5bed-bbaa-44ab-b3c7-220a582204eb",
+    "categoryId": 4
+  },
+  {
+    "name": "AI Ethics and Society",
+    "description": "Explore the ethical implications of artificial intelligence.",
+    "rate": 4.5,
+    "price": 129.99,
+    "currency": "USD",
+    "status": 2,
+    "instructorId": "ef5d5bed-bbaa-44ab-b3c7-220a582204eb",
+    "categoryId": 4
+  }
+]

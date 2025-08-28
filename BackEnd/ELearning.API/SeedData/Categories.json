@@ -1,0 +1,20 @@
+
+  [
+    {
+      "name": "Software Engineering",
+      "description": "Courses related to software development, architecture, and engineering practices."
+    },
+    {
+      "name": "Graphic Design",
+      "description": "Courses covering visual design, typography, branding, and digital art tools."
+    },
+    {
+      "name": "Data Science",
+      "description": "Courses focused on data analysis, machine learning, and statistics."
+    },
+    {
+      "name": "AI",
+      "description": "Courses about AI fundamentals, deep learning, and neural networks."
+    }
+  ]
+

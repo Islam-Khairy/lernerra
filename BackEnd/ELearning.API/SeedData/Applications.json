@@ -1,0 +1,102 @@
+
+ [
+    {
+      "fullName": "Youssef Hassan",
+      "email": "youssef.hassan@example.com",
+      "phone": "01012345678",
+      "specialization": "Computer Science",
+      "cvUrl": "https://example.com/cv/youssef_hassan.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-28T10:00:00",
+      "reviewedAt": null,
+      "notes": null,
+      "user": null,
+      "reviewedBy": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Sara Mostafa",
+      "email": "sara.mostafa@example.com",
+      "phone": "+201025678945",
+      "specialization": "Mathematics",
+      "cvUrl": "https://example.com/cv/sara_mostafa.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-26T14:30:00",
+      "user": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Mohamed Salah",
+      "email": "mohamed.salah@example.com",
+      "phone": "01234567890",
+      "specialization": "Web Development",
+      "cvUrl": "https://example.com/cv/mohamed_salah.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-25T12:00:00",
+      "reviewedAt": null,
+      "notes": null,
+      "user": null,
+      "reviewedBy": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Fatma Adel",
+      "email": "fatma.adel@example.com",
+      "phone": "01599887766",
+      "specialization": "Graphic Design",
+      "cvUrl": "https://example.com/cv/fatma_adel.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-23T08:45:00",
+      "user": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Omar Khaled",
+      "email": "omar.khaled@example.com",
+      "phone": "00201123456789",
+      "specialization": "Data Analysis",
+      "cvUrl": "https://example.com/cv/omar_khaled.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-22T16:20:00",
+      "user": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Laila Samir",
+      "email": "laila.samir@example.com",
+      "phone": "01111222333",
+      "specialization": "Cybersecurity",
+      "cvUrl": "https://example.com/cv/laila_samir.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-27T11:30:00",
+      "reviewedAt": null,
+      "notes": null,
+      "user": null,
+      "reviewedBy": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Ahmed ElSherif",
+      "email": "ahmed.elsherif@example.com",
+      "phone": "01099887766",
+      "specialization": "Artificial Intelligence",
+      "cvUrl": "https://example.com/cv/ahmed_elsherif.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-24T15:00:00",
+      "user": null,
+      "reviewedByUser": null
+    },
+    {
+      "fullName": "Nouran Fathy",
+      "email": "nouran.fathy@example.com",
+      "phone": "+201012345678",
+      "specialization": "Business Administration",
+      "cvUrl": "https://example.com/cv/nouran_fathy.pdf",
+      "status": 0,
+      "appliedAt": "2025-07-20T10:00:00",
+      "user": null,
+      "reviewedByUser": null
+    }
+  ]
+
+
