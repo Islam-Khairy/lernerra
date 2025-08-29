@@ -108,7 +108,7 @@ export class UpdateCourseComponent {
     this.lessonForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(10)]],
       description: ['', [Validators.required, Validators.minLength(40)]],
-      vedioURL: ['', [Validators.required]],
+      VedioURL: ['', [Validators.required]],
       duration: [0, [Validators.required, Validators.min(60)]],
       courseId: [''],
     });
@@ -176,7 +176,7 @@ export class UpdateCourseComponent {
       next: (res: any) => {
         const cloudinaryUrl = res.secure_url;
         this.isuploading = false;
-        this.lessonForm.patchValue({ vedioURL: cloudinaryUrl });
+        this.lessonForm.patchValue({ VedioURL: cloudinaryUrl });
         this.toastr.success('Video uploaded successfully');
         console.log('Video URL from Cloudinary:', cloudinaryUrl);
       },
@@ -195,7 +195,7 @@ export class UpdateCourseComponent {
     this.selectedVideo = null;
     this.videoPreview = null;
 
-    this.lessonForm.patchValue({ vedioURL: '' });
+    this.lessonForm.patchValue({ VedioURL: '' });
 
     if (this.editingLesson) {
       this.lessonVideos.delete(this.editingLesson.id);
@@ -216,14 +216,9 @@ export class UpdateCourseComponent {
     console.log(lesson.id);
     this.videoPreview = lesson.vedioURL;
     this.lessonForm.patchValue({
-      vedioURL: lesson.vedioURL,
+      VedioURL: lesson.vedioURL,
       courseId: this.courseId,
-    });
-    this.getVideoDuration(this.videoPreview || '').then((duration) => {
-      console.log('Video duration (seconds):', duration);
-
-      // اختياري: تخزين المدة في الفورم
-      this.lessonForm.patchValue({ duration: Math.floor(duration) });
+      duration: lesson.duration,
     });
     this.showLessonModal = true;
   }
@@ -494,6 +489,7 @@ export class UpdateCourseComponent {
             progressAnimation: 'increasing',
             closeButton: true,
           });
+          this.closeLessonModal();
         },
         error: (err) => {
           console.log(err);
