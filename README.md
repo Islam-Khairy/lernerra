@@ -99,9 +99,10 @@ ng serve
 📄 License
 This project is part of an educational program and is available for portfolio demonstration purposes.
 
-👥 Contributors
-Islam Khairy - GitHub
-sherifali20
-AhmedAbdelmoaty-dev
-MohamedMustafaSaber
-mariemkaram
+## 👥 Contributors
+
+- [@Islam-Khairy](https://github.com/Islam-Khairy)
+- [@sherifali20](https://github.com/sherifali20)
+- [@AhmedAbdelmoaty-dev](https://github.com/AhmedAbdelmoaty-dev)
+- [@MohamedMustafaSaber](https://github.com/MohamedMustafaSaber)
+- [@mariemkaram](https://github.com/mariemkaram)
