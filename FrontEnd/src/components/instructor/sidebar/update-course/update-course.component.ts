@@ -320,7 +320,6 @@ export class UpdateCourseComponent {
       fileInput.value = '';
     }
 
-    // Clear image URL from form & cloud URL if needed
     this.courseImageUrl = '';
     this.CourseForm.patchValue({
       imageUrl: '',
